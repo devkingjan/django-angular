@@ -1,0 +1,145 @@
+<div *ngIf="cellCultureHistory.log_type === LOG_TYPE_ADD_NEW" class="cch-item" fxLayout="row"
+     fxLayoutAlign="start start">
+    <div class="cch-item-mark">
+        <img src="assets/images/cell-culture/star.svg"/>
+    </div>
+    <div class="cch-item-panel">
+        <div class="text-bold" fxLayout="row">
+            <div fxFlex="1 0 auto">
+                {{cellCultureHistory.cell_line.user.first_name}} {{cellCultureHistory.cell_line.user.last_name}}&nbsp;
+                added cell line "{{cellCultureHistory.cell_line.name}} P{{cellCultureHistory.cell_line.passage_number}}"
+                ({{cellCultureHistory.cell_line.uid}}).
+                Source: {{cellCultureHistory.cell_line.how_started}}
+                <span
+                    *ngIf="cellCultureHistory?.cell_line?.how_started==='received'">from {{cellCultureHistory?.cell_line?.received_scientist}}</span>
+                <span *ngIf="cellCultureHistory?.cell_line?.how_started==='cloned'">
+                    from {{cellCultureHistory?.cell_line?.cloned_cell}}
+                </span>
+            </div>
+        </div>
+        <div class="mission-item-panel" fxLayout="column">
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Name:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.name}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Started on:</div>
+                <div
+                    class="cch-item-detail-value">{{cellCultureHistory.cell_line.date_taken | date : 'MM/d/yyy'}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Passage number when thawed:</div>
+                <div class="cch-item-detail-value">P{{cellCultureHistory.cell_line.passage_number}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Genetic modification:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.generic_modification}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Culture medium:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.culture_medium}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Culture medium additive:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.medium_additive}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Last tested for mycoplasma:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.mycoplasmas_state}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Cell culture tissue of origin:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.origin}}</div>
+            </div>
+            <div class="cch-item-detail" fxLayout="row">
+                <div class="cch-item-detail-label">Note:</div>
+                <div class="cch-item-detail-value">{{cellCultureHistory.cell_line.note}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cellCultureHistory.log_type === LOG_TYPE_REMOVE" class="cch-item" fxLayout="row"
+     fxLayoutAlign="start start">
+    <div class="cch-item-mark">
+        <img src="assets/images/cell-culture/Remove cell line.svg"/>
+    </div>
+    <div class="cch-item-panel">
+        <div class="text-bold">
+            {{cellCultureHistory.cell_line.user.first_name}} {{cellCultureHistory.cell_line.user.last_name}}&nbsp;
+            removed Cell Culture Event: {{cellCultureEventTypes[cellCultureHistory.cell_event.log_type]}} for Cell line "{{cellCultureHistory.cell_line.name}}". Removed on: {{cellCultureHistory.ui_event_datetime | date : 'MMM d, yyy'}}.
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cellCultureHistory.log_type === LOG_TYPE_UPDATE_LINE" class="cch-item" fxLayout="row"
+     fxLayoutAlign="start start">
+    <div class="cch-item-mark">
+        <img *ngIf="!isBlind && !isDark" src="assets/images/cell-culture/Edit cell line icon.svg"/>
+        <img *ngIf="isBlind || isDark" src="assets/images/cell-culture/edit cell info_yellow icon.svg"/>
+    </div>
+    <div class="cch-item-panel">
+        <div class="text-bold">
+            {{cellCultureHistory.cell_line.user.first_name}} {{cellCultureHistory.cell_line.user.last_name}}&nbsp;
+            updated cell line "{{cellCultureHistory.cell_line.name}} P{{cellCultureHistory.cell_line.passage_number}}".
+        </div>
+    </div>
+</div>
+
+<div *ngIf="cellCultureHistory.log_type === LOG_TYPE_EVENT" class="cch-item" fxLayout="row" fxLayoutAlign="start start">
+    <div *ngIf="!isBlind && !isDark" class="cch-item-mark">
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='log_passage'"
+             src="assets/images/cell-culture/icon_user.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='log_medium_change'"
+             src="assets/images/cell-culture/icon_user.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='remove_cell_line'"
+             src="assets/images/cell-culture/Remove cell line.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='add_note'"
+             src="assets/images/cell-culture/icon_chat.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='log_mycoplasma_test'"
+             src="assets/images/cell-culture/icon_inbox.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='add_culture_medium_additive'"
+             src="assets/images/cell-culture/icon_inbox.svg"/>
+    </div>
+    <div *ngIf="isBlind || isDark" class="cch-item-mark">
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='log_passage'"
+             src="assets/images/cell-culture/icon_user.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='log_medium_change'"
+             src="assets/images/cell-culture/icon_user.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='remove_cell_line'"
+             src="assets/images/cell-culture/Remove cell line.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='add_note'"
+             src="assets/images/cell-culture/icon_chat.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='log_mycoplasma_test'"
+             src="assets/images/cell-culture/icon_inbox_blind.svg"/>
+        <img *ngIf="cellCultureHistory.cell_event.log_type==='add_culture_medium_additive'"
+             src="assets/images/cell-culture/icon_inbox_blind.svg"/>
+    </div>
+    <div class="cch-item-panel">
+        <span>{{cellCultureHistory.cell_line.user.first_name}} {{cellCultureHistory.cell_line.user.last_name}}&nbsp;</span>
+        <span>{{cellCultureEventTypes[cellCultureHistory.cell_event.log_type]}}</span>
+        <span
+            *ngIf="cellCultureHistory.cell_event.log_type !== 'remove_cell_line'"> for cell line "{{cellCultureHistory.cell_line.name}}
+            ".&nbsp;</span>
+        <span *ngIf="cellCultureHistory.cell_event.log_type === 'add_note'">
+            Note: {{cellCultureHistory.cell_event.note}}&nbsp;
+        </span>
+        <span *ngIf="cellCultureHistory.cell_event.log_type === 'log_mycoplasma_test'">
+            Type: {{cellCultureHistory.cell_event.mycoplasma_type}}&nbsp;
+        </span>
+        <span *ngIf="cellCultureHistory.cell_event.log_type === 'add_culture_medium_additive'">
+            Additive: {{cellCultureHistory.cell_event.medium_additive_text}}&nbsp;
+        </span>
+        <span *ngIf="cellCultureHistory.cell_event.log_type === 'remove_cell_line'">
+            "{{cellCultureHistory.cell_line.name}}
+            ". Reason: {{cellCultureRemovedReason[cellCultureHistory.cell_event.remove_reason]}}&nbsp;
+            <span *ngIf="cellCultureHistory.cell_event.remove_reason === 'other'">
+                {{cellCultureHistory.cell_event.reason_other}}&nbsp;
+            </span>
+        </span>
+<!--        <span *ngIf="cellCultureHistory.removed">(removed)</span>-->
+    </div>
+    <div fxFlex="0 1 auto" class="mt-8">
+        <mat-icon *ngIf="cellCultureHistory.latest" (click)="removeHistory(cellCultureHistory)" class="cursor-pointer remove-history">restore_from_trash</mat-icon>
+    </div>
+</div>

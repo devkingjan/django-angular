@@ -1,0 +1,22 @@
+@mixin app-new-cell-culture-line-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-new-cell-culture-line {
+        .absolut-right-field {
+            @if ($is-dark) {
+                border: 1px solid white;
+                background: mat-color($dark-mode, light-bg);
+            } @else {
+                border: 1px solid grey;
+                background: white!important;
+            }
+        }
+        .custom-input {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, light-bg);
+            } @else {
+                background: white!important;
+            }
+        }
+    }
+}

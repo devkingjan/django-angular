@@ -1,0 +1,32 @@
+@mixin app-project-selector-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-project-selector {
+        .user-button {
+            @if ($is-dark or $is-blind) {
+                color: mat-color($dark-mode, warn) !important;
+            } @else {
+                color: mat-color($default-mode, warn) !important;
+            }
+        }
+
+        .project-item {
+            @if ($is-dark) {
+                color:white;
+            } @else {
+                color: mat-color($default-mode, primary) !important;
+            }
+        }
+
+        .ps-menu-head {
+            button {
+                @if ($is-dark or $is-blind) {
+                    color: mat-color($dark-mode, warn) !important;
+                } @else {
+                    color: mat-color($default-mode, warn) !important;
+                }
+            }
+
+        }
+    }
+}

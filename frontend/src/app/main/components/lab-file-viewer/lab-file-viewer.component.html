@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Experiment: {{data.expUid}} File Viewer</h1>
+<mat-dialog-content class="mat-typography">
+    <h3>Image</h3>
+    <div style="margin-bottom: 20px">
+        <div class="file-item" *ngFor="let item of images">
+            <mat-icon>image</mat-icon>
+            <a href="{{item.file_source}}"><p class="file-name">{{item.file_name}}</p></a>
+        </div>
+    </div>
+
+    <h3>File</h3>
+    <div style="margin-bottom: 20px">
+        <div class="file-item" *ngFor="let item of files">
+            <mat-icon>attach_file</mat-icon>
+            <a href="{{item.file_source}}"><p class="file-name">{{item.file_name}}</p></a>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

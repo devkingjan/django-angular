@@ -1,0 +1,44 @@
+$igor: (
+    50: #ECECEE,
+    100: #9cb1bd,
+    200: #557486,
+    300: #305c74,
+    400: #1a4963,
+    500: #0b2b3a,
+    600: #082736,
+    700: #02161f,
+    800: #01141c,
+    900: #010f17,
+    _pink: #f07261,
+    A100: #C5C6CB,
+    A200: #9EA1A9,
+    A400: #5C616F,
+    A700: #2D323E,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $light-primary-text,
+        400: $light-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+$default-mode: (
+    main-bg: #ffffff,
+    light-bg: #e2e3e4,
+    content-bg: #d7d6d6,
+    primary: #0b2b3a,
+    warn: #f07261,
+    accent: #75a6c9,
+    text: rgba(0, 0, 0, 0.87),
+    right-grey: #757575
+);

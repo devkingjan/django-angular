@@ -1,0 +1,22 @@
+<div class="ps-menu-head cursor-pointer" fxLayout="row"  (click)="clickExpand()"
+     fxLayoutAlign="start start">
+   <div fxFlex="1 0 auto">Projects to display</div>
+    <button fxFlex="0 1 auto" *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon class="s-30">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button fxFlex="0 1 auto" *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon class="s-30">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+
+<mat-accordion class="expansion-custom" multi>
+    <mat-expansion-panel>
+        <div class="project-item" *ngFor="let project of projects">
+            <mat-checkbox [checked]=true (change)="checkedProject($event.checked, project)" class="example-margin">{{project.name}}</mat-checkbox>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

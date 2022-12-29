@@ -1,0 +1,15 @@
+venv/
+authentication/__pycache__/
+authentication/migrations/__pycache__/
+authentication/urls/__pycache__/
+
+#cache
+*.pyc
+
+
+
+# IDEs and editors
+/.idea
+
+# setting
+.env

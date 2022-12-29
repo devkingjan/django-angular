@@ -1,0 +1,52 @@
+@mixin app-project-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+
+    app-project {
+        .project-title {
+            @if ($is-dark) {
+                color: mat-color($dark-mode, warn);
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+
+        .app-project-new {
+            &-title {
+                @if ($is-dark) {
+                    color: mat-color($dark-mode, warn);
+                } @else {
+                    color: mat-color($default-mode, primary);
+                }
+            }
+
+            mat-icon {
+                @if ($is-dark) {
+                    color: mat-color($dark-mode, warn);
+                } @else if ($is-blind) {
+                    color: mat-color($dark-mode, warn);
+                } @else {
+                    color: mat-color($default-mode, warn);
+                }
+            }
+        }
+
+        .new-p-divider {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, warn);
+            } @else if ($is-blind) {
+                background: mat-color($dark-mode, warn);
+            } @else {
+                background: mat-color($default-mode, warn);
+            }
+        }
+
+        .p-header-item {
+            @if ($is-dark) {
+                color: mat-color($dark-mode, warn);
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+    }
+}

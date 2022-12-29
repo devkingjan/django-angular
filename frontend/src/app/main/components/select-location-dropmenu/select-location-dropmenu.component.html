@@ -1,0 +1,75 @@
+<div class="location-menu-head cursor-pointer" fxLayout="row"  (click)="clickExpand()"
+     fxLayoutAlign="start start">
+   <div fxFlex="1 0 auto">Storage Location</div>
+    <button fxFlex="0 1 auto" *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon class="s-30">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button fxFlex="0 1 auto" *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon class="s-30">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+
+<mat-accordion class="expansion-custom" multi>
+    <mat-expansion-panel>
+        <form fxLayout="column" class="p-20" fxLayoutAlign="space-evenly stretch" name="newForm"
+                      [formGroup]="newForm" novalidate>
+                    <mat-form-field fxFlex="100"  appearance="outline">
+                        <mat-label>Associate with database:</mat-label>
+                        <mat-select  [(ngModel)]="selectedDatabase" [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="onSelectDatabase()">
+                            <mat-option *ngFor="let database of databases" [value]="database">{{database.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100"  appearance="outline">
+                        <mat-label>Storage temperature:</mat-label>
+                        <mat-select [(ngModel)]="selectedTemperature"
+                                [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="onSelectTemperature()">
+                            <mat-option *ngFor="let storageTemperature of storageTemperatures"
+                                        [value]="storageTemperature">{{storageTemperature.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100"  appearance="outline">
+                        <mat-label>Equipment:</mat-label>
+                        <mat-select [(ngModel)]="selectedEquipment" [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="onSelectEquipment()">
+                            <mat-option *ngFor="let equipment of equipments" [value]="equipment">{{equipment.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                     <mat-form-field *ngIf="isTower" fxFlex="100" appearance="outline">
+                        <mat-label>Tower:</mat-label>
+                        <mat-select [(ngModel)]="selectedTower" [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="onSelectTower()">
+                            <mat-option *ngFor="let allocateTower of allocateTowers"
+                                        [value]="allocateTower">Tower {{allocateTower['allocate_tower']}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100"  appearance="outline">
+                        <mat-label>Storage type:</mat-label>
+                        <mat-select [(ngModel)]="selectedType" [ngModelOptions]="{standalone: true}"
+                                (ngModelChange)="onSelectStorageType()">
+                            <mat-option *ngFor="let storageType of storageTypes"
+                                        [value]="storageType">{{storageType}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="100" appearance="outline">
+                        <mat-label>Allocate Number:</mat-label>
+                        <mat-select formControlName="id">
+                            <mat-option *ngFor="let allocateNumber of allocateNumbers"
+                                        [value]="allocateNumber['id']">{{allocateNumber['allocate_number']}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxLayout="column" fxLayout.gt-sm="row">
+                        <button fxFlex="100" fxFlex.gt-sm="45" [disabled]="newForm.invalid"
+                                (click)="submit()" mat-raised-button color="accent" >
+                            Open
+                        </button>
+                    </div>
+                </form>
+    </mat-expansion-panel>
+</mat-accordion>
+

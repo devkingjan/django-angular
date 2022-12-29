@@ -1,0 +1,58 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>Calendar</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel *ngIf="events.length" class="mission-panel">
+        <div *ngFor="let event of events">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <span class="mission-dot"></span>
+                    <span class="mission-event-title">[{{event.start | date:'MMMM d hh:mm a'}}] {{event.title}}</span>
+                </mat-expansion-panel-header>
+                <div class="mission-item-panel">
+                    <div>[{{event.start | date:'hh:mm a'}}] to [{{event.end | date:'hh:mm a'}}]</div>
+                    <div><label>Location: </label><span>{{event.meta.location}}</span></div>
+                    <div><label>Attendees: </label>
+                        <span *ngFor="let member of event['member_list']">{{member.first_name}} {{member.last_name}}
+                            , </span>
+                    </div>
+                    <div class="pt-20">
+                        <button [disabled]="!event.is_owner" mat-raised-button class="mission-edit-event"
+                                (click)="editEvent('edit', event)">Edit
+                        </button>
+                        <button class="ml-20" mat-raised-button color="defalt" (click)="deleteEvent(event)"
+                                color="warn">
+                            <img src="assets/images/mission/delete-mission.svg">
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-expansion-panel>
+            <mat-divider></mat-divider>
+        </div>
+        <mat-divider></mat-divider>
+        <div (click)="addEvent()" fxLayout="row" fxLayoutAlign="start center" class="create-event">
+            <div fxFlex="1 0 auto">Add New</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="getResponse && !events.length" class="mission-panel">
+        <div class="p-40">You have no events scheduled for today.</div>
+        <div (click)="addEvent()" fxLayout="row" fxLayoutAlign="start center" class="create-event">
+            <div fxFlex="1 0 auto">Add New</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

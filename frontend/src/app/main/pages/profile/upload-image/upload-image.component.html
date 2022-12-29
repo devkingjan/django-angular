@@ -1,0 +1,26 @@
+<div class="p-20" fxLayout="row">
+    <mat-dialog-content fxLayout="column" fxFlex="700px" fxFlex.lt-md="80vw">
+        <h2 mat-dialog-title>Select Image and Crop</h2>
+        <div class="image-crop" fxLayout="column">
+            <div fxLayout="row" fxFlex="100">
+                <p fxFlex="1 0 auto">click below panel to select image</p>
+                <mat-icon style="cursor: pointer" fxFlex="0 1 auto" matSuffix class="secondary-text" (click)="reset()">close</mat-icon>
+            </div>
+            <div class="image-crop-area" fxLayout="column" fxFlex="100"  (click)="croppedImage ?  null : file.click()">
+                <image-cropper
+                    [imageChangedEvent]="imageChangedEvent"
+                    format="png"
+                    (imageCropped)="imageCropped($event)"
+                    (imageLoaded)="imageLoaded()"
+                    (cropperReady)="cropperReady()"
+                    (loadImageFailed)="loadImageFailed()"
+                    [maintainAspectRatio]="false"
+                ></image-cropper>
+            </div>
+            <input id="image"  hidden type="file" accept="image/*" #file (change)="fileChangeEvent($event)" />
+            <button color="accent" class="mt-20" mat-raised-button [disabled]="!croppedImage" (click)="selectImage()">Select Image</button>
+        </div>
+    </mat-dialog-content>
+</div>
+
+

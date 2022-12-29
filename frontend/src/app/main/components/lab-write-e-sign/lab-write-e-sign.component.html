@@ -1,0 +1,46 @@
+<div class="full-width" class="new-database" fxFlex.gt-sm="400px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="center center" style="padding: 0; height: unset">
+        <h2 class="header-text" style="text-align: center;">
+            <b>E-sign</b>
+        </h2>
+    </div>
+    <div class="p-20">
+        <form [formGroup]="newForm" name="eSign">
+            <mat-label class="label">Type initials:</mat-label>
+            <div style="width: 100%; margin: 10px 0 10px 0;" appearance="outline">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <input matInput formControlName="typeInitials">
+                    <mat-error *ngIf="newForm.get('typeInitials').hasError('required')">
+                        Type initials is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <mat-label class="label">Password:</mat-label>
+            <div style="width: 100%; margin: 10px 0 10px 0;" appearance="outline">
+                <mat-form-field style="width: 100%" appearance="outline">
+                    <input matInput formControlName="password" type="password">
+                    <mat-error *ngIf="newForm.get('password').hasError('required')">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div style="margin: 10px 0">
+                <p>
+                    I hereby certify that I have performed this experiment and/or created this entry. All information
+                    contained in this entry is complete and accurate to the best of my knowledge. I understand that
+                    entering my account password and clicking ‘Sign’ constitutes a legally binding signature.
+                </p>
+                <mat-checkbox class="example-margin" (change)="isActive($event)">
+                    Agree
+                </mat-checkbox>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <button mat-raised-button color="primary" class="e-sign-btn" [disabled]="newForm.invalid || !submitted"
+                        (click)="onSign()">Sign
+                </button>
+                <button mat-raised-button color="warn" class="e-sign-btn" (click)="dialogRef.close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

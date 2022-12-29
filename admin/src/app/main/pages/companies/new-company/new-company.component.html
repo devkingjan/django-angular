@@ -1,0 +1,121 @@
+<div id="product" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/admin/companies'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+                <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    <img [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+<!--                    <div class="h2" *ngIf="pageType ==='edit'">-->
+<!--                        {{product.name}}-->
+<!--                    </div>-->
+<!--                    <div class="h2" *ngIf="pageType ==='new'">-->
+<!--                        New Company-->
+<!--                    </div>-->
+                     <div class="h2">
+                        New Company
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Company Detail</span>
+                    </div>
+                </div>
+            </div>
+            <button mat-raised-button
+                    (click)="submitBaseForm()"
+                    class="save-product-button"
+                    [disabled]="baseForm.invalid || baseForm.pristine">
+<!--                    *ngIf="pageType ==='edit'" (click)="saveProduct()">-->
+                <span>CREATE</span>
+            </button>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="company-header">
+                    Please Insert Company Info
+                </div>
+                <div class="p-50">
+                    <form class="p-24 mr-24" fxLayout="column" fxLayoutAlign="start"
+                     name="baseForm" [formGroup]="baseForm">
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlexOffset="5" fxFlex="40" class="pr-4">
+                                <mat-label>First name</mat-label>
+                                <input matInput formControlName="first_name" required>
+                                <mat-error>First Name is required!</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlexOffset="10" fxFlex="40"  class="pl-4">
+                                <mat-label>Last name</mat-label>
+                                <input matInput formControlName="last_name" required>
+                                <mat-error>Last Name is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlexOffset="5" fxFlex="90" class="pr-4">
+                                <mat-label>Institution</mat-label>
+                                <input matInput formControlName="institution" required>
+                                <mat-error>Institution is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlexOffset="5" fxFlex="40">
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email">
+                                <mat-error *ngIf="baseForm.get('email').hasError('required')">
+                                    Email is required
+                                </mat-error>
+                                <mat-error
+                                    *ngIf="!baseForm.get('email').hasError('required') &&
+                                            baseForm.get('email').hasError('email')">
+                                    Please enter a valid email address
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlexOffset="10" fxFlex="40" >
+                                <mat-label>Confirm Email</mat-label>
+                                <input matInput type="email" formControlName="confirm_email" [errorStateMatcher]="baseForm.hasError('notSameEmail') ? matcher :  null">
+                                <mat-error *ngIf="baseForm.hasError('notSameEmail')">
+                                    Email does not match
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <mat-form-field appearance="outline" fxFlexOffset="5" fxFlex="40"  class="pl-4">
+                                <mat-label>DB Name</mat-label>
+                                <input matInput formControlName="db_name" required>
+                                <mat-error>DB Name is required!</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlexOffset="10" fxFlex="40" >
+                                <mat-label>Confirm DB Name</mat-label>
+                                <input matInput formControlName="confirm_db_name" [errorStateMatcher]="baseForm.hasError('notSameDB') ? matcher :  null">
+                                <mat-error *ngIf="baseForm.hasError('notSameDB')">
+                                    DB name does not match
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

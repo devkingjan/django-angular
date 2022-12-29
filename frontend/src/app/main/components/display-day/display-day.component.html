@@ -1,0 +1,15 @@
+<div  fxLayout="column" fxLayoutAlign="center center" >
+    <div [class]="isSelected() ? 'display-day today' : 'display-day'" (click)="selectDate()">
+        <div fxLayout="row" fxLayoutAlign="center center" class="display-day-date">
+            <div>{{displayDay | date : 'd'}}</div>
+            <div class="day-order">{{displayDay | orderDate}}</div>
+        </div>
+        <div  [class]="isSelected() ? 'divider-line-today' : 'divider-line'"></div>
+        <div>
+            {{displayDay | date : 'MMM'}}
+        </div>
+    </div>
+    <div class="week-day">
+        {{displayDay | date :'EEE'}}
+    </div>
+</div>

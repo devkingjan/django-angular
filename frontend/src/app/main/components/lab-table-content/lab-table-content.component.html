@@ -1,0 +1,25 @@
+<div
+    [class]="expanded ? 'expanded mission-item-header cursor-pointer' : 'mission-item-header cursor-pointer'"
+    fxLayout="row" (click)="clickExpand()"
+    fxLayoutAlign="space-between center">
+    <div>Table of contents</div>
+    <button *ngIf="!expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <mat-icon color="warn" class="s-30">keyboard_arrow_down</mat-icon>
+    </button>
+    <button *ngIf="expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <mat-icon color="warn" class="s-30">keyboard_arrow_up</mat-icon>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel >
+        <div class="lab-table-content">
+            <div *ngFor="let item of data"
+                 [class]="selectedExperiment && selectedExperiment.uid === item.uid
+                                 ? 'p-20 exp-item exp-item-active'
+                                 : 'p-20 exp-item'"
+                 (click)="onSelectExperiment(item.id)">
+                {{item.uid}}
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32.914" height="23.237" viewBox="0 0 32.914 23.237">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:#f0f0f0}
+        </style>
+    </defs>
+    <g id="prefix__Group_2798" data-name="Group 2798" transform="translate(-1872.462 -433.847)">
+        <g id="prefix__icon_assign_for_review" data-name="icon assign for review" transform="translate(1872.462 438.251)">
+            <g id="prefix__Group_1456" data-name="Group 1456">
+                <path id="prefix__Path_6714" d="M1893.011 455.738h-13.79a6.233 6.233 0 0 1 2.425-6.727 6.972 6.972 0 0 1 7.589-.685c3.07 1.528 4.065 4.099 3.776 7.412z" class="prefix__cls-1" data-name="Path 6714" transform="translate(-1871.785 -436.905)"/>
+                <path id="prefix__Path_6715" d="M1880.112 446.307a3.019 3.019 0 0 1-6.024.131v-.065a3.019 3.019 0 0 1 6.024-.131z" class="prefix__cls-1" data-name="Path 6715" transform="translate(-1872.294 -437.322)"/>
+                <path id="prefix__Path_6716" d="M1878.332 450.474l-.835 4.966h-4.861c-1.02-2.68 2.675-6.196 5.696-4.966z" class="prefix__cls-1" data-name="Path 6716" transform="translate(-1872.463 -436.624)"/>
+                <path id="prefix__Path_6717" d="M1899.513 455.522h-5.739l-.965-5.6c3.291-1.377 6.759 1.295 6.704 5.6z" class="prefix__cls-1" data-name="Path 6717" transform="translate(-1870.354 -436.693)"/>
+                <path id="prefix__Path_6718" d="M1887.444 438.206a4.725 4.725 0 0 0-1.6-.3 4.394 4.394 0 0 0-4.56 4.2v.076a4.332 4.332 0 0 0 4.526 4.108h.008a4.729 4.729 0 0 0 2.52-.717 7.628 7.628 0 0 1-.894-7.367z" class="prefix__cls-1" data-name="Path 6718" transform="translate(-1871.549 -437.901)"/>
+                <path id="prefix__Path_6719" d="M1894.159 443.318a3.122 3.122 0 0 0-1.891.622 4.666 4.666 0 0 0 4.459.828 3.029 3.029 0 0 0-2.568-1.45z" class="prefix__cls-1" data-name="Path 6719" transform="translate(-1870.41 -437.34)"/>
+            </g>
+        </g>
+        <g id="prefix__Group_2798-2" fill="none" stroke="#f0f0f0" stroke-width="1.355px" data-name="Group 2798" transform="translate(1890.056 434.525)">
+            <path id="prefix__Line_71" stroke-linecap="round" stroke-linejoin="round" d="M4.551 8.697L0 0" data-name="Line 71" transform="translate(9.855 12.7)"/>
+            <circle id="prefix__Ellipse_67" cx="6.733" cy="6.733" r="6.733" stroke-miterlimit="10" data-name="Ellipse 67"/>
+        </g>
+    </g>
+</svg>

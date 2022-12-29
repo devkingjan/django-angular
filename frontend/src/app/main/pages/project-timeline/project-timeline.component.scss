@@ -1,0 +1,39 @@
+@import "src/@fuse/scss/fuse";
+.p-timeframe {
+    position: relative;
+    &-bottom {
+        position: fixed;
+        bottom: 80px;
+        left: 150px
+    }
+}
+.project-selector {
+    z-index: 1000;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+}
+
+.project-item {
+    &-header {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 10px;
+        font-size: 20px;
+        background: mat-color($default-mode, primary);
+        color: white;
+        font-weight: bold;
+    }
+
+    &-divider {
+        height: 30px;
+        width: 1px;
+        background: white;
+    }
+
+    &-panel {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 20px;
+    }
+}

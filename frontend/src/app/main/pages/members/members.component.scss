@@ -1,0 +1,44 @@
+@import "src/@fuse/scss/fuse";
+.page-bg {
+}
+.top-bg-custom {
+    background: silver;
+    opacity: 0.3;
+}
+.group-header {
+    color: white;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: mat-color($igor, 500);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.add-custom {
+    font-size: 20px;
+    font-weight: bold;
+    color: white!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    mat-icon {
+        color: mat-color($igor, _pink);
+        transform: translateY(4px);
+    }
+}
+.content-custom {
+    max-height: 350px;
+    overflow-y: auto;
+    background: #e6e9ea;
+    padding: 20px;
+    &-item {
+        margin: 20px;
+    }
+}
+//.center-custom {
+//    width: 100%;
+//    height: 100%;
+//    background: #0b2b3a;
+//    background-image: url("assets/images/login/background.png");
+//    background-position: right top;
+//    background-repeat: no-repeat;
+//    background-size: initial;
+//}
+

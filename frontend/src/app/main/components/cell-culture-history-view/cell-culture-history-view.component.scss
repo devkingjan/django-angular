@@ -1,0 +1,55 @@
+.cch-view {
+    position: relative;
+    transform: translateY(-40px);
+    height: calc(100vh - 300px);
+    width: calc(100% - 20px);
+    margin: 0 10px;
+
+    &-bg {
+        z-index: -999;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        position: absolute;
+        opacity: 0.1;
+    }
+    &-content {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    &-line {
+        position: absolute;
+        z-index: -10;
+        left: 65px;
+        height: 100%;
+        width: 1px;
+        background: black;
+    }
+
+    &-day {
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        width: fit-content;
+        color: white;
+        font-weight: bold;
+        width: 130px;
+    }
+    &-row {
+        width: 100%;
+        padding: 10px 0px;
+        &-mark {
+            text-align: center;
+            width: 130px;
+        }
+        &-panel {
+            width: calc(100% - 130px);
+            min-height: 50px;
+            margin: 0px 10px;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    }
+}

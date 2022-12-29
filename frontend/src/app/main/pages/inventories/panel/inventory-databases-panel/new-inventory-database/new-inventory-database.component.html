@@ -1,0 +1,130 @@
+<div class="full-width" class="new-database" fxFlex.gt-sm="80vw">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 *ngIf="editTemplate" class="new-db-header">Edit Database</h2>
+        <h2 *ngIf="!editTemplate"  class="new-db-header">Create New Database</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="space-evenly start" class="pb-20">
+        <div fxShow.gt-sm fxFlex="30" fxLayout="column" fxLayoutAlign="start stretch">
+            <div class="new-database-left" fxFlex="100" fxLayout="column">
+                <div>
+                    <div class="template-header">
+                        Use IGOR Templates
+                    </div>
+                    <div class="p-20" class="company-template">
+                        <div class="sub-title" *ngFor="let template of igorTemplates">{{template.name}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="template-header">
+                        Use existing db as Template
+                    </div>
+                    <div class="p-20" class="exist-template">
+                        <div *ngFor="let template of templates">
+                            <div [disabled]="editTemplate" mat-menu-item (click)="onSelect(template)"
+                               [ngClass]="{'selected' : template == selectedTemplate}">
+                                <span class="customer-menu-item">{{template.name}}</span>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </div>
+                </div>
+                <button mat-raised-button class="igor-warn submit-button m-20" [disabled]="editTemplate"
+                        (click)="customDatabase()" aria-label="LOGIN">
+                    CUSTOM
+                </button>
+            </div>
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="70" class="pt-40">
+            <div fxLayout="column" fxLayoutAlign="start center" fxLayout.gt-sm="row"  fxLayoutAlign.gt-sm="space-between center">
+                <form fxFlex="1 0 auto" [formGroup]="dbForm">
+                    <mat-form-field fxFlex="100" fxFlex.gt-sm="80" appearance="outline">
+                        <mat-label>Database Name</mat-label>
+                        <input matInput type="text" formControlName="dbName">
+                        <mat-error>
+                            Database Name is required
+                        </mat-error>
+                     </mat-form-field>
+                </form>
+                <div fxFlex="0 1 auto" fxHide.lt-sm class="mr-40">
+                    <button color="accent" [disabled]="dbForm.invalid || !columns.length || isCustomDatabase" mat-raised-button
+                            (click)="editTemplate ? editDatabase() :createDatabase()">
+                        {{title}}
+                    </button>
+                    <button class="ml-4" mat-raised-button (click)="dialogRef.close()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="decisionCheckList.length === 3 || !isCustomDatabase" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxFlex="0 1 auto" class="m-20" class="sub-title">Column Headers</div>
+                <div fxFlex="1 0 auto" class="exp-divider"></div>
+                <button (click)="addColumn()" class="igor-primary m-20" mat-mini-fab>
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <div class="column-list">
+                <div cdkDropList class="column-item" (cdkDropListDropped)="drop($event)">
+                    <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row"
+                         fxLayoutAlign.gt-sm="space-between start"
+                         class="column-box" *ngFor="let column of columns" cdkDrag>
+                        <div fxFlex="100" fxFlex.gt-sm="70" class="pl-20 pt-5">
+                            <input [disabled]="column.default || ['Name', 'Date'].indexOf(column.name)!==-1" type="text" [(ngModel)]="column.name">
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-sm="30" fxLayout="row" fxLayoutAlign="space-between center">
+                            <div *ngIf="!column.default && ['Name', 'Date'].indexOf(column.name)===-1"><mat-icon style="cursor:pointer" (click)="deleteColumn(column)">delete</mat-icon></div>
+                            <div *ngIf="column.default || ['Name', 'Date'].indexOf(column.name)!==-1"><mat-icon style="cursor: no-drop; color: grey">delete</mat-icon></div>
+                            <div><app-display-widget [widgetName]="column.widget"></app-display-widget></div>
+                            <div>
+                                <button [disabled]="(column?.id && editTemplate) || column.default || ['Name', 'Date'].indexOf(column.name)!==-1" mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+                                    <div>
+                                        <mat-icon class="s-20">keyboard_arrow_down</mat-icon>
+                                    </div>
+                                </button>
+                                <mat-menu class="member-menu" #userMenu="matMenu" [overlapTrigger]="false">
+                                    <button mat-menu-item (click)="column.widget='text'">
+                                        <span>Text</span>
+                                    </button>
+                                    <button mat-menu-item (click)="column.widget='number'">
+                                        <span>Number</span>
+                                    </button>
+                                    <button mat-menu-item (click)="column.widget='date'">
+                                        <span>Date</span>
+                                    </button>
+                                    <button mat-menu-item (click)="column.widget='dropdown'">
+                                        <span>DropDown</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isCustomDatabase">
+                    <app-column-decision
+                        *ngIf="decisionCheckList.indexOf('Shelf') === -1"
+                        [question]="'Will samples be stored on shelves?'"
+                        (answer)="columnDecision($event, 'Shelf')">
+                    </app-column-decision>
+                    <app-column-decision
+                        *ngIf="decisionCheckList.indexOf('Tower') === -1"
+                        [question]="'Does the storage location have “Towers” to hold sample boxes?'"
+                        (answer)="columnDecision($event, 'Tower')">
+                    </app-column-decision>
+                    <app-column-decision
+                        *ngIf="decisionCheckList.indexOf('Box #') === -1"
+                        [question]="'Are samples stored in boxes?'"
+                        (answer)="columnDecision($event, 'Box #')">
+                    </app-column-decision>
+                </div>
+            </div>
+        </div>
+        <div class="p-20" fxHide.gt-sm fxFlex="0 1 auto">
+            <button color="accent" fxFlex="0 1 auto" [disabled]="dbForm.invalid || !this.columns.length" mat-raised-button (click)="createDatabase()">Create</button>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>

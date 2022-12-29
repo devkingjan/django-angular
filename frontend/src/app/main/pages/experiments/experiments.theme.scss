@@ -1,0 +1,59 @@
+@mixin experiment-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    app-experiments {
+        .custom-header {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: rgba(255, 255, 255, 0.54);
+                .logo-text {
+                    font-size: 25px;
+                    font-weight: bold!important;
+                    color: rgba(255, 255, 255, 0.54);
+                }
+            } @else {
+                //background-color: mat-color($default-mode, light-bg);
+                color: mat-color($default-mode, primary);
+                .logo-text {
+                    font-size: 25px;
+                    font-weight: bold!important;
+                    color: #0b2b3a;
+                }
+            }
+        }
+        .ex-table {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                background: mat-color($default-mode, content-bg);
+            }
+        }
+        .exp-column-item-selected {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, main-bg);
+            } @else {
+                background: #d7d6d6;
+            }
+        }
+        .content-bg {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                //background: mat-color($default-mode, content-bg);
+            }
+        }
+        .ex-table-row-first {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, light-bg);
+            } @else {
+                background: #d7d6d6!important;
+            }
+        }
+        .canceled {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, light-bg);
+            } @else {
+                background: #f3f0f0;
+            }
+        }
+    }
+}

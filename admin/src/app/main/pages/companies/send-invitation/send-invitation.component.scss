@@ -1,0 +1,24 @@
+.invite-header {
+    background: #3a9be2;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    &-title {
+        font-weight: bold;
+    }
+}
+.invite-body {
+    padding: 20px;
+    p {
+        padding: 20px 0px;
+    }
+}
+
+.mat-dialog-container{
+    padding: 0px!important;
+    overflow-x: hidden;
+}
+
+mat-spinner {
+  zoom: 0.4
+}

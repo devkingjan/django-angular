@@ -1,0 +1,16 @@
+.head-item-custom{
+    height: 60px;
+    padding-top: 12px;
+    padding-left: 10px;
+    background: #0b2b3a;
+    border-right: 1px solid white;
+    font-size: 13px;
+    font-weight: bold;
+    &-title {
+        max-width: 80%;
+    }
+    img {
+        width: 30px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,19 @@
+.mission-database-title {
+    width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.mi-action {
+    height: 40px;
+    border-radius: 5px;
+    margin: 4px 10px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px;
+    &-divider {
+        height: 100%;
+        width: 2px;
+    }
+}

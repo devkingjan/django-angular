@@ -1,0 +1,15 @@
+    .image-crop {
+        &-area {
+            height: 350px;
+            cursor: pointer;
+            image-cropper {
+                overflow: hidden;
+                border: 1px grey solid;
+                border-radius: 5px;
+                height: 100%;
+            }
+            img {
+                object-fit: contain;
+            }
+        }
+    }

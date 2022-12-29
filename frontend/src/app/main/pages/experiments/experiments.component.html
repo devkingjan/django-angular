@@ -1,0 +1,134 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-icon s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    rate_review
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Experiments
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <div>
+                <button *ngIf="user.user_role === 1" class="mr-4" mat-raised-button color="accent"
+                        (click)="createNewTemplate()">Create New DataBase
+                </button>
+                <button *ngIf="user.user_role === 1" mat-raised-button color="accent" [disabled]="!databases?.length"
+                        (click)="editTemplate()">Edit Database Columns
+                </button>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+
+        <div class="content content-bg content-overflow">
+            <div fxLayout="row" class="pl-20 pr-20" fxLayoutAlign="space-evenly center">
+                <div fxFlex="25" class="head-title sub-title">User Name's Experiments</div>
+                <div fxFlex="25" class="head-title sub-title">Research Group Name</div>
+                <div fxFlex="25" class="head-title sub-title">Institution Name</div>
+                <div fxFlex="25">
+                    <mat-form-field style="min-width: 50px" appearance="legacy">
+                        <mat-select [(ngModel)]="selectedTemplateId" (ngModelChange)="onSelectDatabase()" disableRipple>
+                            <mat-option *ngFor="let database of databases"
+                                        [value]="database.id">{{database.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div *ngIf="filter?.column" fxLayout="row" class="p-4 ml-12" fxLayoutAlign="start start">
+                <div *ngIf="filter?.column"><span class="sub-title mr-4">Column:</span> <span
+                    class="custom-label mr-12">{{filterColumnName}}</span></div>
+                <div *ngIf="filter?.sortMode"><span class="sub-title  mr-4">Sort:</span> <span
+                    class="custom-label mr-12">{{filter?.sortMode === 'value' ? 'Ascending' : 'Descending'}}</span>
+                </div>
+                <div *ngIf="filter?.searchText"><span class="sub-title mr-4">Search:</span> <span
+                    class="custom-label mr-12">{{filter?.searchText}}({{filterModes[filter?.filterMode]}})</span></div>
+                <div *ngIf="filter?.filterDate"><span class="sub-title mr-4">Search:</span> <span
+                    class="custom-label mr-12">{{filter?.filterDate | date : 'MMM dd, yyyy'  }}</span></div>
+                <div>
+                    <mat-icon class="cursor-pointer" (click)="resetFilter()">close</mat-icon>
+                </div>
+            </div>
+            <div class="ex-table" *ngIf="headerData?.length">
+                <div class="p-4 ex-table-header" fxLayout="row" fxLayoutAlign="start center">
+                    <div fxFlex="50px" class="ex-table-header-first">
+                    </div>
+                    <div fxFlex="150px" class="ex-table-uid" fxLayoutAlign="space-between center">Exp ID</div>
+                    <app-header-item fxFlex="150px" [fxFlex.gt-sm]="headerItemFlex"
+                                     *ngFor="let itemData of headerData"
+                                     (submitFilterOpen)="submitFilterOpen($event)"
+                                     [selected]="itemData.id==filter?.column"
+                                     [itemData]="itemData"></app-header-item>
+                </div>
+                <div class="p-4 ex-table-content" fxLayout="row" fxLayoutAlign="start start">
+                    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch">
+                        <div [class]="rowValue.status == 0 ? 'exp-column' : 'exp-column canceled'" class="exp-column"
+                             fxLayout="row" fxLayoutAlign="start center"
+                             *ngFor="let rowValue of experimentData; let i = index">
+                            <div fxFlex="50px" class="ex-table-row-first">
+                                <button [disabled]="rowValue.status == 1" mat-icon-button [matMenuTriggerFor]="menu">
+                                    <mat-icon class="cursor-pointer">filter_none</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button fxLayout="row" fxLayoutAlign="start center"  class="ex-table-nav" (click)="createNewExperiment(rowValue)" mat-menu-item>
+                                        <img src="assets/images/experiment/edit_experiment.svg"/>
+                                        <span class="ml-8">Edit Experiment</span>
+                                    </button>
+                                    <button fxLayout="row" fxLayoutAlign="start center"  class="ex-table-nav" (click)="closeExperiment(rowValue)" mat-menu-item>
+                                        <img src="assets/images/experiment/cancel.svg"/>
+                                        <span class="ml-8">Cancel Experiment</span>
+                                    </button>
+                                    <button fxLayout="row" fxLayoutAlign="start center"  class="ex-table-nav" (click)="openDataFolder(rowValue)" mat-menu-item>
+                                        <img src="assets/images/experiment/open_exp_data_folder.svg"/>
+                                        <span class="ml-8">Open Exp. Data Folder</span>
+                                    </button>
+                                    <button fxLayout="row" fxLayoutAlign="start center"  class="ex-table-nav" mat-menu-item>
+                                        <img src="assets/images/experiment/open_in_write_up_area.svg"/>
+                                        <span class="ml-8">Open in Write-up area</span>
+                                    </button>
+                                    <button fxLayout="row" fxLayoutAlign="start center"  class="ex-table-nav" mat-menu-item>
+                                        <img src="assets/images/experiment/open_in_lab_notebook.svg"/>
+                                        <span class="ml-8">Open in Lab Notebook</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+                            <div [class]="i % 2 == 1 ? 'exp-column-item' : 'exp-column-item-selected'" fxFlex="150px">
+                                {{rowValue.uid}}
+                            </div>
+                            <div [class]="i % 2 == 1 ? 'exp-column-item' : 'exp-column-item-selected'"
+                                 fxFlex="150px" [fxFlex.gt-sm]="headerItemFlex"
+                                 *ngFor="let itemData of headerData">
+                                {{[rowValue['column_data'], itemData] | columnValue}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mr-40">
+                    <mat-paginator [length]="expCount"
+                                   [pageSize]="pageSize"
+                                   [pageSizeOptions]="pageSizeOptions"
+                                   (page)="updatedPage($event)">
+                    </mat-paginator>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
+<!-- ADD CONTACT BUTTON -->
+<button mat-fab color="warn" id="new-experiment-button" (click)="createNewExperiment()" aria-label="add contact"
+        [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+    <mat-icon>add</mat-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->

@@ -1,0 +1,27 @@
+<div class="full-width" class="new-database" fxFlex.gt-sm="500px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="new-db-header">
+            Emergency Contact
+        </h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <div class="emergency-item" fxLayout="row">
+            <label>Name:</label>
+            <div>{{user?.emergency_first_name}} {{user?.emergency_last_name}}</div>
+        </div>
+        <div class="emergency-item" fxLayout="row">
+            <label>Telephone:</label>
+            <div>{{user?.telephone}}</div>
+        </div>
+        <div class="emergency-item" fxLayout="row">
+            <label>Relation:</label>
+            <div>{{user?.relation}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+        </div>
+    </div>
+</div>

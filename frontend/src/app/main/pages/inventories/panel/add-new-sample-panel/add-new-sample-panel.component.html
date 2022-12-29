@@ -1,0 +1,34 @@
+<div class="inventory-control cursor-pointer" fxLayout="column"  (click)="clickExpand()" fxLayoutAlign="center center">
+    <img src="assets/images/inventory/icon_add_new_sample.svg">
+    <div class="mt-8">Add New Sample</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion class="expansion-custom" multi>
+    <mat-expansion-panel>
+        <mat-list>
+            <div class="menu-list-igor">
+                <div *ngFor="let database of databases">
+                    <mat-list-item (click)="createSampleForDatabase(database)">
+                        <span fxFlex="1 0 auto">{{database.name}}</span>
+                        <button fxFlex="0 1 auto" mat-button class="user-button">
+                            <div>
+                                <mat-icon class="s-20">add</mat-icon>
+                            </div>
+                        </button>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </mat-expansion-panel>
+</mat-accordion>

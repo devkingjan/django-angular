@@ -1,0 +1,49 @@
+.form-title {
+    padding: 10px 0px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.absolut-left-field {
+    width: calc(50% - 40px);
+    margin: 0 20px;
+    position: absolute;
+    left: 0px;
+}
+
+.absolut-right-field {
+    width: calc(50% - 40px);
+    margin: 0 20px;
+    position: absolute;
+    top: 18px;
+    min-height: 58px;
+    right: 0;
+    z-index: 999;
+
+    mat-expansion-panel-header {
+        height: 58px !important;
+    }
+}
+
+.how-started {
+}
+
+.how-started-option {
+    padding-top: 15px;
+}
+
+.custom-input {
+    border-radius: 5px;
+    border: 1px solid grey;
+    height: 40px;
+    margin: 8px 0;
+    padding: 8px;
+}
+
+.how-started {
+    .mat-input-element {
+        margin-top: 10px;
+        border: 1px solid grey;
+    }
+}

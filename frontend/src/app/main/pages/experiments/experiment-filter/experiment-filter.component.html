@@ -1,0 +1,65 @@
+<div class="full-width" fxFlex.gt-sm="500px" class="new-experiment">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="custom-modal-header">Experiment Filter</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-evenly stretch"  class="p-20">
+        <div class="p-12 bottom-none">Sort</div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <button (click)="onSelectSortMode('value')"
+                    [class]="sortMode==='value' ? 'm-4 p-4 sort-btn sort-btn-select' : 'm-4 p-4 sort-btn'"
+                    fxFlex="50" mat-raised-button>
+                <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+                    <img src="assets/images/experiment/ascending.png"/>
+                    <div>Ascending</div>
+                </div>
+            </button>
+            <button (click)="onSelectSortMode('-value')"
+                    [class]="sortMode==='-value' ? 'm-4 p-4 sort-btn sort-btn-select' : 'm-4 p-4 sort-btn'"
+                    fxFlex="50" mat-raised-button>
+                <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+                    <img src="assets/images/experiment/descending.png"/>
+                    <div>Descending</div>
+                </div>
+            </button>
+        </div>
+        <div class="mt-20 p-12 bottom-none">Filter</div>
+        <div *ngIf="['text', 'number'].indexOf(column.widget)!==-1">
+            <mat-form-field fxFlex="1 0 auto" appearance="fill">
+                <mat-label>Filter Mode</mat-label>
+                <mat-select [(ngModel)]="filterMode" name="food">
+                    <mat-option *ngFor="let mode of filterModes" [value]="mode.key">
+                    {{mode.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <mat-form-field *ngIf="['text', 'number'].indexOf(column.widget)!==-1" fxFlex="1 0 auto" appearance="outline">
+            <div class="filter-prefix" *ngIf="column.name==='Box #'" matPrefix>Box&nbsp;</div>
+            <div class="filter-prefix" *ngIf="column.name==='Shelf'" matPrefix>Shelf&nbsp;</div>
+            <input matInput [(ngModel)]="searchText">
+            <mat-icon matSuffix class="secondary-text">search</mat-icon>
+        </mat-form-field>
+        <mat-form-field *ngIf="column.widget === 'date'" appearance="fill">
+          <mat-label>{{column.name}}</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="filterDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngIf="column.widget === 'dropdown'"  appearance="outline">
+            <mat-label>{{column.name}}</mat-label>
+            <mat-select  [(ngModel)]="searchText">
+                <mat-option *ngFor="let option of column['options']"
+                            [value]="option.id.toString()">{{option.value}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button class="mb-12" (click)="applyFilter()" mat-raised-button color="accent">
+            Apply Filter
+        </button>
+        <button (click)="clearFilter()" mat-raised-button>
+            Clear Filter
+        </button>
+    </div>
+</div>

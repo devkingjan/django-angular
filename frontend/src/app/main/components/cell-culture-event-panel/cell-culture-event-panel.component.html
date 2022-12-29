@@ -1,0 +1,24 @@
+<div fxLayout="row" class="cce-panel">
+    <div class="cce-panel-left">
+        <div (click)="updateIndex(1)" class="cce-panel-left-arrow" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon>arrow_forward_ios</mat-icon>
+        </div>
+        <div *ngIf="notes.length">
+            <span>{{currentIndex + 1}}</span>/{{notes.length}}
+        </div>
+        <div *ngIf="!notes.length">
+            0/0
+        </div>
+        <div (click)="updateIndex(-1)" class="cce-panel-left-arrow">
+            <mat-icon>arrow_back_ios</mat-icon>
+        </div>
+    </div>
+    <div class="cce-panel-right">
+        <div>
+            {{currentNote?.time | date: 'MMM d, yyy'}}
+        </div>
+         <div>
+             {{currentNote?.note}}
+         </div>
+    </div>
+</div>

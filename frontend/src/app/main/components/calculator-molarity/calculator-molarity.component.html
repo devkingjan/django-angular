@@ -1,0 +1,56 @@
+<div>
+    <div class="cal-title">
+        Molarity from Mass and volume:
+    </div>
+    <div class="border"></div>
+</div>
+<div class="calculator" fxLayout="column" fxLayoutAlign="center stretch">
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item" fxLayout="row"
+             fxLayoutAlign="start center">
+            <label fxFlex="20">Mass:</label>
+            <input type="number" fxFlex="50" matInput name="mass" [(ngModel)]="mass"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="calcResult()">
+            <mat-select fxFlexOffset="10" fxFlex="20" name="mass-unit" [(ngModel)]="massUnit"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="calcResult()">
+                <mat-option *ngFor="let massUnit of massUnitList"
+                            [value]="massUnit.value">{{massUnit.name}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item" fxLayout="row"
+             fxLayoutAlign="start center">
+            <label fxFlex="20">Formula weight:<br>(g/mol)</label>
+            <input type="number" fxFlex="50" matInput name="mass" [(ngModel)]="formulaWeight"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="calcResult()">
+        </div>
+    </div>
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item" fxLayout="row"
+             fxLayoutAlign="start center">
+            <label fxFlex="20">Volume:</label>
+            <input type="number" fxFlex="50" matInput name="mass" [(ngModel)]="vol"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="calcResult()">
+            <mat-select fxFlexOffset="10" fxFlex="20" name="mass-unit" [(ngModel)]="volUnit"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="calcResult()">
+                <mat-option *ngFor="let volUnit of volUnitList"
+                            [value]="volUnit.value">{{volUnit.name}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item mt-24" fxLayout="row"
+             fxLayoutAlign="start center">
+            <div class="calculator-result-label" fxFlex="20">Molarity:<br>(concentration)</div>
+            <div *ngIf="!calcImpossible" fxFlex="50" class="calculator-result-panel">
+                {{con}} {{conUnit}}
+            </div>
+            <div *ngIf="calcImpossible" fxFlex="50" class="calculator-result-panel">
+                Not Possible!
+            </div>
+        </div>
+    </div>
+</div>

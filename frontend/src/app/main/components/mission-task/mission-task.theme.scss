@@ -1,0 +1,18 @@
+@mixin app-mission-task-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-mission-task {
+        .create-task {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, main-bg);
+                color: mat-color($dark-mode, warn);
+            } @else if ($is-blind) {
+                background: mat-color($default-mode, content-bg);
+                color: mat-color($default-mode, primary);
+            } @else {
+                background: mat-color($default-mode, content-bg);
+                color: mat-color($default-mode, warn);
+            }
+        }
+    }
+}

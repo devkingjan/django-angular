@@ -1,0 +1,27 @@
+<div class="app-project">
+    <div class="project-title">
+        <img class="cursor-pointer" (click)="editProject()" *ngIf="!isDark && !isBlind" src="assets/images/project-manager/edit.svg"/>
+        <img class="cursor-pointer" (click)="editProject()" *ngIf="isDark || isBlind" src="assets/images/project-manager/Group%202722.svg"/>
+        <span class="pl-4">{{project.name}}</span>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start stretch">
+        <div fxLayout="row wrap" fxFlex="100">
+            <div fxFlex="100" fxFlex.gt-md="50"  class="p-header-item">Task</div>
+            <div class="p-header-item" fxFlex="30"  fxFlex.gt-md="15">Status</div>
+            <div class="p-header-item" fxFlex="30"  fxFlex.gt-md="15">Person</div>
+            <div class="p-header-item" fxFlex="40"  fxFlex.gt-md="20">Timeframe</div>
+        </div>
+        <div class="pb-8" *ngFor="let task of project?.tasks">
+            <app-project-task [project]="project" [task]="task" (delete)="deleteTask($event)"></app-project-task>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="app-project-new">
+            <mat-icon>add</mat-icon>
+            <div class="app-project-new-title cursor-pointer" *ngIf="project.status === 'active'" (click)="addTaskToProject()">Add new project task</div>
+            <div class="new-p-divider"></div>
+            <button class="ml-8" mat-raised-button color="primary" [disabled]="!project.is_owner" (click)="archiveProject()">
+                {{project.status === 'archived' ? 'Re-activate project' : 'Archive Project'}}
+            </button>
+            <button class="ml-8" mat-raised-button color="primary" [disabled]="!project.is_owner" (click)="deleteProject()">Delete Project</button>
+        </div>
+    </div>
+</div>

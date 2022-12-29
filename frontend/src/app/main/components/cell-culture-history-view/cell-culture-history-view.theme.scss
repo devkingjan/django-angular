@@ -1,0 +1,29 @@
+@mixin app-cell-culture-history-view-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-cell-culture-history-view {
+        .cch-view-day {
+            @if ($is-dark) {
+                background: mat-color($blind-mode, warn);
+            } @else if ($is-blind) {
+                background: mat-color($blind-mode, warn);
+            } @else {
+                background: mat-color($default-mode, warn);
+            }
+        }
+        .cch-view-row-panel {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                background: white;
+            }
+        }
+        .cch-view-bg {
+            @if ($is-dark) {
+                background: white;
+            } @else {
+                background: black;
+            }
+        }
+    }
+}

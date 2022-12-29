@@ -1,0 +1,17 @@
+<div fxFlex.gt-sm="500px" class="full-width new-experiment">
+    <h2 class="custom-modal-header">Close Experiment</h2>
+    <div  class="p-20">
+        <div class="exp-content m-12">
+            {{description}}<br>
+            This cannot be undone. Are you sure you want to proceed?
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <button class="m-12" fxFlex="50" mat-raised-button (click)="dialogRef.close()">No</button>
+            <button class="m-12" fxFlex="50" color="warn" mat-raised-button (click)="dialogRef.close(dataObj)">Yes</button>
+        </div>
+    </div>
+    <div >
+
+    </div>
+</div>
+

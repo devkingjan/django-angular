@@ -1,0 +1,202 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center ">
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-icon class="logo-icon s-32 mr-16 private">
+                    account_circle
+                </mat-icon>
+                <span class="logo-text h1">
+                    User Profile
+                </span>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+        <div class="p-60 page-layout simple fullwidth content-bg">
+            <div fxLayout="row">
+                <div  fxFlex="70" fxFlex.lt-md="100">
+                    <div>
+                        <div>
+                            <div class="p-sub-title">
+                                Basic info
+                            </div>
+                            <div class="border"></div>
+                        </div>
+                        <div fxLayout="row" fxLayout.lt-md="column">
+                            <div fxFlex="40" fxFlex.lt-md="100">
+                                <div class="avatar-panel" >
+                                    <img class="profile-image avatar" [src]="avatar">
+                                </div>
+                                <div style="text-align: center" class="update-image">
+                                    <a style="cursor: pointer" (click)="openUploadImageDialog()">Change Photo</a>
+                                </div>
+                            </div>
+                            <div fxFlex="60" fxFlex.lt-md="100">
+                                <form class="p-24" fxLayout="column" fxLayoutAlign="start"
+                                     name="baseForm" [formGroup]="baseForm" (ngSubmit)="submitBaseForm()">
+                                    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pr-4">
+                                            <mat-label>First name</mat-label>
+                                            <input matInput formControlName="first_name" required>
+                                            <mat-error>First Name is required!</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pl-4">
+                                            <mat-label>Last name</mat-label>
+                                            <input matInput formControlName="last_name" required>
+                                            <mat-error>Last Name is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pr-4">
+                                            <mat-label>Role</mat-label>
+                                            <input matInput formControlName="role" required>
+                                            <mat-error>Role is required!</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pl-4">
+                                            <mat-label>Initials</mat-label>
+                                            <input matInput formControlName="initials" required>
+                                            <mat-error>Initials is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                        <mat-form-field appearance="outline" fxFlex="100" class="pr-4" disabled>
+                                            <mat-label>E-Mail Address</mat-label>
+                                            <input matInput formControlName="email" required>
+                                            <mat-error>E-Mail required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <button mat-raised-button color="primary" [disabled]="updatedAvatar ? false :  baseForm.invalid">
+                                        Save Change
+                                    </button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="p-sub-title">
+                                Security
+                            </div>
+                            <div class="border"></div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="40" fxFlexOffset.lt-md="0" fxFlex="60" fxFlex.lt-md="100" class="p-24">
+                                <form name="baseForm" [formGroup]="secureForm">
+                                    <div style="display: flex; flex-direction: column">
+                                        <div fxLayout="row" fxLayout.lt-md="column"  fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                            <mat-form-field fxFlex="50" fxFlex.lt-md="100" appearance="outline" style="transform: translate(10px, 10px);">
+                                                <mat-label>Password</mat-label>
+                                                <input value="test1423" matInput type="password" formControlName="password">
+                                                <mat-error>
+                                                    Password is required
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <button fxFlexOffset="10" fxFlexOffset.lt-md="0" fxFlex="40" fxFlex.lt-md="100"
+                                                    mat-raised-button class="change-pwd"  (click)="changePwd()">
+                                                Change Password
+                                            </button>
+                                        </div>
+                                        <div style="padding-left: 20px; color: #465f86">
+                                            <span> Last password change:</span><br>
+                                            <span>{{user.pwd_updated | date: 'dd/MM/yyyy'}}</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="p-sub-title">
+                                Igor Mobile App
+                            </div>
+                            <div class="border"></div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="40" fxFlexOffset.lt-md="0" fxFlex="60" fxFlex.lt-md="100" class="p-24">
+                                <form name="baseForm" [formGroup]="pinForm">
+                                    <div style="display: flex; flex-direction: column">
+                                        <div style="padding: 0 0 20px 20px; color: #465f86">
+                                            To log in to the Igor Mobile App, you will use your email address and a 6-digit personal identification number (PIN). You can reset your PIN here.
+                                        </div>
+                                        <div fxLayout="row" fxLayout.lt-md="column"  fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                            <mat-form-field fxFlex="50" fxFlex.lt-md="100" appearance="outline" style="transform: translate(10px, 10px);">
+                                                <mat-label>PIN</mat-label>
+                                                <input value="123456" type="password" matInput formControlName="pin">
+                                                <mat-error>
+                                                    Invalid PIN
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <button fxFlexOffset="10" fxFlexOffset.lt-md="0" fxFlex="40" fxFlex.lt-md="100"
+                                                    mat-raised-button class="change-pwd"  (click)="changePin()">
+                                                Change PIN
+                                            </button>
+                                        </div>
+                                        <div style="padding: 0 20px 10px 20px;">
+                                            <a class="forgot-password" [routerLink]="'/pages/forgot-pin'">
+                                                Forgot PIN?
+                                            </a>
+                                        </div>
+                                        <div style="padding-left: 20px; color: #465f86">
+                                            <span> Last PIN change:</span><br>
+                                            <span>{{user.pin_updated | date: 'dd/MM/yyyy'}}</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="p-sub-title">
+                                Emergency contact
+                            </div>
+                            <div class="border"></div>
+                        </div>
+                        <div fxLayout="row">
+                            <div fxFlexOffset="40" fxFlex="60" fxFlexOffset.lt-md="0" fxFlex.lt-md="100">
+                                <form class="p-24" fxLayout="column" fxLayoutAlign="start"
+                                      name="emergencyForm" [formGroup]="emergencyForm" (ngSubmit)="submitEmergencyForm()">
+                                    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pr-4">
+                                            <mat-label>First Name</mat-label>
+                                            <input matInput formControlName="emergency_first_name" required>
+                                            <mat-error>First Name is required!</mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pl-4">
+                                            <mat-label>Last Name</mat-label>
+                                            <input matInput formControlName="emergency_last_name" required>
+                                            <mat-error>Last Name is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pr-4">
+                                            <mat-label>Telephone Number</mat-label>
+                                            <input matInput formControlName="telephone" required>
+                                            <mat-error>Telephone Number is required!</mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pl-4">
+                                            <mat-label>Relation</mat-label>
+                                            <input matInput formControlName="relation" required>
+                                            <mat-error>Relation is required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <button mat-raised-button color="primary" [disabled]="emergencyForm.invalid">
+                                        Save Change
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex="30" fxFlex.lt-md="0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

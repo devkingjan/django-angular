@@ -1,0 +1,21 @@
+@mixin footer-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    $is-default: map-get($theme, is-default);
+    footer {
+        .copy-right {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+        .border {
+            @if ($is-dark or $is-blind) {
+                border-bottom: 1px mat-color($dark-mode, warn) solid;
+            } @else {
+                border-bottom: 1px mat-color($default-mode, warn) solid;
+            }
+        }
+    }
+}

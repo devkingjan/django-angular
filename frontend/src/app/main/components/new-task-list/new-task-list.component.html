@@ -1,0 +1,24 @@
+<div class="full-width" class="new-database" fxFlex.gt-sm="300px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="new-db-header">Add New Task List</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <form name="loginForm" [formGroup]="newForm">
+            <mat-form-field style="width: 100%" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+                <mat-icon matSuffix class="secondary-text">account_box</mat-icon>
+                <mat-error *ngIf="newForm.get('name').hasError('required')">
+                    Name is required
+                </mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <button mat-raised-button color="primary" (click)="create()">Create Task List</button>
+                <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

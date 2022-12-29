@@ -1,0 +1,39 @@
+<div class="full-width" fxFlex.gt-sm="800px">
+    <div fxLayout="row" class="custom-modal-header">
+        <h2 fxFlex="1 0 auto">{{sampleData ? 'Edit' : 'Create New'}} Sample </h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <mat-horizontal-stepper linear #stepper>
+            <mat-step [editable]="true">
+                <ng-template matStepLabel>Sample Information</ng-template>
+                <app-sample-info
+                    [sampleData]="sampleData"
+                    [columns]="columnsWithoutDefault"
+                    (next)="onNext($event, stepper)">
+                </app-sample-info>
+            </mat-step>
+            <mat-step [editable]="true">
+                <ng-template matStepLabel>Location</ng-template>
+                <app-sample-location
+                    [sampleData]="sampleData"
+                    [storageTemperatures]="storageTemperatures"
+                    [databaseId]="databaseId"
+                    [submitted]="submitted"
+                    (next)="submitSingleVial($event)"
+                ></app-sample-location>
+            </mat-step>
+            <mat-step [editable]="true">
+                <ng-template matStepLabel>Multi Vials</ng-template>
+                <app-multi-vials
+                    [storageTemperatures]="storageTemperatures"
+                    [databaseId]="databaseId"
+                    [submitted]="submitted"
+                    (submitMulti)="submitMultiVials($event)"
+                ></app-multi-vials>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+</div>

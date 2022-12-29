@@ -1,0 +1,106 @@
+<div class="full-width" class="new-event" fxFlex.gt-sm="600px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="new-db-header">
+            {{cellCultureEvent?.id ? 'Edit Cell Culture Event' : 'Create Cell Culture Event'}}
+        </h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <form name="loginForm" fxLayout="column" class="new-event-form" [formGroup]="newForm">
+            <mat-form-field fxFlex="100" appearance="outline">
+                <mat-label>Select date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="selected_date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="newForm.get('selected_date').hasError('required')">
+                    Event date is required
+                </mat-error>
+            </mat-form-field>
+            <mat-radio-group formControlName="log_type" fxLayout="column">
+                <mat-radio-button class="new-event-form-option" value="log_passage">
+                    Log Passage
+                </mat-radio-button>
+                <mat-radio-button class="new-event-form-option" value="log_medium_change">
+                    Log Medium Change
+                </mat-radio-button>
+                <mat-radio-button class="new-event-form-option" value="remove_cell_line">
+                    Remove cell line
+                </mat-radio-button>
+                <div *ngIf="newForm.value['log_type'] === 'remove_cell_line'"
+                     [@animate]="{value:'*',params:{delay:'50ms',y:'-25px'}}"
+                     class="new-event-form-sub" fxLayout="row">
+                    <div class="pt-12 pr-12">Reason:</div>
+                    <mat-radio-group formControlName="remove_reason" fxLayout="column">
+                        <mat-radio-button class="new-event-form-sub-option" value="no_longer_needed">
+                            No longer needed
+                        </mat-radio-button>
+                        <mat-radio-button class="new-event-form-sub-option" value="contaminated">
+                            Contaminated
+                        </mat-radio-button>
+                        <mat-radio-button class="new-event-form-sub-option" value="died">
+                            Died
+                        </mat-radio-button>
+                        <mat-radio-button class="new-event-form-sub-option" value="frozen_down">
+                            Frozen down
+                        </mat-radio-button>
+                        <mat-radio-button class="new-event-form-sub-option" value="all_used">
+                            All used for experiment
+                        </mat-radio-button>
+                        <mat-radio-button class="new-event-form-sub-option" value="other">
+                            <span>Other&nbsp;&nbsp;&nbsp;</span>
+                            <mat-form-field *ngIf="newForm.value['remove_reason'] === 'other'" appearance="outline">
+                                <mat-label>Text field:</mat-label>
+                                <input matInput formControlName="reason_other" type="text">
+                            </mat-form-field>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <mat-radio-button class="new-event-form-option" value="add_note">
+                    Add a note
+                </mat-radio-button>
+                <mat-form-field style="width: 100%; margin: 0 10px"
+                                *ngIf="newForm.value['log_type'] === 'add_note'"
+                                [@animate]="{value:'*',params:{delay:'50ms',y:'-25px'}}"
+                                appearance="outline">
+                    <mat-label>Text field:</mat-label>
+                    <input matInput formControlName="note" type="text">
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="start start" class="new-event-form-option">
+                    <mat-radio-button fxFlex="60" value="log_mycoplasma_test">
+                        Log mycoplasma test
+                    </mat-radio-button>
+                    <mat-radio-group fxFlex="40" formControlName="mycoplasma_type" fxLayout="column"
+                                     *ngIf="newForm.value['log_type'] === 'log_mycoplasma_test'"
+                                     [@animate]="{value:'*',params:{delay:'50ms',y:'-25px'}}"
+                    >
+                        <mat-radio-button class="new-event-form-sub-option" value="Positive">
+                            Positive
+                        </mat-radio-button>
+                        <mat-radio-button class="new-event-form-sub-option" value="Negative">
+                            Negative
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <mat-radio-button class="new-event-form-option" value="add_culture_medium_additive">
+                    Add culture medium additive
+                </mat-radio-button>
+                <mat-form-field style="width: 100%; margin: 0 10px" appearance="outline"
+                                *ngIf="newForm.value['log_type'] === 'add_culture_medium_additive'"
+                                [@animate]="{value:'*',params:{delay:'50ms',y:'-25px'}}"
+                >
+                    <mat-label>Text field:</mat-label>
+                    <input matInput formControlName="medium_additive_text" type="text">
+                </mat-form-field>
+            </mat-radio-group>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <button mat-raised-button color="primary" (click)="create()"
+                        [disabled]="newForm.invalid || submitted">
+                    {{cellCultureEvent?.id ? 'Update' : 'Create'}}
+                </button>
+                <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

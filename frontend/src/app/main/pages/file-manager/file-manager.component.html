@@ -1,0 +1,88 @@
+<div id="file-manager" style="position: relative" class="page-layout simple right-sidebar inner-scroll">
+    <div class="image-bg">
+    </div>
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar main-sidebar" name="file-manager-main-sidebar" position="left">
+<!--        <file-manager-main-sidebar></file-manager-main-sidebar>-->
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center" fxFlex>
+
+        <!-- HEADER -->
+        <div class="header p-24" style="background: transparent" fxLayout="column" fxLayoutAlign="space-between start">
+
+            <!-- TOOLBAR -->
+            <div class="toolbar w-100-p" fxFlex fxLayout="row" fxLayoutAlign="space-between start">
+
+<!--                <div class="left-side" fxLayout="row">-->
+<!--                    <button mat-icon-button class="sidebar-toggle"-->
+<!--                            (click)="toggleSidebar('file-manager-main-sidebar')">-->
+<!--                        <mat-icon>menu</mat-icon>-->
+<!--                    </button>-->
+<!--                </div>-->
+
+<!--                <div class="right-side" fxLayout="row">-->
+<!--                    <button mat-icon-button aria-label="Search" matTooltip="Search">-->
+<!--                        <mat-icon>search</mat-icon>-->
+<!--                    </button>-->
+<!--                </div>-->
+            </div>
+            <!-- / TOOLBAR -->
+
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb text-truncate h1 pl-72" fxLayout="row" fxLayoutAlign="start center"
+                 [@animate]="{value:'*',params:{x:'50px'}}">
+                <div *ngFor="let path of pathArr; last  as isLast" fxLayout="row" fxLayoutAlign="start center">
+                    <span style="cursor: pointer" (click)="selectPath(path)">{{path}}</span>
+                    <mat-icon *ngIf="!isLast" class="separator">chevron_right</mat-icon>
+                </div>
+            </div>
+            <!-- / BREADCRUMB -->
+
+            <!-- ADD FILE BUTTON -->
+            <div class="file-uploader" *ngIf="isMyStorage">
+                <input hidden type="file" #fileInput (change)="onFileChange($event)"/>
+                <button mat-fab
+                        color="warn"
+                        class="add-file-button"
+                        (click)="fileInput.click()"
+                        aria-label="Add file"
+                        [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+            <!-- / ADD FILE BUTTON -->
+<!-- ADD FILE BUTTON -->
+            <div class="file-uploader" *ngIf="isMyStorage">
+                <button mat-fab
+                        color="warn"
+                        class="add-folder-button"
+                        aria-label="Add folder"
+                        (click)="addNewFolder()"
+                        [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
+                    <mat-icon>create_new_folder</mat-icon>
+                </button>
+            </div>
+            <!-- / ADD FILE BUTTON -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content" fusePerfectScrollbar>
+            <file-list [isRouteDir]="isRouteDir" (select)="selectRouter($event)"></file-list>
+        </div>
+        <!-- / CONTENT -->
+
+    </div>
+    <!-- / CENTER -->
+
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar details-sidebar" name="file-manager-details-sidebar" position="right"
+                  lockedOpen="gt-md">
+        <file-manager-details-sidebar [selected]="selected"></file-manager-details-sidebar>
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+</div>

@@ -1,0 +1,13 @@
+<div class="full-width" style="overflow: hidden" fxFlex.gt-sm="250px">
+    <h2 class="custom-modal-header">Confirm</h2>
+    <div  class="m-20">
+        <div class="confirm-content m-12">
+            {{confirmMessage}}<br>
+        </div>
+        <div class="p-10">
+            <button mat-raised-button class="mat-accent mr-16" (click)="dialogRef.close(true)">Confirm</button>
+            <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+        </div>
+    </div>
+</div>
+

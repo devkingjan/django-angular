@@ -1,0 +1,23 @@
+@mixin app-cell-culture-history-navigate-panel-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-cell-culture-history-navigate-panel {
+        .cch-panel-header {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, main-bg) !important;
+            } @else {
+                background: #edeeef !important;
+            }
+        }
+
+        .cch-panel-body {
+            @if ($is-dark) {
+                color: white;
+                background: mat-color($dark-mode, light-bg) !important;
+            } @else {
+                color: mat-color($default-mode, primary) !important;
+                background: white;
+            }
+        }
+    }
+}

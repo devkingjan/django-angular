@@ -1,0 +1,8 @@
+@mixin auth-layout-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $foreground: map-get($theme, foreground);
+
+    //.mat-menu-panel {
+    //    background: #75a6c9!important;
+    //}
+}

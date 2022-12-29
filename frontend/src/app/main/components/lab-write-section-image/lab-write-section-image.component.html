@@ -1,0 +1,7 @@
+<div class="section-image-box  mat-elevation-z8">
+    <div class="section-info">
+        <p style="margin: 0">{{data.username}} {{data.created_at | date: "dd/MM/yyyy HH:mm"}}</p>
+        <mat-icon *ngIf="!disabled" class="section-delete-icon" (click)="onDeleteSection()">delete</mat-icon>
+    </div>
+    <img [src]="data.file_source" class="section-image" crossOrigin="true">
+</div>

@@ -1,0 +1,20 @@
+@mixin app-lab-write-section-text-theme($theme) {
+    $is-default: map-get($theme, is-default);
+    $is-dark: map-get($theme, is-dark);
+
+    app-lab-write-section-text {
+        .section-text-box {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+            }
+        }
+
+        .active {
+            @if ($is-default) {
+                color: mat-color($default-mode, warn);
+            } @else {
+                color: mat-color($dark-mode, warn);
+            }
+        }
+    }
+}

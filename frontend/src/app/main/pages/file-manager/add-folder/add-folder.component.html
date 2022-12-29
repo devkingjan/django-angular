@@ -1,0 +1,15 @@
+<div class="full-width" fxFlex.gt-sm="500px" class="new-experiment">
+    <h2 class="custom-modal-header">Add New Folder</h2>
+    <div  class="p-20">
+        <form fxLayout="column" class="p-20" fxLayoutAlign="space-evenly stretch" name="newForm"
+              [formGroup]="newForm" novalidate (ngSubmit)="submit()">
+            <mat-form-field fxFlex="100" appearance="outline">
+                <mat-label>Folder Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <button type="submit" [disabled]="newForm.invalid || submitted"  mat-raised-button color="accent" >
+                Add
+            </button>
+        </form>
+    </div>
+</div>

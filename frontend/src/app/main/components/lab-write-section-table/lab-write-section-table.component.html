@@ -1,0 +1,43 @@
+<div class="mat-elevation-z8 section-table-box">
+    <div class="section-info">
+        <p style="margin: 0">{{data.username}} {{data.created_at | date: "dd/MM/yyyy HH:mm"}}</p>
+        <mat-icon *ngIf="!disabled" class="{{edit ? 'section-edit-icon active' : 'section-edit-icon'}}" (click)="onEditSection()">edit</mat-icon>
+        <mat-icon *ngIf="!disabled" class="section-delete-icon" (click)="onDeleteSection()">delete</mat-icon>
+    </div>
+    <div class="table-container">
+        <table mat-table #table [dataSource]="dataSource" class="mat-table">
+            <ng-container *ngFor="let column of columns; let colIndex = index" [cdkColumnDef]="column.columnDef">
+                <td mat-cell *cdkCellDef="let row; let i = index;">
+                    <input
+                        (ngModelChange)="onChange($event, i, colIndex)"
+                        [ngModel]="row[colIndex]"
+                        [disabled]="!edit">
+                </td>
+            </ng-container>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <div *ngIf="!disabled">
+        <form [formGroup]="newForm" name="eSign" class="input-box">
+            <div>
+                <mat-label class="label">Row:</mat-label>
+                <div style="width: 100%; margin: 10px 0 10px 0;">
+                    <mat-form-field style="width: 100%" appearance="outline">
+                        <input matInput formControlName="rowSliderValue" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <mat-label class="label">Column:</mat-label>
+                <div style="width: 100%; margin: 10px 0 10px 0;">
+                    <mat-form-field style="width: 100%" appearance="outline">
+                        <input matInput formControlName="columnSliderValue" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div style="align-items: center; display: flex">
+                <button [disabled]="!edit" mat-button color="primary" (click)="onGenerateTable()">Generate</button>
+            </div>
+        </form>
+    </div>
+</div>

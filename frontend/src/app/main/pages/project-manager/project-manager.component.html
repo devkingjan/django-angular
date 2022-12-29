@@ -1,0 +1,53 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-icon s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    group_work
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Project Manager
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <div>
+                <button (click)="goToHistoryPage()" class="mr-4" mat-raised-button color="primary">
+                    View Project History
+                </button>
+                <button (click)="goToTimeFramePage()" class="mr-4" mat-raised-button color="primary">
+                    View Project Timeline
+                </button>
+                <button (click)="viewArchivedProjects()" mat-raised-button color="primary">
+                    {{status === 'active' ? 'Archived Projects' : 'Active Projects'}}
+                </button>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+
+        <div class="content content-bg content-overflow">
+            <div fxLayout="column" class="p-20" fxLayoutAlign="start stretch">
+                <app-project [project]="project" *ngFor="let project of projects"
+                             [archived]="archived"
+                             [members]="members"
+                             (delete)="deleteProject($event)"></app-project>
+            </div>
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
+<!-- ADD CONTACT BUTTON -->
+<button *ngIf="status==='active'" (click)="addNewProject()" mat-fab color="warn" id="new-project-button" aria-label="add contact"
+        [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+    <mat-icon>add</mat-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->

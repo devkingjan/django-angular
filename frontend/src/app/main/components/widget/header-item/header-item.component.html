@@ -1,0 +1,17 @@
+<div class="head-item-custom" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="head-item-custom-title" fxFlex="1 0 auto">
+        <app-text *ngIf="itemData.widget==='text'" [name]="itemData.name"></app-text>
+        <app-number *ngIf="itemData.widget==='number'" [name]="itemData.name"></app-number>
+        <app-date *ngIf="itemData.widget==='date'" [name]="itemData.name"></app-date>
+        <app-dropdown *ngIf="itemData.widget==='dropdown'" [name]="itemData.name"></app-dropdown>
+    </div>
+    <div *ngIf="!isDark && !isBlind" fxFlex="0 1 auto" >
+        <img *ngIf="!selected" (click)="openFilter()" src="assets/images/experiment/filter.png"/>
+        <img *ngIf="selected" (click)="openFilter()" src="assets/images/experiment/filter-fill.png"/>
+    </div>
+    <div *ngIf="isDark || isBlind" fxFlex="0 1 auto" >
+        <img *ngIf="!selected" (click)="openFilter()" src="assets/images/experiment/filter.svg"/>
+        <img *ngIf="selected" (click)="openFilter()" src="assets/images/experiment/filter_hover.svg"/>
+    </div>
+</div>
+

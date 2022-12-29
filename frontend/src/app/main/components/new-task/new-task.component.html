@@ -1,0 +1,52 @@
+<div class="full-width" class="new-database" fxFlex.gt-sm="500px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="new-db-header">
+            {{task?.id ? 'Edit Task' : 'Create new Task'}}
+        </h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <form name="loginForm" [formGroup]="newForm">
+            <mat-form-field style="width: 100%" appearance="outline">
+                <mat-label>Task Name:</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="newForm.get('name').hasError('required')">
+                    Name is required
+                </mat-error>
+            </mat-form-field>
+            <div style="width: 100%" fxLayout="column">
+                <div class="form-title">Assign Due date:</div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <button [class]="isToday ? 'selectedBtn' : 'greyBtn'"  fxFlex="40" mat-raised-button (click)="assignToday()">Today</button>
+                    <button [class]="isTomorrow ? 'selectedBtn' : 'greyBtn'" fxFlex="40" fxFlexOffset="20" mat-raised-button (click)="assignTomorrow()">Tomorrow</button>
+                </div>
+                <div class="form-title">Or</div>
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Assign Other date</mat-label>
+                    <input matInput [(ngModel)]="selectedDate" (ngModelChange)="selectDate()" [ngModelOptions]="{standalone: true}"
+                           [matDatepicker]="dp3" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <mat-form-field style="width: 100%" appearance="outline">
+                <mat-label>Choose Task List:</mat-label>
+                <mat-select formControlName="task_list">
+                    <mat-option *ngFor="let taskList of taskListArray"
+                                [value]="taskList.id">{{taskList.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="newForm.get('task_list').hasError('required')">
+                    Task List is required
+                </mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <button mat-raised-button color="primary" (click)="create()" [disabled]="newForm.invalid || submitted">
+                    {{task?.id ? 'Edit Task' : 'Create Task'}}
+                </button>
+                <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

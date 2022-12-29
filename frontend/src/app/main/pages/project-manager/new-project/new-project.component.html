@@ -1,0 +1,43 @@
+<div class="full-width" fxFlex.gt-sm="400px" class="new-project">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="custom-modal-header">{{project ? 'Edit' : 'Create New'}} Project</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <form fxLayout="column" fxLayoutAlign="space-evenly stretch" name="newForm"
+              [formGroup]="newForm" novalidate (ngSubmit)="submit()">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100" class="pr-4">
+                <mat-label>Project Name</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error>Name is required!</mat-error>
+            </mat-form-field>
+            <div>People Involved:</div>
+            <div class="new-project-members">
+                <div (click)="onSelectMember(member)" *ngFor="let member of members"
+                     [class]="checkMember(member) ? 'new-project-members-item' : 'new-project-members-item select-member'" fxLayout="row">
+                    <img class="avatar" [src]="member.user_info.signed_avatar_url ? member.user_info.signed_avatar_url : 'assets/images/avatars/default.png'"/>
+                    <div fxLayout="column" fxFlex="1 0 auto" fxLayoutAlign="start start">
+                        <div fxFlex="1 0 auto p-4">{{member.first_name}} {{member.last_name}}</div>
+                        <div class="new-project-members-item-role p-4">{{member.user_info.role}}</div>
+                    </div>
+                    <div *ngIf="!checkMember(member)">
+                        <img src="assets/images/project-manager/exclude_button.png"/>
+                    </div>
+                    <div *ngIf="checkMember(member)">
+                        <img src="assets/images/project-manager/add_button.svg"/>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <button [disabled]="newForm.invalid || submitted" mat-raised-button color="accent">
+                    {{project ? 'Update' : 'Create'}} Project
+                </button>
+                <button [disabled]="newForm.invalid || submitted" mat-raised-button color="default">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

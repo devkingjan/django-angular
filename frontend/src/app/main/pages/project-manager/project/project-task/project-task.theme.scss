@@ -1,0 +1,32 @@
+@mixin app-project-task-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+
+    app-project-task {
+        .p-task-detail {
+            @if ($is-dark) {
+                color: white;
+                background: mat-color($dark-mode, main-bg);
+            } @else {
+                color: mat-color($default-mode, primary);
+                background: white;
+            }
+        }
+
+        .p-task-person {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, light-bg);
+            } @else {
+                background: lightgrey;
+            }
+        }
+
+        .p-task-timeframe {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, main-bg);
+            } @else {
+                background: #b6b5b5;
+            }
+        }
+    }
+}

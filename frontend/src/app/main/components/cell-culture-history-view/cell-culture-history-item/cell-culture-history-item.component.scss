@@ -1,0 +1,33 @@
+.cch-item {
+    width: 100%;
+    padding: 10px 0px;
+
+    &-mark {
+        text-align: center;
+        width: 130px;
+    }
+
+    &-panel {
+        width: calc(100% - 130px);
+        min-height: 50px;
+        margin: 0px 10px;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 10px;
+    }
+
+    &-detail {
+        padding: 4px 0;
+
+        &-label {
+            font-weight: bold;
+            padding-right: 4px;
+        }
+
+        &-value {
+
+        }
+    }
+}
+
+

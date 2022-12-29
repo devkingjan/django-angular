@@ -1,0 +1,120 @@
+@mixin app-calculator-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-calculator {
+        .custom-header {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: rgba(255, 255, 255, 0.54);
+                .logo-text {
+                    font-size: 25px;
+                    font-weight: bold !important;
+                    color: rgba(255, 255, 255, 0.54);
+                }
+            } @else {
+                //background-color: mat-color($default-mode, light-bg);
+                color: mat-color($default-mode, primary);
+                .logo-text {
+                    font-size: 25px;
+                    font-weight: bold !important;
+                    color: #0b2b3a;
+                }
+            }
+        }
+
+        .img-header {
+            @if ($is-dark) {
+            } @else {
+                width: 100%;
+                height: 100%;
+                background-image: url("assets/images/common/banner.jpg");
+                background-position: right top;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-color: #e1e2e4;
+            }
+
+        }
+
+        .content-bg {
+            @if ($is-dark) {
+                background: transparent;
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                //background: transparent;
+                background: white;
+            }
+        }
+
+        .mat-ink-bar {
+            @if ($is-dark or $is-blind) {
+                background: mat-color($dark-mode, warn) !important;
+            } @else {
+                background: mat-color($default-mode, warn) !important;
+            }
+        }
+
+        .mat-tab-label-content {
+            @if ($is-dark) {
+                color: mat-color($dark-mode, warn) !important;
+            } @else {
+                color: mat-color($default-mode, primary) !important;
+            }
+        }
+
+        .cal-title {
+            @if ($is-dark) {
+                color: mat-color($dark-mode, warn);
+                background: mat-color($dark-mode, content-bg);
+            } @else if ($is-blind) {
+                color: mat-color($default-mode, primary);
+                background: white;
+            } @else {
+                color: mat-color($default-mode, primary);
+                background: white;
+            }
+        }
+
+        .border {
+            @if ($is-dark) {
+                border-top: 1px mat-color($dark-mode, warn) solid;
+            } @else {
+                border-top: 1px mat-color($default-mode, primary) solid;
+            }
+        }
+
+        .calculator {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: mat-color($default-mode, primary) !important;
+            }
+
+            &-result-label {
+                @if ($is-dark or $is-blind) {
+                    color: mat-color($dark-mode, warn) !important;
+                } @else {
+                    color: mat-color($default-mode, warn) !important;
+                }
+            }
+
+            &-result-panel {
+                @if ($is-dark or $is-blind) {
+                    border: 1px mat-color($dark-mode, warn) solid;
+                    color: mat-color($dark-mode, warn);
+                } @else {
+                    border: 1px mat-color($default-mode, warn) solid;
+                    color: mat-color($default-mode, warn);
+                }
+            }
+
+            input {
+                @if ($is-dark) {
+                    color: white;
+                } @else {
+                    color: mat-color($default-mode, primary) !important;
+                }
+            }
+        }
+    }
+}

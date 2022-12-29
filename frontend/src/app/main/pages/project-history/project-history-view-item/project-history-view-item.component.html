@@ -1,0 +1,151 @@
+
+<div class="phv-item" fxLayout="row" fxLayoutAlign="start start">
+    <div *ngIf="(isDark || isBlind)" class="phv-item-mark">
+        <img *ngIf="event.type==='create_project'"
+             src="assets/images/project-history/star-3.svg"/>
+        <img *ngIf="event.type==='edit_project_title'"
+             src="assets/images/project-history/Component 3 – 3.svg"/>
+        <img *ngIf="event.type==='edit_task_description'"
+             src="assets/images/project-history/Component 3 – 3.svg"/>
+        <img *ngIf="event.type==='edit_project_member'"
+             src="assets/images/project-history/Component 3 – 3.svg"/>
+        <img *ngIf="event.type==='archive_project'"
+             src="assets/images/project-history/archived.svg"/>
+        <img *ngIf="event.type==='re_active_project'"
+             src="assets/images/project-history/archived.svg"/>
+        <img *ngIf="event.type==='delete_project'"
+             src="assets/images/project-history/Component 4 – 1.svg"/>
+        <img *ngIf="event.type==='create_task'"
+             src="assets/images/project-history/star-1.svg"/>
+        <img *ngIf="event.type==='edit_task'"
+             src="assets/images/project-history/star-1.svg"/>
+        <img *ngIf="event.type==='edit_task_title'"
+             src="assets/images/project-history/Component 3 – 3.svg"/>
+        <img *ngIf="event.type==='edit_task_members'"
+             src="assets/images/project-history/icon_user.svg"/>
+        <img *ngIf="event.type==='edit_task_status'"
+             src="assets/images/project-history/icon_user.svg"/>
+        <img *ngIf="event.type==='edit_task_timeframe'"
+             src="assets/images/project-history/Component 6 – 1.svg"/>
+        <img *ngIf="event.type==='add_comment'"
+             src="assets/images/project-history/icon_chat.svg"/>
+        <img *ngIf="event.type==='remove_task'"
+             src="assets/images/project-history/Component 4 – 1.svg"/>
+    </div>
+    <div *ngIf="!isDark && !isBlind" class="phv-item-mark">
+        <img *ngIf="event.type==='create_project'"
+             src="assets/images/project-history/star-2.svg"/>
+        <img *ngIf="event.type==='edit_project_title'"
+             src="assets/images/project-history/Component 3 – 2.svg"/>
+        <img *ngIf="event.type==='edit_task_description'"
+             src="assets/images/project-history/Component 3 – 2.svg"/>
+        <img *ngIf="event.type==='edit_project_member'"
+             src="assets/images/project-history/Component 3 – 2.svg"/>
+        <img *ngIf="event.type==='archive_project'"
+             src="assets/images/project-history/archived.svg"/>
+        <img *ngIf="event.type==='re_active_project'"
+             src="assets/images/project-history/archived.svg"/>
+        <img *ngIf="event.type==='delete_project'"
+             src="assets/images/project-history/Component 4 – 1.svg"/>
+        <img *ngIf="event.type==='create_task'"
+             src="assets/images/project-history/star-1.svg"/>
+        <img *ngIf="event.type==='edit_task'"
+             src="assets/images/project-history/star-1.svg"/>
+        <img *ngIf="event.type==='edit_task_title'"
+             src="assets/images/project-history/Component 3 – 2.svg"/>
+        <img *ngIf="event.type==='edit_task_members'"
+             src="assets/images/project-history/icon_user.svg"/>
+        <img *ngIf="event.type==='edit_task_status'"
+             src="assets/images/project-history/icon_user.svg"/>
+        <img *ngIf="event.type==='edit_task_timeframe'"
+             src="assets/images/project-history/Component 5 – 1.svg"/>
+        <img *ngIf="event.type==='add_comment'"
+             src="assets/images/project-history/icon_chat.svg"/>
+        <img *ngIf="event.type==='remove_task'"
+             src="assets/images/project-history/Component 4 – 1.svg"/>
+    </div>
+    <div class="phv-item-panel">
+        <span *ngIf="event.type==='create_project'">
+            {{event.first_name}} created new project "{{event.after_project.name}}" and assigned it to
+            <span *ngFor="let member of members">
+                <span *ngIf="event.after_project.members.indexOf(member.id) !== -1">{{member.user_info.first_name}}, </span>
+            </span>
+        </span>
+        <span *ngIf="event.type==='edit_project_title'">
+            {{event.first_name}} changed the project name to "{{event.after_project.name}}"
+        </span>
+        <span *ngIf="event.type==='edit_project_member'">
+            {{event.first_name}}&nbsp;
+            <span *ngIf="removedProjectMembers.length">
+                removed <span *ngFor="let member of removedProjectMembers; let i = index">
+                <span *ngIf="i!==0">, </span>
+                "{{member.user_info.first_name}}"
+            </span>
+            </span>
+            <span *ngIf="addedProjectMembers.length && removedMembers.length"> and </span>
+            <span *ngIf="addedProjectMembers.length">
+                added <span *ngFor="let member of addedProjectMembers; let i = index">
+                <span *ngIf="i!==0">, </span>
+                "{{member.user_info.first_name}}"
+            </span>
+            </span>
+            in project "{{event.after_project.name}}"
+        </span>
+        <span *ngIf="event.type==='archive_project'">
+            {{event.first_name}} archived project "{{event.after_project.name}}"
+        </span>
+        <span *ngIf="event.type==='re_active_project'">
+            {{event.first_name}} re-activated project "{{event.after_project.name}}"
+        </span>
+        <span *ngIf="event.type==='delete_project'">
+            {{event.first_name}} deleted project "{{event.after_project.name}}"
+        </span>
+        <span *ngIf="event.type==='create_task'">
+            {{event.first_name}} created new project task "{{event.after_task.title}}" and assigned it to
+            <span *ngFor="let member of members">
+                <span *ngIf="event.after_task.members.indexOf(member.id) !== -1">{{member.user_info.first_name}}, </span>
+            </span>
+        </span>
+        <span *ngIf="event.type==='edit_task'">
+            {{event.first_name}} edited task "{{event.after_task.title}}"
+        </span>
+        <span *ngIf="event.type==='edit_task_title'">
+            {{event.first_name}} edited the title for task "{{event.after_task.title}}"
+        </span>
+        <span *ngIf="event.type==='edit_task_description'">
+            {{event.first_name}} updated the description for task "{{event.before_task.title}}", New description: {{event.after_task.description}}
+        </span>
+        <span *ngIf="event.type==='edit_task_members'">
+            {{event.first_name}} re-assigned task "{{event.after_task.title}}":&nbsp;
+            <span *ngIf="removedMembers.length">
+                removed <span *ngFor="let member of removedMembers; let i = index">
+                <span *ngIf="i!==0">, </span>
+                "{{member.user_info.first_name}}"
+            </span>
+            </span>
+            <span *ngIf="addedMembers.length && removedMembers.length"> and </span>
+            <span *ngIf="addedMembers.length">
+                added <span *ngFor="let member of addedMembers; let i = index">
+                <span *ngIf="i!==0">, </span>
+                "{{member.user_info.first_name}}"
+            </span>
+            </span>
+        </span>
+        <span *ngIf="event.type==='edit_task_status'">
+            {{event.first_name}} updated task status of task "{{event.after_task.title}}" to
+            {{projectStatus[event.after_task.status]}}
+        </span>
+        <span *ngIf="event.type==='edit_task_timeframe'">
+            {{event.first_name}} edited the timeline of task "{{event.after_task.title}}" to
+            Start time: {{event.after_task.start_time | date: 'MMM d, y'}},
+            End time: {{event.after_task.end_time | date: 'MMM d, y'}}
+        </span>
+        <span *ngIf="event.type==='add_comment'">
+            {{event.first_name}} commented on project task "{{event.after_task.title}}": <br>
+            "{{event.comment}}"
+        </span>
+        <span *ngIf="event.type==='remove_task'">
+            {{event.first_name}} removed task "{{event.after_task.title}}"
+        </span>
+    </div>
+</div>

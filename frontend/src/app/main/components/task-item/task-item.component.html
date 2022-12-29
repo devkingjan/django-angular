@@ -1,0 +1,17 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" class="task-item">
+    <mat-checkbox class="check-color big" [(ngModel)]="task.completed" (ngModelChange)="checkTask()"></mat-checkbox>
+    <div fxFlex="1 0 auto" class="task-item-detail" fxLayout="row">
+        <div class="task-item-detail-group">
+            <div class="task-item-detail-name">{{task.name}}</div>
+            <div *ngIf="taskType==='dueDate'" class="task-item-detail-name">{{getDate(task.due_date) | date: 'MMM d, y'}}</div>
+            <div class="task-item-detail-name">
+                <label>From Task List:&nbsp;</label>
+                <span>{{task.task_list_name}}</span>
+            </div>
+        </div>
+        <div  fxLayout="row" class="task-item-detail-action" fxLayoutAlign="center center">
+            <img (click)="editTask()" class="icon-color" src="assets/images/task-manager/edit.svg">
+            <img (click)="deleteTask()" class="icon-color" src="assets/images/task-manager/cancel.svg">
+        </div>
+    </div>
+</div>

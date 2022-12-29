@@ -1,0 +1,10 @@
+<div class="question-panel" fxFlex.gt-sm="400px" >
+    <div class="question">
+        {{description}}
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button  mat-raised-button fxFlex="30" color="accent" (click)="onClick(true)">{{yesText? yesText : 'Yes'}}</button>
+        <button mat-raised-button fxFlexOffset="10" fxFlex="30" color="accent" (click)="dialogRef.close()">{{noText? noText : 'No'}}</button>
+    </div>
+</div>
+

@@ -1,0 +1,45 @@
+.new-event {
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    &-form {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 70vh;
+        padding: 0px 20px;
+        font-size: 18px;
+        font-family: Roboto;
+
+        &-option {
+            border-top: 2px solid #c2c0c0;
+            padding: 10px 0px;
+        }
+
+        &-sub {
+            padding-left: 70px;
+
+            &-option {
+                padding: 10px 0px;
+            }
+        }
+    }
+
+    .mat-radio-outer-circle {
+        border-radius: 10px !important;
+        height: 28px !important;
+        width: 28px !important;
+        padding: 5px;
+    }
+
+    .mat-radio-inner-circle {
+        height: 29px !important;
+        width: 29px !important;
+        border-radius: 10px;
+    }
+
+    .mat-radio-label-content {
+        padding-left: 24px !important;
+        padding-top: 9px !important;
+    }
+}
+

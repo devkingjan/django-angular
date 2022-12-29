@@ -1,0 +1,29 @@
+<div class="p-20" fxLayout="column" fxLayoutAlign="start start" fxFlex.gt-sm="500px">
+    <h2 class="delete-title"  mat-dialog-title>Are you sure you want to delete column {{columnName}}?</h2>
+    <div>
+        <div class="delete-description">
+            Are you sure you want to delete column {{columnName}}?
+            Deleting the column will remove it from the {{databaseName}} Database of all users
+            and data contained in this column will be lost.<br>
+            This action cannot be undone. To confirm your column deletion,
+            please type <span class="delete-name">{{columnName}}</span> in the text box and then click delete.
+        </div>
+        <form style="width: 400px" name="loginForm" [formGroup]="confirmForm" fxLayout="column" (ngSubmit)="submit(true)" class="p-20" novalidate>
+            <mat-form-field appearance="outline" fxFlex="100">
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <div fxLayout="row">
+                <button type="button" style="height: 40px" fxFlexOffset="20" fxFlex="30"
+                        mat-raised-button class="submit-button m-10" (click)="submit(false)">
+                Cancel
+                </button>
+                <button type="submit" style="height: 40px" fxFlexOffset="10" fxFlex="30" mat-raised-button
+                        color="warn" class="submit-button m-10" [disabled]="confirmForm.invalid">
+                Delete
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>

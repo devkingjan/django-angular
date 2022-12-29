@@ -1,0 +1,13 @@
+@mixin app-project-history-view-item-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-project-history-view-item {
+        .phv-item-panel {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                background: white;
+            }
+        }
+    }
+}

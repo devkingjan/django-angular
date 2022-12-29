@@ -1,0 +1,22 @@
+<div class="phv-view">
+    <div class="phv-view-bg"></div>
+    <div class="phv-view-line" *ngIf="projectHistoryByDate.length"></div>
+    <div
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+        [scrollWindow]="false"
+        class="phv-view-content" Infi>
+        <div *ngFor="let projectHistory of projectHistoryByDate">
+            <div class="phv-view-day">
+                {{projectHistory.time | date: 'd MMM, y'}}
+            </div>
+            <app-project-history-view-item
+                [event]="event"
+                [members]="members"
+                *ngFor="let event of projectHistory.events">
+            </app-project-history-view-item>
+        </div>
+    </div>
+</div>

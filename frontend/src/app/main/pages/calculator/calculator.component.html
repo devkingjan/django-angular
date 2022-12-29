@@ -1,0 +1,52 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center ">
+        <!-- HEADER -->
+        <div class="header custom-header img-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-icon class="logo-icon s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    laptop_mac
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Molarity Calculator
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="p-20 content-bg">
+            <mat-tab-group>
+                <mat-tab label="Dilution">
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+                        <app-calculator-dilution></app-calculator-dilution>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Mass">
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+                        <app-calculator-mass></app-calculator-mass>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Volume">
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+                        <app-calculator-volume></app-calculator-volume>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Molarity">
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+                        <app-calculator-molarity></app-calculator-molarity>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

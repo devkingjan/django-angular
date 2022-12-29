@@ -1,0 +1,62 @@
+<div>
+    <div class="cal-title">
+        Dilution of a stock solution:
+    </div>
+    <div class="border"></div>
+</div>
+<div class="calculator" fxLayout="column" fxLayoutAlign="center stretch">
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item" fxLayout="row"
+             fxLayoutAlign="start center">
+            <label fxFlex="20">Stock concentration:</label>
+            <input type="number" fxFlex="50" matInput name="mass" [(ngModel)]="stockCon"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="calcResult()">
+            <mat-select fxFlexOffset="10" fxFlex="20" name="mass-unit" [(ngModel)]="stockConUnit"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="calcResult()">
+                <mat-option *ngFor="let conUnit of conUnitList"
+                            [value]="conUnit.value">{{conUnit.name}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item" fxLayout="row"
+             fxLayoutAlign="start center">
+            <label fxFlex="20">Desired concentration:</label>
+            <input type="number" fxFlex="50" matInput name="mass" [(ngModel)]="desiredCon"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="calcResult()">
+            <mat-select fxFlexOffset="10" fxFlex="20" name="mass-unit" [(ngModel)]="desiredConUnit"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="calcResult()">
+                <mat-option *ngFor="let conUnit of conUnitList"
+                            [value]="conUnit.value">{{conUnit.name}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item" fxLayout="row"
+             fxLayoutAlign="start center">
+            <label fxFlex="20">Desired volume:</label>
+            <input type="number" fxFlex="50" matInput name="mass" [(ngModel)]="desiredVol"
+                   [ngModelOptions]="{standalone: true}" (ngModelChange)="calcResult()">
+            <mat-select fxFlexOffset="10" fxFlex="20" name="mass-unit" [(ngModel)]="desiredVolUnit"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="calcResult()">
+                <mat-option *ngFor="let volUnit of volUnitList"
+                            [value]="volUnit.value">{{volUnit.name}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="mb-12"  fxFlex="100" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100" fxFlexOffset.gt-sm="20" fxFlex.gt-sm="60" class="calculator-item mt-24" fxLayout="row"
+             fxLayoutAlign="start center">
+            <div class="calculator-result-label" fxFlex="20">Required volume:</div>
+            <div *ngIf="!calcImpossible" fxFlex="50" class="calculator-result-panel">
+                {{requiredVol}} {{requiredVolUnit}}
+            </div>
+            <div *ngIf="calcImpossible" fxFlex="50" class="calculator-result-panel">
+                Not Possible!
+            </div>
+        </div>
+    </div>
+</div>

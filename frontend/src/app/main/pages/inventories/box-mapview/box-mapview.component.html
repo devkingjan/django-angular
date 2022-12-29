@@ -1,0 +1,52 @@
+<div class="page-layout carded fullwidth page-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"  fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-icon s-32 mr-16 private" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    web_asset
+                </mat-icon>
+                <span class="logo-text" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Map View
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <div class="location-drop">
+                <app-select-location-dropmenu></app-select-location-dropmenu>
+            </div>
+            <div>
+                <button *ngIf="user.user_role === 1" mat-raised-button color="accent" class="mr-12"(click)="editLocation()">Edit Location</button>
+            </div>
+        </div>
+
+        <!-- / HEADER -->
+        <div class="content content-bg map-content p-20">
+
+            <div fxLayout="row" *ngIf="isBox">
+                <div fxLayout="column" *ngFor="let row of horizontalItems">
+                    <div *ngFor="let column of verticalItems">
+                        <div *ngIf="isRunningNumber" class="map-item">
+                            <div class="map-item-key">{{(column - 1) * horizontalItems.length + row}}</div>
+                            <div class="map-item-sample" [innerHTML]="[sampleData, column, row, isRunningNumber,  horizontalItems.length] | mapviewItem"></div>
+                        </div>
+                        <div *ngIf="!isRunningNumber" class="map-item">
+                            <div class="map-item-key">{{column}}{{row}}</div>
+                            <div class="map-item-sample" [innerHTML]="[sampleData, column, row, isRunningNumber, 0] | mapviewItem"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!isBox">
+                <div class="sample-shelf" *ngFor="let data of sampleData">
+                    <div style="font-weight: bold">{{data.name}}</div>
+                    <div>({{data.sample_uid}})</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

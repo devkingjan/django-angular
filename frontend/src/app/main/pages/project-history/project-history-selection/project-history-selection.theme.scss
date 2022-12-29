@@ -1,0 +1,24 @@
+@mixin app-project-history-selection-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-project-history-selection {
+        .phs-panel-row {
+            @if ($is-dark) {
+                color: white;
+                border-bottom: 1px solid mat-color($dark-mode, content-bg);
+            } @else {
+                color: mat-color($default-mode, primanry);
+                border-bottom: 1px solid #dedbdb;
+            }
+
+            &-select {
+                @if ($is-dark) {
+                    background: mat-color($dark-mode, main-bg);
+                } @else {
+                    background: mat-color($default-mode, content-bg);
+                }
+            }
+        }
+
+    }
+}

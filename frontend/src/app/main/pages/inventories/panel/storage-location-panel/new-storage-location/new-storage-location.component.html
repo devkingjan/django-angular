@@ -1,0 +1,83 @@
+<div class="full-width" fxFlex.gt-sm="700px" class="new-experiment">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="custom-modal-header">Create New Storage Location</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div  class="p-20">
+        <form fxLayout="column" class="p-20" fxLayoutAlign="space-evenly stretch" name="newForm"
+              [formGroup]="newForm" novalidate (ngSubmit)="submit()">
+            <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-even center">
+                <mat-form-field fxFlex="100" fxFlex.gt-sm="45" appearance="outline">
+                    <mat-label>Associate with database:</mat-label>
+                    <mat-select formControlName="database">
+                        <mat-option *ngFor="let database of databases" [value]="database.id">{{database.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlexOffset="0" fxFlex="100" fxFlex.gt-sm="45" fxFlexOffset.gt-sm="10" appearance="outline">
+                    <mat-label>Storage temperature:</mat-label>
+                    <mat-select formControlName="storage_temperature">
+                        <mat-option *ngFor="let storageTemperature of storageTemperatures"
+                                    [value]="storageTemperature.id">{{storageTemperature.name}}</mat-option>
+                        <mat-option (click)="createStorageTemperature()">Create Storage Temperature</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-even center">
+                <mat-form-field fxFlex="100" fxFlex.gt-sm="45" appearance="outline">
+                    <mat-label>Equipment:</mat-label>
+                    <mat-select formControlName="equipment">
+                        <mat-option *ngFor="let equipment of equipments" [value]="equipment.id">{{equipment.name}}</mat-option>
+                        <mat-option (click)="createEquipment()">Create New Equipment</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="isTower" fxFlex="100" fxFlex.gt-sm="45" fxFlexOffset.gt-sm="10"  appearance="outline">
+                    <mat-label>Allocate Tower:</mat-label>
+                    <mat-select formControlName="allocate_tower">
+                        <mat-option *ngFor="let tower of towerNumbers" [value]="tower">Tower {{tower}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-even center">
+                <mat-form-field fxFlexOffset="0" fxFlex="100" fxFlex.gt-sm="45" appearance="outline">
+                    <mat-label>Storage type:</mat-label>
+                    <mat-select formControlName="storage_type">
+                        <mat-option *ngFor="let storageType of storageTypes"
+                                    [value]="storageType">{{storageType}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="100" fxFlex.gt-sm="45" fxFlexOffset.gt-sm="10" appearance="outline">
+                    <mat-label>Allocate Number:</mat-label>
+                    <input matInput formControlName="allocate_number">
+                </mat-form-field>
+            </div>
+            <div *ngIf="isBox" fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-even center">
+                <mat-form-field fxFlex="100" fxFlex.gt-sm="45" appearance="outline">
+                    <mat-label>Number of vertical rows:</mat-label>
+                    <mat-select formControlName="vertical_number">
+                        <mat-option *ngFor="let row of rows" [value]="row">{{row}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlexOffset="0" fxFlex="100" fxFlex.gt-sm="45" fxFlexOffset.gt-sm="10" appearance="outline">
+                    <mat-label>Number of horizontal rows:</mat-label>
+                    <mat-select formControlName="horizontal_number">
+                                <mat-option *ngFor="let row of rows" [value]="row">{{row}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="isBox" fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-even center">
+                <mat-form-field fxFlex="100" fxFlex.gt-sm="45" appearance="outline">
+                    <mat-label>Define Location:</mat-label>
+                    <mat-select formControlName="define_location">
+                        <mat-option value="by_running_numbers">By running numbers (e.g 10, 25 etc)</mat-option>
+                        <mat-option value="by_letter_number">By letter + number (e.g A1, C3 etc)</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button [disabled]="newForm.invalid || submitted" type="submit" mat-raised-button color="accent" >
+                {{locationId ? 'Update' : 'Create'}}
+            </button>
+        </form>
+    </div>
+</div>

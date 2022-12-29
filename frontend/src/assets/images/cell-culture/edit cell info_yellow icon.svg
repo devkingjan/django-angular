@@ -1,0 +1,13 @@
+<svg id="Component_3_3" data-name="Component 3 – 3" xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46">
+  <g id="icon_inbox" transform="translate(1337 2728)">
+    <g id="Ellipse_33" data-name="Ellipse 33" transform="translate(-1337 -2728)" fill="#f4f4f4" stroke="#ffc601" stroke-width="2">
+      <circle cx="23" cy="23" r="23" stroke="none"/>
+      <circle cx="23" cy="23" r="22" fill="none"/>
+    </g>
+  </g>
+  <g id="icon_mark_as_completed_and_esign" transform="translate(11 10.352)">
+    <g id="Group_1455" data-name="Group 1455" transform="translate(0)">
+      <path id="Path_6712" data-name="Path 6712" d="M3.916,299.38l3.808,3.856,15.781-15.978.468.489a.828.828,0,0,1,0,1.171l-6.416,6.5a.425.425,0,0,0-.138.42.419.419,0,0,0,.31.313.413.413,0,0,0,.415-.14l6.416-6.5a1.7,1.7,0,0,0,0-2.35l-.476-.5.164-.166a1.1,1.1,0,0,0,0-1.534l-2.293-2.321a1.066,1.066,0,0,0-1.513,0Zm-.495.688-2.35,5.493a.425.425,0,0,0,.088.465.413.413,0,0,0,.46.089l5.426-2.38Zm19.014-18.141,2.526,2.557.5-.508a1.1,1.1,0,0,0,0-1.536l-1.009-1.021a1.07,1.07,0,0,0-1.517,0Z" transform="translate(-1.037 -281.103)" fill="#f0f0f0" stroke="#ffc601" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

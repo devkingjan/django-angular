@@ -1,0 +1,30 @@
+<div class="p-task" fxLayout="row wrap" fxLayoutAlign="start stretch">
+    <div fxLayout="row" fxFlex="100" fxFlex.gt-md="50" class="p-task-detail">
+        <div fxFlex="90" class="p-task-detail-description">{{task?.title}}/{{task?.description}}</div>
+        <div fxFlex="5" fxLayout="row">
+            <img (click)="addComment()" *ngIf="!isDark" class="p-task-icon cursor-pointer" src="assets/images/project-manager/chat_icon (1).svg"/>
+            <img (click)="editTask()" *ngIf="!isDark" class="p-task-icon cursor-pointer" src="assets/images/project-manager/edit.svg"/>
+            <img  (click)="deleteTask()" *ngIf="!isDark" class="p-task-icon cursor-pointer" src="assets/images/project-manager/cancel.svg"/>
+            <img (click)="addComment()" *ngIf="isDark" class="p-task-icon cursor-pointer" src="assets/images/project-manager/chat_icon.svg"/>
+            <img (click)="editTask()" *ngIf="isDark" class="p-task-icon cursor-pointer"
+                 src="assets/images/project-manager/Group 2719.svg"/>
+            <img  (click)="deleteTask()" *ngIf="isDark" class="p-task-icon cursor-pointer" src="assets/images/project-manager/Group 2721.svg"/>
+        </div>
+    </div>
+    <div fxFlex="30"  fxFlex.gt-md="15" [class]="task.status + ' p-task-status'" (click)="status.onContainerClick()">
+        <mat-select [(ngModel)]="task.status" #status [ngModelOptions]="{standalone: true}" (ngModelChange)="changeStatus()">
+            <mat-option value="done">Done</mat-option>
+            <mat-option value="in_progress">In Progress</mat-option>
+            <mat-option value="in_planing">In Planning</mat-option>
+            <mat-option value="on_hold">On Hold</mat-option>
+        </mat-select>
+    </div>
+    <div fxFlex="30" fxFlex.gt-md="15" class="p-task-person">
+        <div *ngFor="let member of task.member_list">{{member.user_info.first_name}} {{member.user_info.last_name.substring(0, 1)}}.</div>
+    </div>
+    <div fxFlex="40" fxFlex.gt-md="20" class="p-task-timeframe">
+        <span>{{task.start_time | date : 'MMM d, yyy'}}</span>
+        &nbsp;-&nbsp;
+        <span>{{task.end_time | date : 'MMM d, yyy'}}</span>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+@mixin mission-cell-culture-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    $is-default: map-get($theme, is-default);
+    app-mission-cell-culture {
+        .mission-dot {
+            @if ($is-dark or $is-blind) {
+                background-color: mat-color($dark-mode, warn);
+            } @else {
+                background-color: mat-color($default-mode, warn);
+            }
+        }
+
+        .create-event {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, main-bg);
+                color: mat-color($dark-mode, warn);
+            } @else if ($is-blind) {
+                background: mat-color($default-mode, content-bg);
+                color: mat-color($default-mode, primary);
+            } @else {
+                background: mat-color($default-mode, content-bg);
+                color: mat-color($default-mode, warn);
+            }
+        }
+
+        .mission-panel-header {
+            @if ($is-dark or $is-blind) {
+                color: mat-color($dark-mode, warn);
+            } @else {
+                color: mat-color($default-mode, warn);
+            }
+        }
+
+        mat-expansion-panel {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: mat-color($default-mode, primary)!important;
+            }
+        }
+    }
+}

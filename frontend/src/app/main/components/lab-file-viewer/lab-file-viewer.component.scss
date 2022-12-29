@@ -1,0 +1,23 @@
+.mat-dialog-title {
+    padding: 20px;
+}
+
+.mat-dialog-content {
+    margin: 0;
+}
+
+.mat-dialog-actions {
+    margin: 0;
+}
+
+.file-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0;
+
+    .file-name {
+        margin: 0;
+        margin-left: 10px;
+    }
+}

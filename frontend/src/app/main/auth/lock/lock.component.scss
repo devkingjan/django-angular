@@ -1,0 +1,181 @@
+@import "src/@fuse/scss/fuse";
+
+.lock-page {
+    width: 100%;
+    height: 100%;
+    background: #0b2b3a;
+    background-image: url("assets/images/login/background.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: initial;
+
+    #lock-form-wrapper {
+        flex: 1 0 auto;
+        padding: 32px;
+
+        @include media-breakpoint('xs') {
+            padding: 16px;
+        }
+
+
+        #lock-form {
+            text-align: center;
+            background: #e2e3e4;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            max-width: 400px;
+
+            .mat-form-field-appearance-outline .mat-form-field-outline {
+                background: white;
+                border-radius: 5px;
+            }
+
+            .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick:focus {
+                border: none !important;
+            }
+
+            @include mat-elevation(16);
+
+            @include media-breakpoint('xs') {
+                padding: 24px;
+                width: 100%;
+            }
+
+            .lock-form-header {
+                text-align: center;
+                background: white;
+                padding: 20px 0px;
+
+                img {
+                    width: 150px;
+                }
+
+                .avatar-container {
+                    position: relative;
+                    margin-right: 16px;
+
+                    .avatar {
+                        margin: 0;
+                    }
+
+                    @include media-breakpoint('xs') {
+                        margin-right: 0;
+                    }
+
+                    mat-icon {
+                        position: absolute;
+                        bottom: -2px;
+                        right: -6px;
+                    }
+                }
+
+                .title {
+                    font-size: 20px;
+                    margin-bottom: 8px;
+
+                    @include media-breakpoint('xs') {
+                        margin-top: 16px;
+                        text-align: center;
+                    }
+                }
+
+                .subtitle {
+
+                    @include media-breakpoint('xs') {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .description {
+                padding: 45px 0px 20px 0px;
+                margin: auto;
+
+                .session-title {
+                    font-family: Roboto, "Helvetica Neue", sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    font-stretch: normal;
+                    font-style: normal;
+                    text-align: center;
+                    color: #0b2b3a;
+                }
+
+                .session-description {
+                    font-family: Roboto, "Helvetica Neue", sans-serif;
+                    font-size: 12px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    padding: 10px;
+                    color: #0b2b3a;
+                }
+            }
+
+            form {
+                padding: 0px 32px 65px 32px;
+                width: 100%;
+                margin: 32px 0 0 0;
+
+                mat-form-field {
+                    width: 100%;
+                }
+
+                .username {
+                    font-family: Roboto, "Helvetica Neue", sans-serif;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #0b2b3a;
+                }
+
+                .submit-button {
+                    width: 220px;
+                    margin: 16px auto;
+                    display: block;
+
+                    @include media-breakpoint('xs') {
+                        width: 90%;
+                    }
+                }
+
+                .pwd-input {
+                    transform: translateX(-23px);
+
+                }
+
+                .lock-page-avatar {
+                    transform: translate(20px, -27px);
+                    width: 200px !important;
+                    height: 120px !important;
+                    z-index: 20000;
+
+                    img {
+                        border-radius: 50%;
+                        border: 8px white solid;
+                        object-fit: fill;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    //transform: translateY(-30px);
+                }
+
+                .message {
+                    a {
+                        font-family: Roboto, "Helvetica Neue", sans-serif;
+                        font-size: 13px;
+                        color: #0b2b3a !important;
+                        font-weight: 200;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+}

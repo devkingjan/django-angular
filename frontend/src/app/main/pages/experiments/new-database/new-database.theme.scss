@@ -1,0 +1,28 @@
+@mixin app-new-database-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    $is-default: map-get($theme, is-default);
+    app-new-database {
+        .exp-divider {
+            @if ($is-dark or $is-blind) {
+                border-bottom: 1px mat-color($dark-mode, warn) solid;
+            } @else {
+                border-bottom: 1px #f07261 solid;
+            }
+        }
+        .create-menu-item {
+            @if ($is-dark) {
+                color: white!important;
+            } @else {
+                color: rgba(0, 0, 0, 0.87)!important;
+            }
+        }
+        .custom-sub-title {
+            @if ($is-dark) {
+                color: white!important;
+            } @else {
+                color: #0b2b3a;
+            }
+        }
+    }
+}

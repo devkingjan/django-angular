@@ -1,0 +1,21 @@
+.custom-header {
+    position: relative;
+    background: #75a6c9;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    margin: 0px;
+    &-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+
+.custom-label{
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  color: #0b2b3a;
+}

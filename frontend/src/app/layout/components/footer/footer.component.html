@@ -1,0 +1,17 @@
+<mat-toolbar>
+
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.gt-xs="space-between center" fxFlex>
+        <div class="copy-right">
+           Copyright 2020 Wildfell Software LLC. All Rights reserved
+        </div>
+        <div class="border">
+        </div>
+        <div class="logo">
+            <img *ngIf="!isDark && !isBlind" src="assets/images/logos/logo_without_slogan.png"/>
+            <img *ngIf="isDark" src="assets/images/logos/dark_logo.svg"/>
+            <img *ngIf="isBlind" src="assets/images/logos/teal_logo.svg"/>
+        </div>
+
+    </div>
+
+</mat-toolbar>

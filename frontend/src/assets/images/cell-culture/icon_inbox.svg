@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#f0f0f0;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.6px}
+        </style>
+    </defs>
+    <g id="icon_inbox" transform="translate(558 2299)">
+        <circle id="Ellipse_33" cx="23" cy="23" r="23" fill="#f07261" transform="translate(-558 -2299)"/>
+        <g id="Group_2574" transform="translate(-1151.085 -2788.639)">
+            <rect id="Rectangle_244" width="24" height="16.5" class="cls-2" rx=".853" transform="translate(604.085 504.639)"/>
+            <path id="Path_6569" d="M616.809 513.943l10.778-8.745a.314.314 0 0 0-.2-.559h-22.225a.315.315 0 0 0-.2.559l10.778 8.745a.847.847 0 0 0 1.069 0z" class="cls-2" transform="translate(-.191)"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg id="Component_7_1" data-name="Component 7 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46" height="46" viewBox="0 0 46 46">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_248" data-name="Rectangle 248" width="30" height="31" transform="translate(0 0.098)" fill="none"/>
+    </clipPath>
+    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 72 72">
+      <image width="72" height="72" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAASKADAAQAAAABAAAASAAAAACz+WTVAAAH7klEQVR4Ae2beWxURRzHfzPvbffgkltJIeXqmYBSoO02BqLRSCKHiYkajYrBKxE0+IdBDQEPwj/+IQHjETWGBEkwgiJqOAyi7CKHCKEtEA61G2IsEMGw22133/h9lMV2u8ebeW+3Rd/75+2b+R0zn53jN2/mEbmXS8Al4BJwCbgEXAIugf8nAdZH1WbeypmTuabVCoNN5JyVCaJhjERACNIZoxjul0hQhHE6I4RxJHaZHaVIOFbs8hYPUEXjIJ9G8+BwHgDchYoOlaksgMWJUZiEsU0Itqm9JfSbjL6qbMEBlVTUTdF1fQlayINwNkC1oOl6QohdTIi10ZbwF8iD+cJcBQNUUlNXrZH+BgmxgOEqTPFhVYhjgLU81hLeXAgfzhd89JQB/uEDVxJjz8O4XohCZ7QpaGeSGc/Gm8KnMuYrJjoKKFBZVyu4vgHtpVyxPLbU0M+uYKBfGm0KvW/LUDdlrdtvWz991Q1PEOdb0JtG2TJkQxn/dgkRm+sZMW58503eb+jixaQNc1dVHWlBgerGVZhhltktjJP6GJf2xDqSc+nUT5ft2LUNyF8dfAutZqmdQhRQ91A0nrjDDiRup3CB6uCKfgzHrFqtv0TfRmVlPtV6Ko9BvurGhwFnjarjYulhwhinewaVJdpalcIAJUAlk+uruM62MmKeYlXUjh/8kVM8o0rPd7ZFDsjaURiDaj2BGt9BOJoi6yxdHtNyKwK97xkT+5IGP8spcTHBeFwTbBAiwDJUbCoKOBsx1bR0XdlnQSKW7BTTOk6Gj8voSgdy/pqSF+FAGQ5mF3Bhm0SS3m0/sXc3bPVaJnR21WBP143IVz5jAvN4nmaCngGswal0mTtau1/T6T3ozJLTk5D2T6orJa92As4CEmrXRUFib0IYizubw4evJ8r8KK8dEdC8q4izJ2XUussKQzwUawlt7J6W67fcLObVlqnAQaMxDCFWxJr2zlKGY9bi5KHz0ZbQU0lD3IuGdylXxbLmMXoNeZbHXstjUKCicYzQxFmMC4hWrV9oNQki47FYU3iDdS0LkpUzh3uJhluQ7CUS1678Sk1NHb0yMiRYHoMMnRZxkoPT5c94FHA+zeDbXtLx/RfiRBfsGcmvbRWQ+b5iUX5zPSUwHK+ONRcATk83BX2y1MX8VXX1jOthyZIcjTbtNadn2wtGSb+Oil9tQb7K+jJOInt/ZtpCWa8YmD/E649bM+l1cm7YGqwzGc2WNqY2QOcORbNl50u/CkgkuCa8tAUzVGk+Bav5GMzfJgQe6ZcZB2kkFiHWUZvq0w3meA6UB2eQh7YmhzY8jhdp3+YQzZp1dZqPnwqdNuI0G9FmJKukAxkmHPhY1N4c/sgBczlNXIOzA0HpaC74Fm9Nwz05FbJk9hiDvJOCE7mXdjvZklJ++wjOkH/9U9xgxgLZltQDkGmsEJD6Go4dSL0AOQ2pv8BRhZQRkFOQ+hscFUhZAdmF1F/hyELKCUgVUn+HIwMpLyBZSDcKHKuQLAGyCqmYcPw1DTMRjmxHnHN9Kk9VWvZuHozIFgJYBpQP0o0KJwUzGyQpQNkg3ehwckGSBpQO6b8CJxskJUDXIZWw7wQZK4uxtnJyzEnByHbv3t16L7ezaaWlmwtcGlNbZedVQprJnI9GMvmXRuzOTEIG0wbgjd5XeIOA7SJrFxbNx1ky+UgmabPVCG60m3nKLSiT4b5K81cFVzPOXpLyL8SqaHPolXw6crsa+az1Qb6vsmEWtoHMvTqpq5PEZ1YUlLuYFeOFlvFVzBzPNb4JfqTqge510OobTSnD5qsQ0hOW95RSgBjT406fSsUx4nKm6bvgY2TKj9U7tqLWWZWVGoNwFmg9BsKMA1teh119fjnkbL/E91bXz9GY9glsqcA5gw3MCuhivy7/JTUGGR20AnGPpQ23Xq4ZexmAQ56qevWDCNh69tcE13Hi22BfGo5ZJuzxrsTNEhxTXqoFmQqBmuDrUHvV/K1ymYElvH4uDFqDbvcDbKDF5768VXWTNaYvxNjxnMxUnm7VPBuA1nM70vP6TOlKA6LSBr9/CPsZC8XKlBHVOyocwYmNnSju/qSg0zj2cpFYQiSZ+VkCvwUwpqOAjY4cf8GCNCnE9I6W0DGZ8soDgnVPdcNtOrF9qIDUPr1MwZyWRcS/GFvga2XtSs9IpgOjLfKHPrL0HADNl3XYF/JoqRsBRy6QvFZQJUCmbqItclgfNTaArtbYF5W26hNwQrH4n/epnplWBtQFqXWnNrL0ZnOssFrgYsoBzoHYlegcOtN8RdWvLUBdkCJf6yPHDgSkoGohCqGHufLHWHt8Dp09rHbQ6lqhbAPqgtS63TNibJtgdDe6nCM27UBDy1kfY5fup5NHlA8tpPwrzWIp5fS7v7IhSBpfD6MT0vOK8QwwUQQ4L7Q3hT5wyp+j/3bifKQ1MWzcxzqjQQgGawFKKlK3WakdhpGcF2/ehwMLzl2OtqDuxer60lB7E1E3DlwW8LrhPqhLY2GuvTykLcH49ADe+il/M9HdrLlcwVi3C4dn38GXhluQZ3np0N2Old8Fa0G9nE+qG+zz8AWM8/n41nQ2lg/DesnkSACTDnRb8xjglyKR2Nx+Yv/ZHOKOZRUPUM8ic3zTWqkRn8oEqwCsUgAYgVAhgLaA5ZkwZ5+/0Up+NxiOHpM4EqPLv1g9utvTlfvkEnAJuARcAi4Bl4BLwCWgQuAfAKk/b31IeoAAAAAASUVORK5CYII="/>
+    </pattern>
+  </defs>
+  <g id="Component_3_4" data-name="Component 3 – 4">
+    <g id="icon_inbox" transform="translate(1337 2728)">
+      <g id="Ellipse_33" data-name="Ellipse 33" transform="translate(-1337 -2728)" fill="#fff" stroke="#0a2a3a" stroke-width="2">
+        <circle cx="23" cy="23" r="23" stroke="none"/>
+        <circle cx="23" cy="23" r="22" fill="none"/>
+      </g>
+    </g>
+  </g>
+  <g id="Group_2582" data-name="Group 2582" transform="translate(8 79.902)">
+    <g id="Group_2581" data-name="Group 2581" transform="translate(0 -72)">
+      <g id="Group_2580" data-name="Group 2580" clip-path="url(#clip-path)">
+        <rect id="Rectangle_247" data-name="Rectangle 247" width="30" height="31" transform="translate(0 0.098)" fill="url(#pattern)"/>
+      </g>
+    </g>
+  </g>
+</svg>

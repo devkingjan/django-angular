@@ -1,0 +1,22 @@
+@mixin app-lab-write-e-sign-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-new-task {
+        .form-title {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: #0b2b3a;
+            }
+        }
+        .label {
+            @if ($is-dark) {
+                color: white;
+                font-size: 16px;
+            } @else {
+                color: #0B2B3A;
+                font-size: 16px;
+            }
+        }
+    }
+}

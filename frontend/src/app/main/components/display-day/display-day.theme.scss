@@ -1,0 +1,27 @@
+@mixin app-display-day-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-display-day {
+        .today {
+            @if ($is-dark or $is-blind) {
+                background: mat-color($dark-mode, warn) !important;
+                font-weight: bold;
+            } @else {
+                background: mat-color($default-mode, warn) !important;
+                font-weight: bold;
+            }
+        }
+
+        .divider-line-today {
+             @if ($is-dark or $is-blind) {
+                margin: 0 3px;
+                height: 2px;
+                background: mat-color($dark-mode, primary);
+            } @else {
+                margin: 0 3px;
+                height: 2px;
+                background: mat-color($default-mode, primary);
+            }
+        }
+    }
+}

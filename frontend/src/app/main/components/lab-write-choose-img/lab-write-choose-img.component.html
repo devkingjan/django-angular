@@ -1,0 +1,13 @@
+<div class="box">
+    <div class="text-center pb-8">
+        <span class="title">Choose Image Path !</span>
+    </div>
+    <mat-radio-group aria-label="Select an option"
+                     class="example-radio-group"
+                     [(ngModel)]="uploadType"
+                     (change)="setUploadPath($event)"
+    >
+        <mat-radio-button  value="pc">Choose from Computer.</mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="file">Choose from File Manager</mat-radio-button>
+    </mat-radio-group>
+</div>

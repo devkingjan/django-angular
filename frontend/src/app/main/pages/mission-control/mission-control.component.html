@@ -1,0 +1,47 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-icon s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    web_asset
+                </mat-icon>
+                <span class="logo-text" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Mission Control
+                </span>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+        <div class="content content-bg pt-20">
+            <div fxFlex="100" fxLayout.gt-md="row wrap">
+                <div fxFlex="100" fxFlex.gt-md="33" class="min-height p-20">
+                    <app-mission-task></app-mission-task>
+                    <div class="mission-divider"></div>
+                    <app-mission-experiment></app-mission-experiment>
+                    <div class="mission-divider"></div>
+                    <app-mission-experiment-review></app-mission-experiment-review>
+                </div>
+                <div fxFlex="100" fxFlex.gt-md="33" class="min-height p-20">
+                    <app-mission-calendar></app-mission-calendar>
+                    <div class="mission-divider"></div>
+                    <app-mission-inventory></app-mission-inventory>
+                    <div class="mission-divider"></div>
+                    <app-mission-scanned-documents></app-mission-scanned-documents>
+                </div>
+                <div fxFlex="100" fxFlex.gt-md="33" class="min-height p-20">
+                    <app-mission-cell-culture></app-mission-cell-culture>
+                    <div class="mission-divider"></div>
+                    <app-mission-document></app-mission-document>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+@import "src/@fuse/scss/fuse";
+
+#new-project-button {
+    position: fixed;
+    top: 170px;
+    right: 12px;
+    padding: 0;
+    z-index: 99;
+
+    @include media-breakpoint('xs') {
+        position: sticky;
+        top: calc(100vh - 120px);
+        bottom: auto;
+    }
+}

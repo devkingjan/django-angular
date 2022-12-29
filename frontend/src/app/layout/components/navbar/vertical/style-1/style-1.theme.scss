@@ -1,0 +1,21 @@
+@mixin navbar-vertical-style-1-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    $is-default: map-get($theme, is-default);
+    navbar-vertical-style-1 {
+        .role-color {
+            @if ($is-dark or $is-blind) {
+                color: mat-color($fuse-navy, 400) !important;
+            } @else {
+                color: white;
+            }
+        }
+        .username {
+            @if ($is-dark or $is-blind) {
+                color: mat-color($fuse-navy, 400) !important;
+            } @else {
+                color: white;
+            }
+        }
+    }
+}

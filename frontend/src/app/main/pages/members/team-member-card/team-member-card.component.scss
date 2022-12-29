@@ -1,0 +1,52 @@
+app-team-member-card {
+    .member {
+        border-radius: 10px;
+        background: white;
+        height: 120px;
+        &-header {
+            height: 40px;
+            font-family: Roboto;
+            font-size: 19px;
+            font-weight: bold;
+            .card-title {
+                width: 60%;
+                overflow: hidden;
+                white-space: nowrap;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+            }
+        }
+        &-content {
+            padding-left: 5px;
+            font-size: 12px;
+            color: grey;
+            img {
+                width: 83px;
+                height: 83px;
+                transform: translateY(-25px);
+            }
+            mat-chip {
+                margin-top: 3px;
+                margin-left: 13px;
+                padding: 0px 2px;
+                border-radius: 5px;
+                width: fit-content;
+                font-size: 12px;
+                text-align: center;
+                transform: translateY(-25px);
+            }
+        }
+    }
+    .member-menu {
+
+    }
+    .pending {
+        color: white;
+    }
+    .invited {
+        color: white;
+    }
+    .accepted {
+        color: white;
+    }
+}

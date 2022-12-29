@@ -1,0 +1,27 @@
+<div
+    [class]="expanded ? 'expanded mission-item-header cursor-pointer' : 'mission-item-header cursor-pointer'"
+    fxLayout="row"
+    (click)="clickExpand()"
+    fxLayoutAlign="space-between center">
+    <div>File Version History</div>
+    <button *ngIf="!expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <mat-icon color="warn" class="s-30">keyboard_arrow_down</mat-icon>
+    </button>
+    <button *ngIf="expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <mat-icon color="warn" class="s-30">keyboard_arrow_up</mat-icon>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel >
+        <div class="lab-doc-content">
+            <div *ngFor="let item of data"
+                 [class]="selectedExperimentVersion && selectedExperimentVersion.id === item.id
+                                 ? 'p-20 exp-item exp-item-active'
+                                 : 'p-20 exp-item'"
+                 (click)="onSelectExperimentVersion(item.id)">
+                <p class="exp-version-text">{{item.created_at | date: "dd/MM/yy"}} - {{item.description}}</p>
+                <button mat-button (click)="onRestoreExpVersion(item.id)">Restore</button>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

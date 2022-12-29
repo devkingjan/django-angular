@@ -1,0 +1,37 @@
+<div class="full-width" fxFlex.gt-md="800px">
+    <h2 class="custom-modal-header" mat-dialog-title>Edit permissions for {{member.first_name}}</h2>
+    <div fxLayout="column" fxLayoutAlign="space-evenly stretch" fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-evenly start">
+        <div class="custom-column p-20" fxFlex="100" fxFlex.gt-md="50" fxLayout="column" fxLayoutAlign="space-evenly stretch">
+            <div  *ngFor="let perm of permissionList">
+                <div class="p-4" fxFlex="100" fxFlex="row" fxFlexAlign="space-between center">
+                    <div class="permission-title" fxFlex="1 0 auto">{{perm.title}}:</div>
+                    <mat-slide-toggle fxFlexAlign="0 1 auth" [checked]="permissions.indexOf(perm.id)!==-1"
+                                      (change)="onChangePermission($event, perm.id)" [disabled]="submitted">
+                    </mat-slide-toggle>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+
+        </div>
+        <div class="p-20" fxFlex="100" fxFlex.gt-md="50" fxLayoutAlign.gt-md="start stretch"
+             fxLayout="column" fxLayoutAlign="start stretch">
+            <div class="custom-sub-title">
+                Who can view {{member.first_name}}'s Lab Notebook?
+            </div>
+            <div class="custom-column" fxFlex="100" fxFlex.gt-md="50" fxLayout="column" fxLayoutAlign="start stretch">
+                <div *ngFor="let mem of members">
+                    <mat-divider></mat-divider>
+                    <div class="p-4" fxFlex="100" fxFlex="row" fxFlexAlign="space-between center">
+                        <div class="permission-title" fxFlex="1 0 auto">{{mem.first_name}} {{mem.last_name}}:</div>
+                        <mat-slide-toggle [checked]="labAccessMembers.indexOf(mem.id)!==-1" fxFlexAlign="0 1 auth"
+                                          (change)="onChangeAccessMember($event, mem.id)"></mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button mat-raised-button class="mr-20" color="primary" (click)="save()">Save</button>
+                <button mat-raised-button  color="warn" (click)="close()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

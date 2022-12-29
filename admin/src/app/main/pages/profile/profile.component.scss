@@ -1,0 +1,64 @@
+.profile{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    &-info {
+        background: red;
+    }
+    &-storage {
+        background: blue;
+    }
+}
+
+.title {
+  margin-bottom: 25px;
+  width: 97px;
+  height: 37px;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #0b2b3a;
+}
+.sub-title {
+  padding: 0px 10px;
+  width: fit-content;
+  transform: translateY(10px);
+  height: 22px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f07261;
+  background: #f5f5f5;
+}
+.border {
+    width: 100%;
+    height: 1px;
+    border: none;
+    border-top: 1px #f07261 solid;
+}
+.p-bottom{
+
+}
+.avatar-panel {
+    padding-top: 57px;
+    text-align: center;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+}
+.change-pwd {
+    height: 60px;
+    float: top;
+}

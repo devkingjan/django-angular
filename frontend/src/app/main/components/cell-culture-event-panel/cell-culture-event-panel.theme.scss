@@ -1,0 +1,21 @@
+@mixin app-cell-culture-event-panel-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    $is-default: map-get($theme, is-default);
+    app-cell-culture-event-panel{
+        .cce-panel-left-arrow {
+            @if ($is-dark or $is-blind) {
+                background: mat-color($dark-mode, warn);
+            } @else {
+                background: mat-color($default-mode, warn);
+            }
+        }
+        .cce-panel-right {
+            @if ($is-dark) {
+                border: 1px solid white;
+            } @else {
+                border: 1px solid mat-color($default-mode, right-grey);
+            }
+        }
+    }
+}

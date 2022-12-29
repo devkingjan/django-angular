@@ -1,0 +1,106 @@
+@mixin app-write-notebook-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    app-write-notebook {
+        .custom-header {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: rgba(255, 255, 255, 0.54);
+                .logo-text {
+                    width: 186px;
+                    height: 37px;
+                    font-family: Roboto;
+                    font-size: 30px;
+                    font-weight: bold;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.23;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: rgba(255, 255, 255, 0.54);
+                }
+            } @else {
+                //background-color: mat-color($default-mode, light-bg);
+                color: mat-color($default-mode, primary);
+                .logo-text {
+                    width: 186px;
+                    height: 37px;
+                    font-family: Roboto;
+                    font-size: 30px;
+                    font-weight: bold;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.23;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #0b2b3a;
+                }
+            }
+        }
+
+        .search-box {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: #ffffff;
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+
+        .editor-mode {
+            @if ($is-dark) {
+                height: 414px !important;
+                background-color: mat-color($dark-mode, light-bg);
+                color: #ffffff;
+            } @else {
+                height: 414px !important;
+                color: mat-color($default-mode, primary);
+            }
+        }
+
+        .content-bg {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                //background: mat-color($default-mode, content-bg);
+            }
+        }
+
+        .lab-input {
+            @if ($is-dark) {
+                width: 100%;
+                padding: 18px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+                background-color: #424242;
+                color: #ffffff;
+                font-weight: bold;
+            } @else {
+                width: 100%;
+                padding: 18px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+                font-weight: bold;
+                background: white;
+            }
+        }
+
+        .lab-input-sub {
+            @if ($is-dark) {
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+                background-color: #424242;
+                color: #ffffff;
+            } @else {
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+                background: white;
+            }
+        }
+    }
+}

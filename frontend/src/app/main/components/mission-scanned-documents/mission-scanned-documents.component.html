@@ -1,0 +1,28 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>IGOR App Scanned Documents</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel fxLayout="column" *ngIf="experiments.length" class="mission-exp-panel">
+        <div class="experiment-row" fxLayout="row" fxLayoutAlign="start center" *ngFor="let experiment of experiments">
+            <div fxFlex="80" class="mission-database-title">
+                Document 1
+            </div>
+            <img fxFlex="10" style="height: 17px; margin-right: 10px; cursor: pointer" src="assets/images/mission/Group-glass.svg"/>
+            <img fxFlex="10" style="height: 20px; cursor: pointer" src="assets/images/mission/Group 1413.svg"/>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!experiments.length" class="mission-panel">
+        <div class="p-40">You have no recent experiments.</div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,13 @@
+@mixin app-member-permission-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-member-permission {
+        .custom-sub-title {
+            @if ($is-dark) {
+                color: white!important;
+            } @else {
+                color: mat-color($default-mode, primary)!important;
+            }
+        }
+    }
+}

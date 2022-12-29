@@ -1,0 +1,61 @@
+<div class="task-list">
+    <div fxLayout="column" class="task-list-header">
+        <div fxLayout="row">
+            <div class="list-cross-line mr-12" fxFlex="1 0 auto"></div>
+            <div class="task-list-header-title">Task Lists</div>
+            <div class="list-cross-line ml-12" fxFlex="1 0 auto"></div>
+        </div>
+        <div class="p-24">
+            <mat-select [(ngModel)]="selectedTaskList" (ngModelChange)="selectTaskList()" class="task-list-selection">
+                <mat-option *ngFor="let taskList of taskListArray" [value]="taskList.id">{{taskList.name}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div *ngIf="!selectedTaskList" fxLayout="row" fxLayoutAlign="start center" class="create-task-list" (click)="createNewTaskList()">
+        <div fxFlex="1 0 auto">Add New Task List</div>
+        <mat-icon fxFlex="0 1 auto">add</mat-icon>
+    </div>
+    <div *ngIf="selectedTaskList" fxLayout="row" fxLayoutAlign="start center" class="create-task-list-group">
+        <div fxLayout="row" fxFlex="50" fxLayoutAlign="start center" class="create-task-list" (click)="createNewTaskList()">
+            <div fxFlex="1 0 auto">Add New Task List</div>
+            <mat-icon>add</mat-icon>
+        </div>
+        <div class="task-divider"></div>
+        <div fxLayout="row" fxFlex="50" fxLayoutAlign="start center" class="create-task-list" (click)="deleteTaskList()">
+            <div fxFlex="1 0 auto">Delete Task List</div>
+            <mat-icon fxFlex="0 1 auto">close</mat-icon>
+        </div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start" class="task-panel">
+        <div class="sub-title-custom">No Date Assigned</div>
+        <div *ngIf="noDueDateTasks.length" style="width: 100%">
+            <div *ngFor="let task of noDueDateTasks" class="task-panel-item">
+                <app-task-item [taskType]="'noDueDate'" [task]="task" (refresh)="refresh()" [position]="'task-list'"></app-task-item>
+            </div>
+        </div>
+        <div class="pl-52" *ngIf="!noDueDateTasks.length">
+            You have no tasks
+        </div>
+
+        <div class="sub-title-custom">Time - specific tasks</div>
+        <div *ngIf="dueDateTasks.length" style="width: 100%">
+            <div *ngFor="let task of dueDateTasks" class="task-panel-item">
+                <app-task-item [taskType]="'dueDate'" [task]="task" (refresh)="refresh()" [position]="'task-list'"></app-task-item>
+            </div>
+        </div>
+        <div class="pl-52" *ngIf="!dueDateTasks.length">
+            You have no tasks
+        </div>
+
+        <div class="sub-title-custom">Overdue Tasks</div>
+        <div *ngIf="overDueTasks.length" style="width: 100%">
+            <div *ngFor="let task of overDueTasks" class="task-array-item">
+                <app-task-item [taskType]="'dueDate'" [task]="task" (refresh)="refresh()" [position]="'task-list'"></app-task-item>
+            </div>
+        </div>
+        <div class="pl-52" *ngIf="!overDueTasks.length">
+            You have no overdue tasks
+        </div>
+
+    </div>
+</div>

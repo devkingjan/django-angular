@@ -1,0 +1,49 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>Experiments to Review</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel fxLayout="column" *ngIf="experiments.length" class="mission-exp-panel">
+        <div class="mission-header" fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="45">Experiment ID</div>
+            <div fxFlex="55">Assigned by/on</div>
+        </div>
+        <div class="experiment-row" fxLayout="row" fxLayoutAlign="start center" *ngFor="let experiment of experiments">
+            <div fxFlex="45" class="mission-database-title">
+                XX-YY-2020-002
+            </div>
+            <div fxFlex="45">
+                MM/DD/YYYY
+            </div>
+            <img src="assets/images/mission/Pop up button.svg" (click)="$event.stopPropagation()"
+                             [matMenuTriggerFor]="menu" fxFlex="0 1 auto"/>
+            <mat-menu #menu="matMenu">
+                <button (click)="viewAndApprove()" mat-menu-item>
+                    <img style="padding: 8px" style="margin-top: 14px; margin-right: 6px; height: 18px;" src="assets/images/mission/icon-view-and-approve.svg"/>
+                    <span>View And Approve</span>
+                </button>
+                <button (click)="openExpDataFolder()" mat-menu-item>
+                    <img style="padding: 8px" src="assets/images/mission/group-1413.svg"/>
+                    <span>Open Exp. Data Folder</span>
+                </button>
+                <button (click)="reject()" mat-menu-item>
+                    <img style="padding: 8px" src="assets/images/mission/icon-reject.svg"/>
+                    <span>Reject</span>
+                </button>
+            </mat-menu>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!experiments.length" class="mission-panel">
+        <div class="p-40">You have no recent experiments.</div>
+    </mat-expansion-panel>
+</mat-accordion>

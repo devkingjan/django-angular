@@ -1,0 +1,24 @@
+<div class="cch-view">
+    <div class="cch-view-bg"></div>
+    <div class="cch-view-line" *ngIf="cellCultureEventByDate.length"></div>
+    <div class="cch-view-content">
+        <div *ngFor="let evenOfDay of cellCultureEventByDate">
+            <div class="cch-view-day">
+                {{evenOfDay.time | date: 'd MMM, y'}}
+            </div>
+            <div class="cch-view-row" fxLayout="row" fxLayoutAlign="start start">
+                <div class="cch-view-row-mark">
+                    <img src="assets/images/cell-culture/icon cell list.svg"/>
+                </div>
+                <div class="cch-view-row-panel">
+                    <div *ngFor="let line of evenOfDay.cell_lines">{{line.name}} ({{line.uid}})</div>
+                </div>
+            </div>
+            <app-cell-culture-history-item
+                [cellCultureHistory]="history"
+                (delete)="deleteHistory($event)"
+                *ngFor="let history of evenOfDay.events">
+            </app-cell-culture-history-item>
+        </div>
+    </div>
+</div>

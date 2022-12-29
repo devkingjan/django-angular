@@ -1,0 +1,26 @@
+<div class="p-20" fxLayout="column" fxLayoutAlign="start start" fxFlex.gt-sm="600px">
+    <h2 class="delete-title"  mat-dialog-title>
+        {{title ? title : "Are you sure you want to delete " + name + " ?"}}
+    </h2>
+    <div>
+        <div class="delete-description">
+            {{description}}
+            Please type <span class="delete-name">"{{name}}"</span> in the text box and click delete to proceed.
+        </div>
+        <form name="loginForm" [formGroup]="confirmForm" fxLayout="column" (ngSubmit)="submit(true)" class="p-20" novalidate>
+            <mat-form-field appearance="outline" fxFlex="100">
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <div fxLayout="row">
+                <button type="button" style="height: 40px" fxFlexOffset="20" fxFlex="30"
+                        mat-raised-button class="submit-button m-10" (click)="submit(false)">
+                Cancel
+                </button>
+                <button type="submit" style="height: 40px" fxFlexOffset="10" fxFlex="30" mat-raised-button
+                        color="warn" class="submit-button m-10" [disabled]="confirmForm.invalid">
+                Delete
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

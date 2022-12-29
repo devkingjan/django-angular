@@ -1,0 +1,64 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>Tasks</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel *ngIf="tasks.length" class="mission-panel">
+        <div *ngFor="let task of tasks">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <span class="mission-dot"></span>
+                    <span class="mission-task-title">
+                        {{task.name}}
+                    </span>
+                    <div>
+                        <mat-checkbox fxFlex="0 1 auto" class="mr-20" (click)="$event.stopPropagation()"
+                                      [(ngModel)]="task.completed"
+                                      (ngModelChange)="checkTask(task);"></mat-checkbox>
+                    </div>
+                </mat-expansion-panel-header>
+                <div class="mission-item-panel">
+                    <div><label>Name: </label><span>{{task.name}}</span></div>
+                    <div><label>Task List: </label><span>{{task.task_list_name}}</span></div>
+                    <div>
+                        <label>Deadline: </label>
+                        <span *ngIf="task.due_date">{{task.due_date | date:'MMM d, y'}}</span>
+                        <span *ngIf="!task.due_date">No Due Date</span>
+                    </div>
+                    <div class="pt-20">
+                        <button mat-raised-button class="mission-edit-event" (click)="editTask(task)">Edit</button>
+                        <button class="ml-20" mat-raised-button color="defalt" (click)="deleteTask(task)" color="warn">
+                            <img src="assets/images/mission/delete-mission.svg">
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-expansion-panel>
+            <mat-divider></mat-divider>
+        </div>
+        <mat-divider></mat-divider>
+        <div (click)="addNewTask()" fxLayout="row" fxLayoutAlign="start center" class="create-task">
+            <div fxFlex="1 0 auto">Add New</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!tasks.length" class="mission-panel">
+        <div class="p-40">You have no Tasks due today.</div>
+        <div (click)="addNewTask()" fxLayout="row" fxLayoutAlign="start center" class="create-task">
+            <div fxFlex="1 0 auto">Add New</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+
+</mat-accordion>

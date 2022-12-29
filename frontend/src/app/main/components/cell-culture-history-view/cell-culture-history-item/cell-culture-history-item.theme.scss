@@ -1,0 +1,20 @@
+@mixin app-cell-culture-history-item-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-cell-culture-history-item {
+        .cch-item-panel {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                background: white;
+            }
+        }
+        .remove-history {
+             @if ($is-dark) {
+                color: mat-color($dark-mode, right-grey);
+            } @else {
+                 color: mat-color($default-mode, primary);
+            }
+        }
+    }
+}

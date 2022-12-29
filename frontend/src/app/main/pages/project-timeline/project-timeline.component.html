@@ -1,0 +1,54 @@
+<div class="page-layout carded fullwidth page-bg main-bg" id="project-timeframe">
+    <!-- CENTER -->
+    <div class="center p-timeframe">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-icon s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    group_work
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Project Timeline
+                </span>
+            </div>
+            <div class="project-selector">
+                <app-project-selector (select)="selectProject($event)"
+                                      [projects]="originProjects"></app-project-selector>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+        <div class="content content-bg content-overflow">
+            <div fxLayout="column" class="p-20" fxLayoutAlign="start stretch">
+                <div class="project-item-header" fxLayout="row">
+                    <div fxFlex="20" class="text-center">Project</div>
+                    <div class="project-item-divider" fxFlex="0 1 auto"></div>
+                    <div fxFlex="80" class="text-center">Timeframe</div>
+                </div>
+                <div class="project-item-panel" fxLayout="column" *ngFor="let project of projects">
+                    <div>{{project.name}}</div>
+                    <div>
+                        <app-task-chart [project]="project"></app-task-chart>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row" class="m-20" fxLayoutAlign="end center">
+                <button mat-raised-button color="primary" (click)="onDownloadPdf()">Export as pdf</button>
+            </div>
+        </div>
+        <div fxLayout="row" class="p-timeframe-bottom" fxLayoutAlign="space-between center">
+            <button mat-raised-button color="primary" class="mr-8" (click)="goProjectPage()">
+                Go to project overview
+            </button>
+        </div>
+    </div>
+    <!-- / CENTER -->
+
+</div>
+
+

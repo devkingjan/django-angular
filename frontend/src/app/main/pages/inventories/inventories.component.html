@@ -1,0 +1,37 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-icon s-32 mr-16 private" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    web_asset
+                </mat-icon>
+                <span class="logo-text" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Inventories
+                </span>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+        <div class="content inventory-bg pt-20">
+            <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayout.gt-sm="row"
+                 fxLayoutAlign.gt-sm="space-evenly stretch">
+                <div fxFlex="100" fxFlex.gt-sm="33" class="p-20">
+                    <app-add-new-sample-panel></app-add-new-sample-panel>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="33" class="p-20">
+                    <app-inventory-databases-panel></app-inventory-databases-panel>
+                </div>
+                <div fxFlex="100" fxFlex.gt-sm="33" class="p-20">
+                    <app-storage-location-panel></app-storage-location-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

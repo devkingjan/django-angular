@@ -1,0 +1,109 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>Current Cell Culture</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel *ngIf="cellCultureLines.length" class="mission-panel">
+        <div fxLayout="row" class="mission-panel-header" fxLayoutAlign="start start">
+            <div fxFlex="50">Cell Line Name</div>
+            <div fxFlex="10">P#</div>
+            <div fxFlex="40">Last Passage (P)/Medium Change(M)</div>
+        </div>
+        <div *ngFor="let cellCultureLine of cellCultureLines">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="mission-panel" fxLayout="row">
+                    <div fxFlex="50" class="mission-cell-title">{{cellCultureLine.name}}</div>
+                    <div fxFlex="10" class="mission-cell-title">P{{cellCultureLine.current_status.passage_number}}</div>
+                    <div fxFlex="40" class="mission-cell-title pr-12" fxLayout="row">
+                        <div fxFlex="1 0 auto">
+                            {{cellCultureLine.latest_update['date'] | date : 'MM/d/yyy'}}
+                            ({{cellCultureLine.latest_update['type']}})
+                        </div>
+                        <img src="assets/images/mission/Pop up button.svg" (click)="$event.stopPropagation()"
+                             [matMenuTriggerFor]="menu" fxFlex="0 1 auto"/>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="createEvent(cellCultureLine)" mat-menu-item>
+                                <span>Log Cell Culture Event</span>
+                            </button>
+                            <button (click)="removeCellLine(cellCultureLine)" mat-menu-item>
+                                <span>Remove Cell Line</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </mat-expansion-panel-header>
+                <div class="mission-item-panel" fxLayout="column">
+
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Started on:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.date_taken | date : 'MMM d, yyy'}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Cell line name:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.name}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Cell line origin:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.origin}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Genetic modification:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.generic_modification}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Passage number when started:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.passage_number}}</div>
+                    </div>
+
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Culture medium:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.culture_medium}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Medium additives:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.current_status.medium_additive}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Culture properties:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.culture_property}}</div>
+                    </div>
+                    <div class="mission-item-panel-item" fxLayout="row">
+                        <div class="mission-item-panel-item-label">Mycoplasma status:</div>
+                        <div class="mission-item-panel-item-value">{{cellCultureLine.current_status.mycoplasmas_state}} {{cellCultureLine.current_status.mycoplasmas_date | date : 'MMM d, yyy'}}</div>
+                    </div>
+                    <div class="pt-8">
+                        <div class="mission-item-panel-item-label">Note:</div>
+                        <app-cell-culture-event-panel
+                            [cellCultureLine]="cellCultureLine"
+                            [events]="cellCultureLine.events">
+                        </app-cell-culture-event-panel>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-expansion-panel>
+            <mat-divider></mat-divider>
+        </div>
+        <mat-divider></mat-divider>
+        <div (click)="addNewCellCultureLine()" fxLayout="row" fxLayoutAlign="start center" class="create-event">
+            <div fxFlex="1 0 auto">Add New</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!cellCultureLines.length" class="mission-panel">
+        <div class="p-40">You have no cell culture lines.</div>
+        <div (click)="addNewCellCultureLine()" fxLayout="row" fxLayoutAlign="start center" class="create-event">
+            <div fxFlex="1 0 auto">Add New</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

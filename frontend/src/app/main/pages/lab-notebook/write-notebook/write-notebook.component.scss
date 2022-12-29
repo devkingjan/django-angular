@@ -1,0 +1,243 @@
+@import "src/@fuse/scss/fuse";
+
+.inventory-control {
+    text-align: center;
+    padding: 35px 35px 0px 35px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    background: mat-color($igor, 500);
+    font-family: Roboto;
+    font-size: 25px;
+
+    img {
+        width: 120px;
+    }
+}
+
+.inventory-bg {
+    height: 100%;
+    width: 100%;
+}
+
+.expansion-custom {
+    .mat-expansion-panel-body {
+        padding: 0 !important;
+    }
+}
+
+.mt-box {
+    margin-top: 8px;
+}
+
+.ml-box {
+    padding-left: 8px;
+}
+
+// header icon
+.header-icon {
+    width: 25px;
+    height: 25px;
+}
+
+// start card
+.lab-tab-content {
+    text-align: center;
+    padding: 15px 10px;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    color: #f0f0f0;
+    background: #0b2b3a;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+}
+
+.search-box {
+    height: 250px;
+    overflow-y: auto;
+}
+
+.search-input {
+    position: relative;
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 9px;
+        width: 20px;
+    }
+}
+
+.search-input-box {
+    width: 100%;
+    padding: 8px 0 8px 38px;
+    background-color: #F0F0F0;
+    border: 1px solid #D2D3D8;
+}
+
+.search-content {
+    background-color: white;
+    border: 1px solid #D2D3D8;
+}
+
+.exp-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        background: #f0f0f0;
+    }
+}
+
+.exp-version-text {
+    align-items: center;
+}
+
+.exp-item-active {
+    background: #f0f0f0;
+}
+
+.card-item {
+    border-radius: 5px;
+    width: 100%;
+    height: 45px;
+    background-color: #A9A9A9;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &:hover, &:active {
+        background-color: #0B2B3A;
+        cursor: pointer;
+    }
+}
+
+.card-item-select {
+    background-color: #0B2B3A;
+}
+
+.logo-img {
+    width: 160px;
+    height: 86px;
+}
+
+.save-button {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    font-size: 25px;
+}
+
+.save-button-icon {
+    font-size: 27px;
+    width: 30px;
+    height: 30px;
+}
+
+.editor-mode {
+    height: 514px !important;
+}
+
+// add item part
+.add-item-box {
+    display: inline-block;
+    width: 100%;
+    position: fixed;
+    bottom: 100px;
+
+    @include media-breakpoint('xs') {
+        bottom: 50px;
+    }
+}
+
+.add-item-row {
+    width: 100%;
+    border: 1px solid #0B2B3A;
+
+    @include media-breakpoint('xs') {
+        margin-top: -30px;
+    }
+}
+
+.add-item-btn {
+    position: absolute;
+    left: 34%;
+    width: 40px;
+    height: 40px;
+    margin-top: -25px;
+    border-radius: 50%;
+    background-color: #0B2B3A;
+    -webkit-box-align: center;
+    align-items: center;
+    color: white;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include media-breakpoint('xs') {
+        left: 45%;
+    }
+
+    .item-box {
+        align-items: center;
+        margin-top: 20px;
+
+        .item-card {
+            margin: -30% 10px 0px 10px;
+            width: 110px;
+            height: 108px;
+            background-color: #0B2B3A!important;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 6px #020039;
+            cursor: pointer;
+
+            .item-icon {
+                height: 50px;
+                width: 38px;
+            }
+
+            .item-text {
+                font-size: 13px;
+                margin-top: 6px;
+            }
+
+            .item-text-check {
+                font-size: 13px;
+                margin-top: 6px;
+                color: #F07261;
+            }
+
+            .item-text-check-dark {
+                font-size: 13px;
+                margin-top: 6px;
+                color: #FFC20A;
+            }
+        }
+    }
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+eco-fab-speed-dial.eco-up .eco-fab-speed-dial-container eco-fab-speed-dial-actions {
+    flex-direction: row !important;
+    margin-left: -305px;
+    margin-top: -60px;
+
+    @include media-breakpoint('xs') {
+        flex-direction: column-reverse !important;
+        margin-left: 0;
+        margin-top: 0;
+        left: 27px;
+    }
+}

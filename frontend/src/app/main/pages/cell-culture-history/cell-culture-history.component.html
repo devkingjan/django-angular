@@ -1,0 +1,43 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center ">
+        <!-- HEADER -->
+        <div class="header custom-header img-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-icon class="logo-icon s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    laptop_mac
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Cell Culture History
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+            <div class="opacity-bg"></div>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="p-20 content-bg cch-content" fxLayout="row" fxLayoutAlign="start start">
+            <div fxFlex="100" fxFlex.gt-sm="25">
+                <app-cell-culture-history-navigate-panel
+                    [cellCultureLines]="cellCultureLines"
+                    (selected)="onSelectCellLine($event)"
+                    (searchEvent)="search($event)"
+                ></app-cell-culture-history-navigate-panel>
+            </div>
+            <div fxFlex="100" fxFlex.gt-sm="75">
+                <app-cell-culture-history-view
+                    (delete)="deleteHistory($event)"
+                    [cellCultureEventByDate]="cellCultureEventByDate"
+                ></app-cell-culture-history-view>
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.6" height="27.6" viewBox="0 0 27.6 27.6">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:#f0f0f0}.prefix__cls-3,.prefix__cls-5{fill:none;stroke:#f0f0f0;stroke-width:1.6px}.prefix__cls-5{stroke-miterlimit:10}.prefix__cls-3{stroke-linejoin:round}.prefix__cls-5{stroke-linecap:round}
+        </style>
+    </defs>
+    <g id="prefix__Group_2794" data-name="Group 2794" transform="translate(-817.583 -139.732)">
+        <g id="prefix__Group_1374" data-name="Group 1374" transform="translate(823.409 144.208)">
+            <path id="prefix__Path_6577" d="M825.318 147.652l-.75-1.3.75-1.3h1.5l.75 1.3-.75 1.3z" class="prefix__cls-1" data-name="Path 6577" transform="translate(-824.569 -145.056)"/>
+            <path id="prefix__Path_6578" d="M828.947 149.75l-.751-1.3.751-1.3h1.5l.75 1.3-.75 1.3z" class="prefix__cls-1" data-name="Path 6578" transform="translate(-825.249 -145.45)"/>
+            <path id="prefix__Path_6579" d="M825.318 151.848l-.75-1.3.75-1.3h1.5l.75 1.3-.75 1.3z" class="prefix__cls-1" data-name="Path 6579" transform="translate(-824.569 -145.843)"/>
+        </g>
+        <g id="prefix__Group_1376" data-name="Group 1376" transform="translate(818.383 140.532)">
+            <path id="prefix__Path_6580" fill="none" stroke="#f0f0f0" stroke-miterlimit="10" stroke-width="1.6px" d="M836.05 170.865a2.167 2.167 0 0 1-4.334 0" data-name="Path 6580" transform="translate(-820.883 -147.032)"/>
+            <g id="prefix__Group_1375" data-name="Group 1375" transform="translate(0 6.231)">
+                <path id="prefix__Path_6581" d="M847.383 149.2v17.6h-13" class="prefix__cls-3" data-name="Path 6581" transform="translate(-821.383 -149.2)"/>
+                <path id="prefix__Path_6582" d="M831.383 166.8h-13v-17.6" class="prefix__cls-3" data-name="Path 6582" transform="translate(-818.383 -149.2)"/>
+            </g>
+            <path id="prefix__Path_6583" d="M842.455 144.1h4.928v19.03h-13" class="prefix__cls-3" data-name="Path 6583" transform="translate(-821.383 -142.014)"/>
+            <path id="prefix__Path_6584" d="M831.383 163.133h-13V144.1h3.267" class="prefix__cls-3" data-name="Path 6584" transform="translate(-818.383 -142.014)"/>
+            <path id="prefix__Line_50" d="M0 2.466L0 0" class="prefix__cls-3" data-name="Line 50" transform="translate(13 21.367)"/>
+            <path id="prefix__Path_6585" d="M837.85 141.532a3.467 3.467 0 0 0-3.467 3.468v16.683h.208a3.456 3.456 0 0 1 3.259-2.325h6.933v-13.65h-4.656v-4.176z" class="prefix__cls-3" data-name="Path 6585" transform="translate(-821.383 -141.532)"/>
+            <path id="prefix__Path_6586" d="M828.516 141.532h-6.933v17.825h6.933a3.456 3.456 0 0 1 3.259 2.325h.208V145a3.467 3.467 0 0 0-3.467-3.468z" class="prefix__cls-3" data-name="Path 6586" transform="translate(-818.983 -141.532)"/>
+            <path id="prefix__Path_6587" fill="none" stroke="#f0f0f0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6px" d="M841.453 141.532v4.177h4.656z" data-name="Path 6587" transform="translate(-822.709 -141.532)"/>
+            <path id="prefix__Line_51" d="M0 0L5.679 0" class="prefix__cls-5" data-name="Line 51" transform="translate(15.36 11.89)"/>
+            <path id="prefix__Line_52" d="M0 0L5.679 0" class="prefix__cls-5" data-name="Line 52" transform="translate(15.36 14.949)"/>
+            <path id="prefix__Line_53" d="M0 0L5.679 0" class="prefix__cls-5" data-name="Line 53" transform="translate(4.96 11.89)"/>
+            <path id="prefix__Line_54" d="M0 0L5.679 0" class="prefix__cls-5" data-name="Line 54" transform="translate(4.96 14.949)"/>
+        </g>
+    </g>
+</svg>

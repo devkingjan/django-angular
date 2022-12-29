@@ -1,0 +1,66 @@
+.p-task {
+    padding: 5px 0;
+    height: max-content;
+
+    &-detail {
+        padding: 8px;
+        font-size: 14px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        &-description {
+            align-self: stretch;
+        }
+
+        img {
+            float: right;
+            cursor: pointer;
+            margin: 0 4px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &-status {
+        text-align: center;
+        align-self: stretch;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .done {
+        background: #70ad47;
+    }
+
+    .in_progress {
+        background: #ffc000;
+    }
+
+    .in_planing {
+        background: #b3b3b3;
+
+    }
+
+    .on_hold {
+        background: #c00000;
+    }
+
+    &-person {
+        align-self: stretch;
+        text-align: center;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    &-timeframe {
+        align-self: stretch;
+        text-align: center;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}

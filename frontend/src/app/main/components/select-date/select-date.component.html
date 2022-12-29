@@ -1,0 +1,16 @@
+<div class="p-24">
+    <div class="select-date-header">
+        Date
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}" [matDatepicker]="dp3" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-raised-button color="primary" (click)="selected()">Select</button>
+        <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+@mixin app-view-notebook-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    app-view-notebook {
+        .custom-header {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: rgba(255, 255, 255, 0.54);
+
+                .logo-text {
+                    font-family: Roboto;
+                    font-size: 30px;
+                    font-weight: bold;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.23;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: rgba(255, 255, 255, 0.54);
+                }
+            } @else {
+                //background-color: mat-color($default-mode, light-bg);
+                color: mat-color($default-mode, primary);
+                .logo-text {
+                    font-family: Roboto;
+                    font-size: 30px;
+                    font-weight: bold;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.23;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #0b2b3a;
+                }
+            }
+        }
+
+        .search-box {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: #ffffff;
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+
+        .logo-box {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+            }
+        }
+
+        .view-mode {
+            @if ($is-dark) {
+                border: 1px solid;
+                background-color: mat-color($dark-mode, light-bg);
+                color: #ffffff;
+            } @else {
+                color: mat-color($default-mode, primary);
+                background-color: #ffffff;
+            }
+        }
+
+        .content-bg {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                //background: mat-color($default-mode, content-bg);
+            }
+        }
+
+        .lab-view {
+            @if ($is-dark) {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: #424242;
+                height: 50px;
+                align-items: center;
+                display: flex;
+                font-size: 17px;
+                color: #ffffff;
+                font-family: Roboto;
+                font-weight: bold;
+            } @else {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: white;
+                height: 50px;
+                align-items: center;
+                display: flex;
+                font-size: 17px;
+                color: #0B2B3A;
+                font-family: Roboto;
+                font-weight: bold;
+            }
+        }
+
+        .lab-view-sub {
+            @if ($is-dark) {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: #424242;
+                height: 100%;
+                align-items: center;
+                display: flex;
+
+                .header-title {
+                    font-size: 17px;
+                    color: #ffffff !important;
+                    font-family: Roboto;
+                    font-weight: bold;
+                    padding-right: 10px;
+                }
+
+                .context {
+                    font-size: 16px;
+                    color: #ffffff !important;
+                    font-family: Roboto;
+                    font-weight: 0;
+                }
+
+                .context2 {
+                    font-size: 16px;
+                    color:#ffffff !important;
+                    font-family: Roboto;
+                }
+            } @else {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: white;
+                height: 100%;
+                align-items: center;
+                display: flex;
+
+                .header-title {
+                    font-size: 17px;
+                    color: #0B2B3A;
+                    font-family: Roboto;
+                    font-weight: bold;
+                    padding-right: 10px;
+                }
+
+                .context {
+                    font-size: 16px;
+                    color: #929292;
+                    font-family: Roboto;
+                    font-weight: 0;
+                }
+
+                .context2 {
+                    font-size: 16px;
+                    color:#0B2B3A;
+                    font-family: Roboto;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="43.904" height="31" viewBox="0 0 43.904 31">
+  <g id="Group_2798" data-name="Group 2798" transform="translate(-1872.462 -433.525)">
+    <g id="icon_assign_for_review" data-name="icon assign for review" transform="translate(1872.462 439.48)">
+      <g id="Group_1456" data-name="Group 1456">
+        <path id="Path_6714" data-name="Path 6714" d="M1897.634,458.451H1879.3a8.289,8.289,0,0,1,3.224-8.945,9.272,9.272,0,0,1,10.091-.911C1896.695,450.626,1898.014,454.045,1897.634,458.451Z" transform="translate(-1869.407 -433.406)" fill="#f0f0f0"/>
+        <path id="Path_6715" data-name="Path 6715" d="M1882.1,447.237a4.015,4.015,0,0,1-8.01.175v-.087a4.015,4.015,0,0,1,8.01-.175Z" transform="translate(-1871.703 -435.289)" fill="#f0f0f0"/>
+        <path id="Path_6716" data-name="Path 6716" d="M1880.268,450.557c-.382,2.269-.735,4.368-1.111,6.6h-6.465C1871.336,453.6,1876.25,448.922,1880.268,450.557Z" transform="translate(-1872.463 -432.14)" fill="#f0f0f0"/>
+        <path id="Path_6717" data-name="Path 6717" d="M1901.724,457.488h-7.632c-.439-2.549-.856-4.966-1.283-7.442C1897.186,448.21,1901.8,451.763,1901.724,457.488Z" transform="translate(-1862.948 -432.449)" fill="#f0f0f0"/>
+        <path id="Path_6718" data-name="Path 6718" d="M1889.477,438.306a6.283,6.283,0,0,0-2.134-.405,5.844,5.844,0,0,0-6.064,5.589v.1a5.761,5.761,0,0,0,6.019,5.462h.01a6.29,6.29,0,0,0,3.351-.954A10.143,10.143,0,0,1,1889.477,438.306Z" transform="translate(-1868.34 -437.901)" fill="#f0f0f0"/>
+        <path id="Path_6719" data-name="Path 6719" d="M1894.782,443.318a4.152,4.152,0,0,0-2.515.828,6.206,6.206,0,0,0,5.929,1.1A4.028,4.028,0,0,0,1894.782,443.318Z" transform="translate(-1863.201 -435.368)" fill="#f0f0f0"/>
+      </g>
+    </g>
+    <g id="Group_2798-2" data-name="Group 2798" transform="translate(1895.859 434.525)">
+      <line id="Line_71" data-name="Line 71" x1="6.052" y1="11.565" transform="translate(13.106 16.888)" fill="none" stroke="#f0f0f0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <circle id="Ellipse_67" data-name="Ellipse 67" cx="8.954" cy="8.954" r="8.954" fill="none" stroke="#f0f0f0" stroke-miterlimit="10" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

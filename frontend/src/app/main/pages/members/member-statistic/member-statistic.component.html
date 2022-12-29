@@ -1,0 +1,135 @@
+<div class="full-width p-20" fxFlex.gt-md="800px">
+    <div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center stretch" >
+        <div  fxFlex="100" fxLayout="row" fxLayoutAlign="end center"  fxLayout.lt-md="column" fxLayoutAlign.lt-md="space-around center">
+            <div fxFlex="40" fxFlex.lt-md="100" class="text-center">
+                <span class="sub-title">Monthly Recap Report - Team Member 1</span>
+            </div>
+            <div fxFlex="30" fxFlex.lt-md="100" class="text-center">
+                <span class="custom-label">Storage used:</span> <span class="sub-title">150/300 GB</span>
+            </div>
+            <div fxFlex="30" fxFlex.lt-md="100" class="text-center">
+                <button mat-raised-button>Add more storage space</button>
+            </div>
+        </div>
+        <div class="mt-12" fxFlex="100" fxLayout="row" fxLayoutAlign="evenly center"  fxLayout.lt-md="column" fxLayoutAlign.lt-md="space-around center">
+            <div fxFlex="70" fxFlex.lt-md="100">
+                <div class="chart">
+                    <div class="text-center">
+                        <span class="custom-label mr-4">Lab Activity</span>
+                        <span class="sub-title">1 Jan, 2019 - 17 Dec, 2020</span>
+                    </div>
+                    <div>
+                        <div class="position-relative h-300 p-16">
+                            <canvas baseChart
+                                [datasets]="widgets.widget5.datasets[widget5SelectedDay]"
+                                [labels]="widgets.widget5.labels"
+                                [colors]="widgets.widget5.colors"
+                                [options]="widgets.widget5.options"
+                                [chartType]="widgets.widget5.chartType">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fxFlex="30" fxFlex.lt-md="100">
+                <div class="chart">
+                    <div class="text-center">
+                        <span class="sub-title">Overview Summary</span>
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="space-around stretch" class="position-relative h-300 p-16">
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayout="column" fxLayoutAlign="space-evenly start">
+                                <div class="custom-label">New Experiments created</div>
+                                <div class="bar-chart"></div>
+                            </div>
+                            <div class="sub-title">23</div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayout="column" fxLayoutAlign="space-evenly start">
+                                <div class="custom-label">Files uploaded</div>
+                                <div class="bar-chart"></div>
+                            </div>
+                            <div class="sub-title">23</div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayout="column" fxLayoutAlign="space-evenly start">
+                                <div class="custom-label">Notebook entries completed</div>
+                                <div class="bar-chart"></div>
+                            </div>
+                            <div class="sub-title">23</div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayout="column" fxLayoutAlign="space-evenly start">
+                                <div class="custom-label">Experiments reviewed</div>
+                                <div class="bar-chart"></div>
+                            </div>
+                            <div class="sub-title">23</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="1 0 auto"  fxLayout="row" fxLayoutAlign="evenly center"  fxLayout.lt-md="column" fxLayoutAlign.lt-md="space-around center">
+            <div class="p-20" fxLayout="column" fxLayoutAlign="start center" fxFlex="25" fxFlex.lt-md="100">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <mat-icon class="s-18 pr-4 green-fg">
+                        arrow_drop_up
+                    </mat-icon>
+                    <div class="h5 green-fg">
+                        17%
+                    </div>
+                </div>
+                <div class="custom-label text-center">
+                    New Experiments<br>
+                    created
+                </div>
+            </div>
+            <div class="px-16" fxLayout="column" fxLayoutAlign="start center" fxFlex="25" fxFlex.lt-md="100">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <mat-icon class="s-18 pr-4 green-fg">
+                        arrow_drop_up
+                    </mat-icon>
+                    <div class="h5 green-fg">
+                        30%
+                    </div>
+                </div>
+                <div class="custom-label text-center">
+                    Files uploaded<br>
+                </div>
+            </div>
+            <div class="px-16" fxLayout="column" fxLayoutAlign="start center" fxFlex="25" fxFlex.lt-md="100">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <mat-icon class="s-18 pr-4 green-fg">
+                        arrow_drop_up
+                    </mat-icon>
+                    <div class="h5 green-fg">
+                        15%
+                    </div>
+                </div>
+                <div class="custom-label text-center">
+                    Notebook entries<br>
+                    completed
+                </div>
+            </div>
+            <div class="px-16" fxLayout="column" fxLayoutAlign="start center" fxFlex="25" fxFlex.lt-md="100">
+                <div fxLayout="row" class="font-weight-900" fxLayoutAlign="center center">
+                    <mat-icon class="s-18 pr-4 green-fg">
+                        arrow_drop_up
+                    </mat-icon>
+                    <div class="h5 green-fg">
+                        28%
+                    </div>
+                </div>
+                <div class="custom-label text-center">
+                    Experiments<br>
+                    reviewed
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

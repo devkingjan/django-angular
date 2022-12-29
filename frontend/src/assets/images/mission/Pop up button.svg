@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#929292;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="Pop_up_button" data-name="Pop up button" transform="translate(1 1)">
+        <g id="Group_1276" data-name="Group 1276" transform="translate(3 1)">
+            <g id="Group_1275" data-name="Group 1275">
+                <g id="Group_1417" data-name="Group 1417" transform="translate(-1184.151 -11.406)">
+                    <path id="Path_6617" d="M1201.7 31.768v3.09a2.364 2.364 0 0 1-2.363 2.364h-15.819a2.364 2.364 0 0 1-2.363-2.364V19.04a2.363 2.363 0 0 1 2.363-2.363h3.09" class="cls-1" data-name="Path 6617" transform="translate(0 -.816)"/>
+                    <rect id="Rectangle_261" width="20.546" height="20.546" class="cls-1" data-name="Rectangle 261" rx="2.717" transform="translate(1186.605 10.406)"/>
+                    <path id="Path_274-2" fill="none" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M1192.72 15.841h11.115v11.353" data-name="Path 274-2" transform="translate(-1.506 -.708)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,82 @@
+@import "src/@fuse/scss/fuse";
+
+.task-list {
+    &-header {
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        padding: 30px 20px;
+        background: mat-color($default-mode, primary);
+        color: white;
+
+        &-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Roboto';
+        }
+
+        .mat-select {
+            height: 40px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #cecaca;
+        }
+
+        .mat-select-trigger {
+            padding: 8px;
+            height: 40px;
+        }
+
+        .mat-select-value-text {
+            color: mat-color($default-mode, primary);
+            font-size: 18px;
+            font-family: 'Roboto';
+        }
+    }
+
+    .list-cross-line {
+        margin-left: 10px;
+        border-bottom: 1px solid white;
+        height: 16px;
+    }
+
+    .create-task-list {
+        padding: 0 20px;
+        height: 52px;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: 'Roboto';
+        cursor: pointer;
+        background: #bfbcbc;
+
+        &-group {
+            height: 52px;
+        }
+    }
+
+    .sub-title-custom {
+        padding-top: 20px;
+        padding-left: 50px;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .task-panel {
+        padding: 10px 20px;
+        height: 450px;
+        overflow-y: auto;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        &-item {
+            width: 100%;
+        }
+    }
+
+    .task-divider {
+        height: 52PX;
+        width: 5px;
+        background-color: mat-color($default-mode, primary);
+    }
+}

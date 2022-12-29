@@ -1,0 +1,38 @@
+.mission-database-title {
+    width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.experiment-row {
+    height: 50px;
+    border-bottom: 1px solid grey;
+    padding-left: 20px;
+    font-size: 12px;
+    .mission-dot {
+        margin: 5px 10px 5px 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+    }
+}
+
+.mission-exp-panel {
+    max-height: 190px;
+    overflow-y: auto !important;
+}
+.mission-header {
+    text-align: left;
+    padding: 10px 0 10px 20px ;
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+}
+.create-new{
+    padding: 0 20px;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    cursor: pointer;
+}

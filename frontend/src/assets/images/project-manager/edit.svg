@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+    <defs>
+        <style>
+            .cls-1{fill:#0b2b3a}
+        </style>
+    </defs>
+    <g id="edit" transform="translate(-1180.043 -278.128)">
+        <g id="Group_2718" data-name="Group 2718" transform="translate(1187.471 278.128)">
+            <path id="Rectangle_422" d="M0 0H10.546V4.579H0z" class="cls-1" data-name="Rectangle 422" transform="rotate(-45 14.493 .389)"/>
+            <path id="Path_7958" d="M1189.948 294.758a.786.786 0 0 0-.2.342l-.657 2.947a.692.692 0 0 0 .521.828.683.683 0 0 0 .306 0l2.922-.706a.7.7 0 0 0 .342-.2l.8-.8-3.238-3.214z" class="cls-1" data-name="Path 7958" transform="translate(-1189.078 -281.293)"/>
+            <path id="Path_7959" d="M1209.623 280.594l-2.266-2.265a.691.691 0 0 0-.974 0l-1.436 1.436 3.238 3.239 1.437-1.437a.69.69 0 0 0 .001-.973z" class="cls-1" data-name="Path 7959" transform="translate(-1192.252 -278.128)"/>
+        </g>
+        <path id="Path_7960" fill="none" stroke="#0b2b3a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M1194.558 281.63h-13.516v21.2h21.611v-13.596" data-name="Path 7960" transform="translate(0 -.701)"/>
+    </g>
+</svg>

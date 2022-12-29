@@ -1,0 +1,19 @@
+@import "src/@fuse/scss/fuse";
+
+.ps-menu-head {
+    width: 350px;
+    padding-top: 6px;
+    padding-left: 10px;
+    border-radius: 5px;
+    color: white;
+    background: mat-color($igor, 500);
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 18px;
+}
+.project-item {
+    cursor: pointer;
+    font-weight: 500;
+    padding: 20px;
+    border-bottom: 1px solid #d7d6d6;
+}

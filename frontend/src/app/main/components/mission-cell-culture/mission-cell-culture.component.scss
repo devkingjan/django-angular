@@ -1,0 +1,67 @@
+@import "src/@fuse/scss/fuse";
+
+.mission-item-header {
+    text-align: center;
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    background: mat-color($igor, 500);
+    font-family: Roboto;
+    font-size: 25px;
+
+    img {
+        width: 120px;
+    }
+}
+
+.mission-panel {
+    max-height: 600px;
+    overflow-y: auto !important;
+
+    &-header {
+        padding: 5px 10px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .mat-expansion-panel-body {
+        padding: 0px !important;
+    }
+}
+
+.mission-item-panel {
+    padding: 5px 24px;
+
+    &-item {
+        padding: 4px 0;
+        &-label {
+            font-weight: bold;
+            padding-right: 4px;
+        }
+
+        &-value {
+
+        }
+    }
+}
+
+.mission-edit-event {
+    background: #d2d3d8 !important;
+}
+
+.mission-cell-title {
+    padding-top: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.create-event {
+    padding: 0 20px;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    cursor: pointer;
+}

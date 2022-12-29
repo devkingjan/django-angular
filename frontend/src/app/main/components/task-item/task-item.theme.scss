@@ -1,0 +1,16 @@
+@mixin app-task-item-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-task-item {
+        .icon-color {
+            @if ($is-dark) {
+                filter: invert(1);
+            } @else {
+                filter: invert(0);
+            }
+        }
+        .icon-color path {
+            fill: white;
+        }
+    }
+}

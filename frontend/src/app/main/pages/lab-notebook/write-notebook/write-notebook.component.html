@@ -1,0 +1,287 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon class="logo-text s-32 mr-16 private"
+                          [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Write Up Area
+                </span>
+            </div>
+            <div class="opacity-bg"></div>
+        </div>
+
+        <!-- / HEADER -->
+        <div class="content inventory-bg content-bg ">
+            <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayout.gt-sm="row"
+                 fxLayoutAlign.gt-sm="space-evenly stretch">
+                <!-- Section 1 -->
+                <div fxFlex="100" fxFlex.gt-sm="25" class="px-20" style="width: 100%;">
+                    <div fxLayoutAlign="space-between" fxLayout.gt-sm="row"
+                         fxLayoutAlign.gt-sm="space-between stretch">
+                        <div class="mb-10" style="width: 30%;">
+                            <div [class]="selectedButton === BUTTON_FOLDER ? 'card-item card-item-select' : 'card-item'"
+                                 (click)="getFilePath()"><img class="header-icon" src="assets/icons/icons/folder.svg"/>
+                            </div>
+                        </div>
+                        <div class="mb-10" style="width: 30%;">
+                            <div [class]="selectedButton === BUTTON_PEN ? 'card-item card-item-select' : 'card-item'"
+                                 (click)="confirmESign()"><img class="header-icon" src="assets/icons/icons/pen.svg"/>
+                            </div>
+                        </div>
+                        <div class="mb-10" style="width: 30%;">
+                            <div [class]="selectedButton === BUTTON_GROUP ? 'card-item card-item-select' : 'card-item'"
+                                 (click)="findGroup()"><img class="header-icon"
+                                                            src="assets/icons/icons/searchgroup.svg"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table of contents -->
+                    <div class="mt-box">
+                        <div class="lab-tab-content">
+                            <div style="text-align: center;">Table of contents</div>
+                        </div>
+                        <div class="search-box search-content">
+                            <div *ngFor="let item of experiments"
+                                 [class]="selectedExperiment && selectedExperiment.uid === item.uid
+                                 ? 'p-20 exp-item exp-item-active'
+                                 : 'p-20 exp-item'"
+                                 (click)="onSelectExperiment(item.id)">
+                                {{item.uid}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Document of history -->
+                    <div class="mt-box">
+                        <div class="lab-tab-content">
+                            <div style="text-align: center;">Document Version History</div>
+                        </div>
+                        <div class="search-box search-content">
+                            <div *ngFor="let item of experimentVersions"
+                                 [class]="selectedExperimentVersion && selectedExperimentVersion.id === item.id
+                                 ? 'p-20 exp-item exp-item-active'
+                                 : 'p-20 exp-item'"
+                                 (click)="onSelectExperimentVersion(item.id)">
+                                <p class="exp-version-text">{{item.created_at | date: "dd/MM/yy HH:mm"}} - {{item.description}}</p>
+                                <button mat-button (click)="onRestoreExpVersion(item.id)">Restore</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <div fxFlex="100" fxFlex.gt-sm="75">
+                    <div fxLayout="column" fxLayoutAlign="space-between" fxLayout.gt-sm="row"
+                         fxLayoutAlign.gt-sm="space-between stretch" class="p-8" style="background: #f0f0f0">
+                        <div fxFlex="100" fxFlex.gt-sm="80">
+                            <div style="padding-right: 8px;">
+                                <input
+                                    disabled
+                                    type="text"
+                                    [value]="selectedExperiment
+                                    ? selectedExperiment.uid + ' : ' + selectedExpTitle
+                                    : 'Experiment ID number and full Title'"
+                                    class="lab-input">
+                            </div>
+                            <div class="mt-box" style="display: flex; width: 100%; padding-right: 8px;">
+                                <div style="width: 30%;">
+                                    <input
+                                        disabled
+                                        type="text"
+                                        [value]="selectedExperiment && selectedExpDate
+                                        ? selectedExpDate
+                                        : 'Experiment Date'"
+                                        class="lab-input-sub"
+                                        style="width: 100%;"/>
+                                </div>
+                                <div class="ml-box" style="width: 35%;">
+                                    <input
+                                        disabled
+                                        type="text"
+                                        [value]="selectedExperiment && selectedExpType
+                                        ? selectedExpType
+                                        : 'Experiment Type'"
+                                        class="lab-input-sub"
+                                        style="width: 100%;"/>
+                                </div>
+                                <div class="ml-box" style="width: 35%;">
+                                    <input
+                                        disabled
+                                        type="text"
+                                        [value]="user.username"
+                                        class="lab-input-sub ml-box"
+                                        style="width: 100%; height: 100%;"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-sm="20">
+                            <div style="height: 100%;">
+                                <!-- <img src="assets/images/logos/logo.svg" class="logoimg" /> -->
+                                <!-- <img *ngIf="!isDark && !isBlind" src="assets/images/logos/logo.svg"/>
+                                <img *ngIf="isDark" src="assets/images/logos/dark_logo.svg"/>
+                                <img *ngIf="isBlind" src="assets/images/logos/teal_logo.svg"/> -->
+                                <button mat-raised-button color="warn" class="save-button" (click)="onHandleSave()">
+                                    <mat-icon class="save-button-icon">save</mat-icon>
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background-color: white; position: relative; height: 100%">
+                        <div id="editable" class="editor-mode"></div>
+                        <div id="added-sections" cdkDropList (cdkDropListDropped)="drop($event)">
+                            <div *ngFor="let section of experimentEntries; let i = index" cdkDrag>
+                                <div *ngIf="section.type === sectionTypes.image" class="py-12">
+                                    <app-lab-write-section-image
+                                        [index]="i"
+                                        [data]="section"
+                                        [disabled]="sectionDisabled"
+                                        (deleteSection)="onDeleteSection($event)"></app-lab-write-section-image>
+                                </div>
+                                <div *ngIf="section.type === sectionTypes.textBox" class="py-12">
+                                    <app-lab-write-section-text
+                                        [index]="i"
+                                        [data]="section"
+                                        [disabled]="sectionDisabled"
+                                        (deleteSection)="onDeleteSection($event)"
+                                        (editSection)="onEditSection($event)"></app-lab-write-section-text>
+                                </div>
+                                <div *ngIf="section.type === sectionTypes.table" class="py-12">
+                                    <app-lab-write-section-table
+                                        [index]="i"
+                                        [data]="section"
+                                        [disabled]="sectionDisabled"
+                                        (deleteSection)="onDeleteSection($event)"
+                                        (editSection)="onEditSection($event)"></app-lab-write-section-table>
+                                </div>
+                                <div *ngIf="section.type === sectionTypes.file" class="py-12">
+                                    <app-lab-write-section-file
+                                        [index]="i"
+                                        [data]="section"
+                                        [disabled]="sectionDisabled"
+                                        (deleteSection)="onDeleteSection($event)"></app-lab-write-section-file>
+                                </div>
+                            </div>
+                            <ng-template [ngIf]="experimentEntries.length">
+                                <div style="height: 65px"></div>
+                            </ng-template>
+                        </div>
+
+                        <div class="add-item-box" *ngIf="!sectionDisabled">
+                            <div class="add-item-row"></div>
+                            <div class="add-item-btn">
+                                <eco-fab-speed-dial #myFab [direction]="direction" [fixed]="fixed">
+                                    <eco-fab-speed-dial-trigger (click)="addSomeItem()">
+                                        <button mat-fab style="background-color: #0B2B3A;">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </eco-fab-speed-dial-trigger>
+                                    <eco-fab-speed-dial-actions class="item-box">
+                                        <button mat-mini-fab class="item-card" (click)="addPlate()">
+                                            <div *ngIf="selectedItem !== ADD_ITEM_PLATE">
+                                                <img class="item-icon"
+                                                     src="assets/icons/icons/default/icon_add_plate_plan.svg"/>
+                                                <div class="item-text">Add Plate Plan</div>
+                                            </div>
+                                            <div *ngIf="selectedItem === ADD_ITEM_PLATE">
+                                                <img *ngIf="!isDark && !isBlind" class="item-icon"
+                                                     src="assets/icons/icons/pink/icon_add_plate_plan.svg"/>
+                                                <img *ngIf="isDark" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_add_plate_plan.svg"/>
+                                                <img *ngIf="isBlind" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_add_plate_plan.svg"/>
+                                                <div *ngIf="!isDark && !isBlind" class="item-text-check">Add Plate
+                                                    Plan
+                                                </div>
+                                                <div *ngIf="isDark" class="item-text-check-dark">Add Plate Plan</div>
+                                                <div *ngIf="isBlind" class="item-text-check-dark">Add Plate Plan</div>
+                                            </div>
+                                        </button>
+                                        <button mat-mini-fab class="item-card" (click)="file.click(); fixed = false">
+                                            <div *ngIf="selectedItem !== ADD_ITEM_LINK">
+                                                <img class="item-icon"
+                                                     src="assets/icons/icons/default/icon_link_a_file.svg"/>
+                                                <div class="item-text">Link A File</div>
+                                            </div>
+                                            <div *ngIf="selectedItem === ADD_ITEM_LINK">
+                                                <img *ngIf="!isDark && !isBlind" class="item-icon"
+                                                     src="assets/icons/icons/pink/icon_link_a_file.svg"/>
+                                                <img *ngIf="isDark" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_link_a_file.svg"/>
+                                                <img *ngIf="isBlind" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_link_a_file.svg"/>
+                                                <div *ngIf="!isDark && !isBlind" class="item-text-check">Link A File
+                                                </div>
+                                                <div *ngIf="isDark" class="item-text-check-dark">Link A File</div>
+                                                <div *ngIf="isBlind" class="item-text-check-dark">Link A File</div>
+                                            </div>
+                                        </button>
+                                        <input id="link-file" type="file" hidden #file (change)="addLink($event.target.files)"/>
+                                        <button mat-mini-fab class="item-card" (click)="addImage()">
+                                            <div *ngIf="selectedItem !== ADD_ITEM_IMG">
+                                                <img class="item-icon" src="assets/icons/icons/default/icon_image.svg"/>
+                                                <div class="item-text">Add Image</div>
+                                            </div>
+                                            <div *ngIf="selectedItem === ADD_ITEM_IMG">
+                                                <img *ngIf="!isDark && !isBlind" class="item-icon"
+                                                     src="assets/icons/icons/pink/icon_image.svg"/>
+                                                <img *ngIf="isDark" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_image.svg"/>
+                                                <img *ngIf="isBlind" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_image.svg"/>
+                                                <div *ngIf="!isDark && !isBlind" class="item-text-check">Add Image</div>
+                                                <div *ngIf="isDark" class="item-text-check-dark">Add Image</div>
+                                                <div *ngIf="isBlind" class="item-text-check-dark">Add Image</div>
+                                            </div>
+                                        </button>
+                                        <button mat-mini-fab class="item-card" (click)="addTable()">
+                                            <div *ngIf="selectedItem !== ADD_ITEM_TABLE">
+                                                <img class="item-icon" src="assets/icons/icons/default/noun_Table.svg"/>
+                                                <div class="item-text">Add Table</div>
+                                            </div>
+                                            <div *ngIf="selectedItem === ADD_ITEM_TABLE">
+                                                <img *ngIf="!isDark && !isBlind" class="item-icon"
+                                                     src="assets/icons/icons/pink/noun_Table.svg"/>
+                                                <img *ngIf="isDark" class="item-icon"
+                                                     src="assets/icons/icons/yellow/noun_Table.svg"/>
+                                                <img *ngIf="isBlind" class="item-icon"
+                                                     src="assets/icons/icons/yellow/noun_Table.svg"/>
+                                                <div *ngIf="!isDark && !isBlind" class="item-text-check">Add Table</div>
+                                                <div *ngIf="isDark" class="item-text-check-dark">Add Table</div>
+                                                <div *ngIf="isBlind" class="item-text-check-dark">Add Table</div>
+                                            </div>
+                                        </button>
+                                        <button mat-mini-fab class="item-card" (click)="addTextBox()">
+                                            <div *ngIf="selectedItem !== ADD_ITEM_TEXT">
+                                                <img class="item-icon"
+                                                     src="assets/icons/icons/default/icon_add_textbox.svg"/>
+                                                <div class="item-text">Add TextBox</div>
+                                            </div>
+                                            <div *ngIf="selectedItem === ADD_ITEM_TEXT">
+                                                <img *ngIf="!isDark && !isBlind" class="item-icon"
+                                                     src="assets/icons/icons/pink/icon_add_textbox.svg"/>
+                                                <img *ngIf="isDark" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_add_textbox.svg"/>
+                                                <img *ngIf="isBlind" class="item-icon"
+                                                     src="assets/icons/icons/yellow/icon_add_textbox.svg"/>
+                                                <div *ngIf="!isDark && !isBlind" class="item-text-check">Add TextBox
+                                                </div>
+                                                <div *ngIf="isDark" class="item-text-check-dark">Add TextBox</div>
+                                                <div *ngIf="isBlind" class="item-text-check-dark">Add TextBox</div>
+                                            </div>
+                                        </button>
+                                    </eco-fab-speed-dial-actions>
+                                </eco-fab-speed-dial>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

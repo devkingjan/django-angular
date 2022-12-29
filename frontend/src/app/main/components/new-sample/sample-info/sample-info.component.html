@@ -1,0 +1,31 @@
+<form fxLayout="column" fxLayoutAlign="space-evenly stretch" class="p-20 max-height"
+fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start"
+name="newForm" [formGroup]="newForm">
+    <div *ngFor="let column of columns; let i = index" fxFlex="100" [fxFlexOffset.gt-sm]="i % 2 == 1 ? 10 : 0" fxFlex.gt-sm="45" >
+        <mat-form-field *ngIf="column.widget === 'text'" fxFlex="100" appearance="outline">
+            <mat-label>{{column.name}}({{column.widget}})</mat-label>
+            <input type="text" matInput [formControlName]="column.id">
+        </mat-form-field>
+        <mat-form-field *ngIf="column.widget === 'number'" fxFlex="100" appearance="outline">
+            <mat-label>{{column.name}}({{column.widget}})</mat-label>
+            <input type="number" matInput [formControlName]="column.id">
+        </mat-form-field>
+        <mat-form-field *ngIf="column.widget === 'date'" fxFlex="100" appearance="fill">
+          <mat-label>{{column.name}}({{column.widget}})</mat-label>
+          <input matInput [matDatepicker]="picker" [formControlName]="column.id">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field *ngIf="column.widget === 'dropdown'" fxFlex="100"  appearance="outline">
+            <mat-label>{{column.name}}</mat-label>
+            <mat-select  [formControlName]="column.id">
+                <mat-option *ngFor="let option of column.options"
+                            [value]="option.id">{{option.value}}</mat-option>
+                <mat-option (click)="createOption(column)">Manage Options</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</form>
+<div fxLayout="row" fxLayout="space-evenly center">
+    <button [disabled]="newForm.invalid" fxFlex="100"  (click)="submit()" mat-raised-button color="accent">Next To Set Location</button>
+</div>

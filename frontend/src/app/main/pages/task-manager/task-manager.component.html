@@ -1,0 +1,35 @@
+<div class="page-layout carded fullwidth page-bg main-bg">
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header custom-header"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="space-evenly center">
+                <mat-icon class="logo-icon s-32 mr-16 private" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    assignment
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Task Manager
+                </span>
+            </div>
+            <div class="opacity-bg"></div>
+            <!-- / APP TITLE -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="p-20 content-bg" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start">
+            <div class="manager-daily-task" fxFlex="100" fxFlex.gt-sm="40" fxFlexOffset.gt-sm="5">
+                <app-daily-task></app-daily-task>
+            </div>
+            <div class="manager-task-list" fxFlex="100" fxFlex.gt-sm="40" fxFlexOffset.gt-sm="10">
+                <app-task-list></app-task-list>
+            </div>
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

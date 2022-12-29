@@ -1,0 +1,31 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+
+.p-body {
+    width: 100%;
+}
+.p-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    height: 100px;
+    &-title {
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        color: #0b2b3a;
+    }
+
+}
+.p-container {
+    padding: 30px;
+}
+.mat-dialog-container{
+    padding: 0px!important;
+    overflow-x: hidden;
+}

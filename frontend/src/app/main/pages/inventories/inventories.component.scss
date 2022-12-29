@@ -1,0 +1,24 @@
+@import "src/@fuse/scss/fuse";
+
+.inventory-control {
+    text-align: center;
+    padding: 35px 35px 0px 35px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    background: mat-color($igor, 500);
+    font-family: Roboto;
+    font-size: 25px;
+    img {
+        width: 120px;
+    }
+}
+.inventory-bg {
+    height: 100%;
+    width: 100%;
+}
+.expansion-custom {
+    .mat-expansion-panel-body {
+        padding: 0px!important;
+    }
+}

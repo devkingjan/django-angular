@@ -1,0 +1,147 @@
+<div class="full-width" class="new-database" fxFlex.gt-sm="800px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="new-db-header">
+            {{cellCultureLine?.id ? 'Edit Cell Line' : 'Create Cell Line'}}
+        </h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="p-20">
+        <form name="loginForm" [formGroup]="newForm">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Cell line name:</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="newForm.get('name').hasError('required')">
+                        Cell Line Name is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Cell line origin:</mat-label>
+                    <input matInput formControlName="origin">
+                    <mat-error *ngIf="newForm.get('origin').hasError('required')">
+                        Cell line origin is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" style="position:relative; height: 120px">
+                <mat-form-field class="absolut-left-field" appearance="outline">
+                    <mat-label>Genetic modification:</mat-label>
+                    <input matInput formControlName="generic_modification">
+                    <mat-error *ngIf="newForm.get('generic_modification').hasError('required')">
+                        Genetic modification is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-expansion-panel class="absolut-right-field" hideToggle>
+                    <mat-expansion-panel-header>
+                        <div class="how-started">How started: {{newForm.value['how_started']}}</div>
+                    </mat-expansion-panel-header>
+                    <div>
+                        <section class="how-started">
+                            <mat-radio-group formControlName="how_started" fxLayout="column">
+                                <mat-radio-button class="how-started-option" value="thawed">
+                                    Thawed from Frozen
+                                </mat-radio-button>
+                                <mat-radio-button class="how-started-option" value="received">
+                                    Received from other scientist
+                                </mat-radio-button>
+                                <input matInput *ngIf="newForm.value['how_started']==='received'"
+                                       [@animate]="{value:'*',params:{delay:'50ms',y:'-25px'}}"
+                                       formControlName="received_scientist" class="custom-input"/>
+                                <mat-radio-button class="how-started-option" value="cloned">
+                                    Sub-cloned from existing Cell Line
+                                </mat-radio-button>
+                                <mat-select *ngIf="newForm.value['how_started']==='cloned'"
+                                            [@animate]="{value:'*',params:{delay:'50ms',y:'-25px'}}"
+                                            formControlName="cloned_cell_line" class="custom-input">
+                                    <mat-option *ngFor="let cloneCellLine of cloneCellLinesFromLastWeek" [value]="cloneCellLine.id">
+                                        {{cloneCellLine.name}} P{{cloneCellLine.passage_number}}</mat-option>
+                                </mat-select>
+                            </mat-radio-group>
+                        </section>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Date taken into culture:</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date_taken">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="newForm.get('date_taken').hasError('required')">
+                        Date taken into culture is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Passage number:</mat-label>
+                    <input matInput formControlName="passage_number" type="number">
+                    <mat-error *ngIf="newForm.get('passage_number').hasError('required')">
+                        Passage number is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Culture medium:</mat-label>
+                    <mat-select formControlName="culture_medium">
+                        <mat-option *ngFor="let columnMedium of columnMediums"
+                                    [value]="columnMedium.name">{{columnMedium.name}}</mat-option>
+                        <mat-option (click)="createOption('medium')">Manage Options</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Medium additive:</mat-label>
+                    <input matInput formControlName="medium_additive">
+                    <mat-error *ngIf="newForm.get('medium_additive').hasError('required')">
+                        Medium additive is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Mycoplasmas state:</mat-label>
+                    <mat-select formControlName="mycoplasmas_state">
+                        <mat-option value="Negative">Negative</mat-option>
+                        <mat-option value="Positive">Positive</mat-option>
+                        <mat-option value="Unknown">Unknown</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="newForm.get('mycoplasmas_state').hasError('required')">
+                        Mycoplasmas state is required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field style="width: 50%; margin: 0 20px" appearance="outline">
+                    <mat-label>Culture properties:</mat-label>
+                    <mat-select formControlName="culture_property">
+                        <mat-option value="Adherent">Adherent</mat-option>
+                        <mat-option value="Suspension">Suspension</mat-option>
+                        <mat-option *ngFor="let columnOption of columnOptions"
+                                    [value]="columnOption.name">{{columnOption.name}}</mat-option>
+                        <mat-option (click)="createOption('property')">Manage Options</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="newForm.get('culture_property').hasError('required')">
+                        Culture property is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field style="width: 100%; margin: 0 20px" appearance="outline">
+                    <mat-label>Note:</mat-label>
+                    <textarea matInput formControlName="note" row="5"></textarea>
+                    <mat-error *ngIf="newForm.get('note').hasError('required')">
+                        Note is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <button mat-raised-button color="primary" (click)="create()"
+                        [disabled]="newForm.invalid || submitted">
+                    {{cellCultureLine?.id ? 'Update' : 'Create'}}
+                </button>
+                <button mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+@mixin app-new-project-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+
+    app-new-project {
+        .new-project-members {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                background: mat-color($default-mode, content-bg);
+            }
+        }
+
+        .select-member {
+            @if ($is-dark) {
+                border: 1px solid mat-color($default-mode, right-grey);
+                background: mat-color($dark-mode, light-bg);
+            } @else {
+                border: 1px solid mat-color($default-mode, content-bg);
+                background: mat-color($default-mode, light-bg);
+            }
+        }
+    }
+}

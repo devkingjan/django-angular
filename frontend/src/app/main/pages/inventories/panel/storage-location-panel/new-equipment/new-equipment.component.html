@@ -1,0 +1,29 @@
+<div class="full-width" fxFlex.gt-sm="500px" class="new-experiment">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="custom-modal-header">Create New</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div  class="p-20">
+        <form fxLayout="column" class="p-20" fxLayoutAlign="space-evenly stretch" name="newForm"
+              [formGroup]="newForm" novalidate (ngSubmit)="submit()">
+            <mat-form-field fxFlex="100" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-checkbox class="mb-20" formControlName="is_tower">
+              Has towers in it?
+            </mat-checkbox>
+            <mat-form-field *ngIf="isTower" fxFlex="100" appearance="outline">
+                    <mat-label>Number of tower:</mat-label>
+                    <mat-select formControlName="tower_number">
+                        <mat-option *ngFor="let row of rows" [value]="row">{{row}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            <button type="submit" [disabled]="newForm.invalid"  mat-raised-button color="accent" >
+                Create
+            </button>
+        </form>
+    </div>
+</div>

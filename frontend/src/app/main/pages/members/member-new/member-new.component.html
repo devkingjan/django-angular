@@ -1,0 +1,37 @@
+<h2 class="form-header" mat-dialog-title>Add New Team Member</h2>
+<mat-dialog-content fxLayout="row" class="mat-typography">
+    <form class="p-24" fxLayout="column" fxLayoutAlign="start"
+             name="baseForm" [formGroup]="newForm" (ngSubmit)="submitForm()">
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pr-4">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="first_name" required>
+                <mat-error>First Name is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="50" fxFlex.lt-md="100" class="pl-4">
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="last_name" required>
+                <mat-error>Last Name is required!</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100" class="pr-4">
+                <mat-label>Role</mat-label>
+                <input matInput formControlName="role" required>
+                <mat-error>Role is required!</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field appearance="outline" fxFlex="100" class="pr-4" disabled>
+                <mat-label>E-Mail Address</mat-label>
+                <input matInput formControlName="email" required>
+                <mat-error>E-Mail required!</mat-error>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" [disabled]="newForm.invalid || submitted">
+            Save Change
+        </button>
+    </form>
+</mat-dialog-content>
+

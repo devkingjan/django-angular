@@ -1,0 +1,44 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>Inventories</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel *ngIf="databases.length" class="mission-panel">
+        <div *ngFor="let database of databases">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <span class="mission-dot"></span>
+                    <span class="mission-database-title">
+                        {{database.name}}
+                    </span>
+                </mat-expansion-panel-header>
+                <div class="mi-action" fxLayout="row" fxLayoutAlign="center center">
+                    <div (click)="viewDatabase(database)" fxFlex="30">View</div>
+                    <div class="mi-action-divider"></div>
+                    <div (click)="editDatabase(database)" fxFlex="30">Edit</div>
+                    <div class="mi-action-divider"></div>
+                    <div (click)="addNewAntibody(database)" fxLayout="row" fxLayoutAlign="center center" fxFlex="40">
+                        <span>Add New</span>
+                        <mat-icon class="ml-8">add</mat-icon>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </mat-expansion-panel>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!databases.length" class="mission-panel">
+        <div class="p-40">You have no inventory database.</div>
+    </mat-expansion-panel>
+</mat-accordion>

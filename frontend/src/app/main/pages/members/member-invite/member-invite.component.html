@@ -1,0 +1,18 @@
+<div>
+    <div class="invite-header">
+        <h1 class="invite-header-title">Invitation</h1>
+        <div>To {{member.email}}</div>
+    </div>
+    <div class="invite-body">
+        <div class="invite-body-message">
+            <span>Hello</span>&nbsp;&nbsp;<span style="font-weight: bold; font-size: 15px">{{member.first_name}}</span>,
+            <span>How are you. {{meUser.first_name}} invited you to his personal Lab Assistant. <br>
+                Please use below link to register.</span>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" (click)="sendInvitation()">
+                Send Invitation
+            </button>
+        </div>
+    </div>
+</div>

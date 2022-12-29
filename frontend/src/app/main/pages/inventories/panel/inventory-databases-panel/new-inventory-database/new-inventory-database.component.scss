@@ -1,0 +1,91 @@
+@import "src/@fuse/scss/fuse";
+.new-database {
+    max-height: 80vh;
+    overflow: hidden;
+    mat-form-field.mat-form-field-appearance-outline .mat-form-field-wrapper {
+        margin: 0;
+    }
+    &-left {
+        padding-right: 20px;
+        @include media-breakpoint('sm') {
+            padding-right: 0px;
+        }
+
+        @include media-breakpoint('xs') {
+             padding-right: 0px;
+        }
+    }
+}
+.new-db-header {
+    background: #75a6c9;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding: 20px;
+    margin: 0px;
+}
+.template-header {
+    background: #0b2b3a;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 13px;
+}
+.exp-divider {
+    border-bottom: 1px #f07261 solid;
+    padding: 0px 20px;
+}
+.add-column-btn {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+.column-list {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+.column-item {
+  max-width: 100%;
+  margin-right: 40px;
+  border: solid 1px #ccc;
+  min-height: 35px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+    @include media-breakpoint('sm') {
+        margin-right: 0px;
+    }
+
+    @include media-breakpoint('xs') {
+         margin-right: 0px;
+    }
+}
+.column-box {
+  padding: 10px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+.selected {
+    background: #dbd5d5!important;
+}
+.company-template {
+    max-height: 15vh;
+    min-height: 15vh;
+    overflow-y: auto;
+}
+.exist-template {
+    max-height: 35vh;
+    min-height: 35vh;
+    overflow-y: auto;
+}

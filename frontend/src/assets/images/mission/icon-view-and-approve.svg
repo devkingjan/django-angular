@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="18" viewBox="0 0 40 18">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none}.cls-1{stroke:#f0f0f0;stroke-width:1.6px}.cls-2{stroke:none}
+        </style>
+    </defs>
+    <g id="icon_view_and_approve" transform="translate(-748 -254)">
+        <g id="Ellipse_25" class="cls-1" data-name="Ellipse 25" transform="translate(748 254)">
+            <circle cx="9" cy="9" r="9" class="cls-2"/>
+            <circle cx="9" cy="9" r="8.2" class="cls-3"/>
+        </g>
+        <g id="Ellipse_26" class="cls-1" data-name="Ellipse 26" transform="translate(770 254)">
+            <circle cx="9" cy="9" r="9" class="cls-2"/>
+            <circle cx="9" cy="9" r="8.2" class="cls-3"/>
+        </g>
+        <path id="Path_6549" d="M-9071.8 1286.2c1.063-1.187 6.874-1.187 7.623 0" class="cls-1" data-name="Path 6549" transform="translate(9836.095 -1027.168)"/>
+    </g>
+</svg>

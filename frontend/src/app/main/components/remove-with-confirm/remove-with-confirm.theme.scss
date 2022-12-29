@@ -1,0 +1,19 @@
+@mixin remove-with-confirm-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    app-members {
+        .delete-title {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+        .delete-description {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: mat-color($default-mode, primary);
+            }
+        }
+    }
+}

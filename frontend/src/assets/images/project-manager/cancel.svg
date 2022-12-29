@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#0b2b3a;stroke-width:2px;stroke-linecap:round}
+        </style>
+    </defs>
+    <g id="cancel" transform="translate(-1205.162 595.838)">
+        <g id="Ellipse_13" fill="none" stroke="#0b2b3a" stroke-width="2px" data-name="Ellipse 13" transform="translate(1205.162 -595.838)">
+            <circle cx="12" cy="12" r="12" stroke="none"/>
+            <circle cx="12" cy="12" r="11"/>
+        </g>
+        <path id="Line_3" d="M7.825 0L0 8.151" class="cls-2" data-name="Line 3" transform="translate(1213.25 -587.509)"/>
+        <path id="Line_4" d="M0 0L7.825 8.151" class="cls-2" data-name="Line 4" transform="translate(1213.25 -587.509)"/>
+    </g>
+</svg>

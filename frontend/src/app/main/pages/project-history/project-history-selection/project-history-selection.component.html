@@ -1,0 +1,26 @@
+<div class="phs">
+    <div class="phs-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+         fxLayoutAlign="space-between center">
+        <div>Select Project to View</div>
+        <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+            <div>
+                <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+            </div>
+        </button>
+        <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+            <div>
+                <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+            </div>
+        </button>
+    </div>
+    <mat-accordion multi>
+        <mat-expansion-panel fxLayout="column" class="phs-panel">
+            <div (click)="selectProject(project)"
+                 [class]="selectedProject === project ? 'phs-panel-row phs-panel-row-select' : 'phs-panel-row'"
+                 fxLayout="row" fxLayoutAlign="start center" *ngFor="let project of projects">
+                {{project.name}}
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+

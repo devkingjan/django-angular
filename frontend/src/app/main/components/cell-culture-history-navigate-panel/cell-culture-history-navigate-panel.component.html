@@ -1,0 +1,30 @@
+<div class="cch-panel">
+    <div class="cch-panel-header">
+        <mat-form-field fxFlex="100" class="ccp-input" appearance="outline">
+            <mat-label>
+                Search
+                <mat-icon>search</mat-icon>
+            </mat-label>
+            <input matInput
+                   [(ngModel)]="searchQuery"
+                   [ngModelOptions]="{standalone: true}"
+                   (ngModelChange)="checkEmpty()"
+                   (keydown.enter)="search()">
+        </mat-form-field>
+    </div>
+    <div class="cch-panel-body" fxLayout="column" fxLayoutAlign="start start">
+        <label class="mb-12">Select Date Rage</label>
+        <mat-form-field fxFlex="100" class="ccp-input" appearance="outline">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="fromDate" (ngModelChange)="emitFilter()">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex="100" class="ccp-input" appearance="outline">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="toDate" (ngModelChange)="emitFilter()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>

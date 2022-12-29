@@ -1,0 +1,620 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Custom color maps for Fuse
+// -----------------------------------------------------------------------------------------------------
+@function default-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+    @return (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: false,
+        is-default: true,
+        is-blind: false,
+        foreground: $mat-light-theme-foreground,
+        background: $mat-light-theme-background,
+    );
+}
+
+@function blind-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+    @return (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: false,
+        is-default: false,
+        is-blind: true,
+        foreground: $mat-light-theme-foreground,
+        background: $mat-light-theme-background,
+    );
+}
+
+@function dark-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+    @return (
+        primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: true,
+        is-default: false,
+        is-blind: false,
+        foreground: $mat-dark-theme-foreground,
+        background: $mat-dark-theme-background,
+    );
+}
+
+$fuse-white: (
+    500: white,
+    contrast: (
+        500: $dark-primary-text
+    )
+);
+
+$fuse-black: (
+    500: black,
+    contrast: (
+        500: $light-primary-text,
+    )
+);
+
+$igor-primary: (
+    500: #00334b,
+    contrast: (
+        500: $light-primary-text,
+    )
+);
+$igor-warn: (
+    500: #f07261,
+    contrast: (
+        500: $light-primary-text,
+    )
+);
+$igor-accent: (
+    500: #6d9ec2,
+    contrast: (
+        500: $light-primary-text,
+    )
+);
+
+
+$fuse-right-primary: (
+    600: #002e43,
+    500: #003c57,
+    400: #305c74,
+    contrast: (
+        500: $light-primary-text,
+    )
+);
+
+$default-mode: (
+    main-bg: #ffffff,
+    light-bg: #e2e3e4,
+    content-bg: #d7d6d6,
+    primary: #0b2b3a,
+    warn: #f07261,
+    accent: #75a6c9,
+    text: rgba(0, 0, 0, 0.87),
+    right-grey: #757575
+);
+$blind-mode: (
+    main-bg: #ffffff,
+    light-bg: #e2e3e4,
+    primary: #0b2b3a,
+    warn: #FFC20A,
+    accent: #75a6c9,
+    text: rgba(0, 0, 0, 0.87),
+    right-grey: #757575
+);
+$dark-mode: (
+    main-bg: #212121,
+    content-bg: #303030,
+    light-bg: #424242,
+    primary: #0b2b3a,
+    warn: #FFC20A,
+    accent: #75a6c9,
+    text: #f0f0f0,
+    right-grey: #757575
+);
+$fuse-navy: (
+    50: #ECECEE,
+    100: #9cb1bd,
+    200: #557486,
+    300: #305c74,
+    400: #1a4963,
+    500: #0b2b3a,
+    600: #07202b,
+    700: #041921,
+    800: #021118,
+    900: #00080c,
+    A100: #C5C6CB,
+    A200: #9EA1A9,
+    A400: #5C616F,
+    A700: #2D323E,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $light-primary-text,
+        400: $light-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+
+$default-accent: (
+    50: #ECECEE,
+    100: #9cb1bd,
+    200: #aacee8,
+    300: #89bade,
+    400: #73a5c9,
+    500: #6d9ec2,
+    600: #6d9ec2,
+    700: #3a6e93,
+    800: #255374,
+    900: #0f2e44,
+    A100: #C5C6CB,
+    A200: #9EA1A9,
+    A400: #5C616F,
+    A700: #2D323E,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $light-primary-text,
+        400: $light-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+$default-warn: (
+    50: #ffebee,
+    100: #ffcdd2,
+    200: #e5b0a8,
+    300: #e89488,
+    400: #e87d6e,
+    500: #f07261,
+    600: #e56452,
+    700: #d7523f,
+    800: #cb311a,
+    900: #c6230b,
+    A100: #ff8a80,
+    A200: #f07261,
+    A400: #cb311a,
+    A700: #c6230b,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+
+$blind-warn: (
+    50: #ffebee,
+    100: #f5e2ac,
+    200: #f3d478,
+    300: #f6ca45,
+    400: #f8c52a,
+    500: #FFC20A,
+    600: #FFC20A,
+    700: #b88b05,
+    800: #896702,
+    900: #634a02,
+    A100: #f8c52a,
+    A200: #FFC20A,
+    A400: #896702,
+    A700: #634a02,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+
+// Generate Fuse color classes for custom palettes
+$custom_palettes: (
+    fuse-white: $fuse-white,
+    fuse-black: $fuse-black,
+    fuse-navy: $fuse-navy
+);
+
+@include fuse-color-classes($custom_palettes);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+
+// Angular Material typography
+$typography: mat-typography-config(
+    $font-family: 'Muli, Helvetica Neue, Arial, sans-serif',
+    $title: mat-typography-level(20px, 32px, 600),
+    $body-2: mat-typography-level(14px, 24px, 600),
+    $button: mat-typography-level(14px, 14px, 600),
+    $input: mat-typography-level(16px, 1.125, 400) // line-height must be unitless !!!
+);
+
+// Setup the typography
+@include angular-material-typography($typography);
+
+// -----------------------------------------------------------------------------------------------------
+// @ Component theming
+// -----------------------------------------------------------------------------------------------------
+
+// Import app and page component themes here to enable theming for them
+@import "src/app/layout/components/chat-panel/chat-panel.theme";
+@import "src/app/layout/components/toolbar/toolbar.theme";
+@import "src/app/layout/auth-layout/auth-layout.theme";
+@import "src/app/main/pages/members/members.theme";
+@import "src/app/main/pages/members/member-card/member-card.theme";
+@import "src/app/main/pages/members/team-member-card/team-member-card.theme";
+@import "src/app/main/pages/calendar/calendar.theme";
+@import "src/app/main/components/remove-with-confirm/remove-with-confirm.theme";
+@import "src/app/main/pages/inventories/inventories.theme";
+@import "src/app/layout/components/footer/footer.theme";
+@import "src/app/main/pages/experiments/experiments.theme";
+@import "src/app/main/pages/mission-control/mission-control.theme";
+@import "src/app/main/pages/profile/profile.theme";
+@import "src/app/main/pages/inventories/inventories.theme";
+@import "src/app/main/pages/inventories/box-mapview/box-mapview.theme";
+@import "src/app/main/components/mission-calendar/mission-calendar.theme";
+@import "src/app/layout/components/navbar/vertical/style-1/style-1.theme";
+@import "src/app/main/pages/inventories/samples/samples.theme";
+@import "src/app/main/pages/experiments/new-database/new-database.theme";
+@import "src/app/main/pages/members/member-permission/member-permission.theme";
+@import "src/app/main/components/select-location-dropmenu/select-location-dropmenu.theme";
+@import "src/app/main/pages/task-manager/task-manager.theme";
+@import "src/app/main/components/daily-task/daily-task.theme";
+@import "src/app/main/components/task-item/task-item.theme";
+@import "src/app/main/components/task-list/task-list.theme";
+@import "src/app/main/components/display-day/display-day.theme";
+@import "src/app/main/components/new-task/new-task.theme";
+@import "src/app/main/components/mission-task/mission-task.theme";
+@import "src/app/main/pages/calculator/calculator.theme";
+@import "src/app/main/pages/file-manager/file-manager.theme";
+@import "src/app/main/components/mission-cell-culture/mission-cell-culture.theme";
+@import "src/app/main/pages/cell-culture-history/cell-culture-history.theme";
+@import "src/app/main/components/new-cell-culture-line/new-cell-culture-line.theme";
+@import "src/app/main/components/cell-culture-event-panel/cell-culture-event-panel.theme";
+@import "src/app/main/components/new-cell-culture-event/new-cell-culture-event.theme";
+@import "src/app/main/components/cell-culture-history-navigate-panel/cell-culture-history-navigate-panel.theme";
+@import "src/app/main/components/cell-culture-history-view/cell-culture-history-item/cell-culture-history-item.theme";
+@import "src/app/main/components/cell-culture-history-view/cell-culture-history-view.theme";
+@import "src/app/main/pages/lab-notebook/write-notebook/write-notebook.theme";
+@import "src/app/main/components/lab-write-e-sign/lab-write-e-sign.theme";
+@import "src/app/main/pages/lab-notebook/view-notebook/view-notebook.theme";
+@import "src/app/main/components/lab-table-content/lab-table-content.theme";
+@import "src/app/main/components/remove-cell-culture-line/remove-cell-culture-line.theme";
+@import "src/app/main/components/mission-inventory/mission-inventory.theme";
+@import "src/app/main/components/lab-write-section-image/lab-write-section-image.theme";
+@import "src/app/main/components/lab-write-section-table/lab-write-section-table.theme";
+@import "src/app/main/components/lab-write-section-text/lab-write-section-text.theme";
+@import "src/app/main/pages/project-manager/project-manager.theme";
+@import "src/app/main/pages/project-manager/project/project.theme";
+@import "src/app/main/pages/project-manager/project/project-task/project-task.theme";
+@import "src/app/main/pages/project-manager/new-project/new-project.theme";
+@import "src/app/main/pages/project-history/project-history.theme";
+@import "src/app/main/pages/project-history/project-history-selection/project-history-selection.theme";
+@import "src/app/main/pages/project-history/project-history-view/project-history-view.theme";
+@import "src/app/main/pages/project-history/project-history-view-item/project-history-view-itme.theme";
+@import "src/app/main/pages/project-timeline/project-timeline.theme";
+@import "src/app/main/pages/project-timeline/project-selector/project-selector.theme";
+
+// Define a mixin for easier access
+@mixin components-theme($theme) {
+
+    // Layout components
+    @include chat-panel-theme($theme);
+    @include toolbar-theme($theme);
+    @include member-theme($theme);
+    @include member-theme($theme);
+    @include member-card-theme($theme);
+    @include calendar-theme($theme);
+    @include remove-with-confirm-theme($theme);
+    @include inventories-theme($theme);
+    @include footer-theme($theme);
+    @include experiment-theme($theme);
+    @include mission-contol-theme($theme);
+    @include profile-theme($theme);
+    @include mapview-theme($theme);
+    @include mission-calendar-theme($theme);
+    @include navbar-vertical-style-1-theme($theme);
+    @include app-samples-theme($theme);
+    @include app-new-database-theme($theme);
+    @include app-member-permission-theme($theme);
+    @include app-select-location-dropdown-theme($theme);
+    @include task-manager-theme($theme);
+    @include app-daily-task-theme($theme);
+    @include app-task-item-theme($theme);
+    @include app-task-list-theme($theme);
+    @include app-display-day-theme($theme);
+    @include app-new-task-theme($theme);
+    @include app-mission-task-theme($theme);
+    @include app-calculator-theme($theme);
+    @include team-member-card-theme($theme);
+    @include file-manager-theme($theme);
+    @include mission-cell-culture-theme($theme);
+    @include cell-culture-history-theme($theme);
+    @include app-new-cell-culture-line-theme($theme);
+    @include app-cell-culture-event-panel-theme($theme);
+    @include app-new-cell-culture-event-theme($theme);
+    @include app-cell-culture-history-navigate-panel-theme($theme);
+    @include app-cell-culture-history-item-theme($theme);
+    @include app-cell-culture-history-view-theme($theme);
+    @include app-remove-cell-culture-line-theme($theme);
+    @include app-write-notebook-theme($theme);
+    @include app-lab-write-e-sign-theme($theme);
+    @include app-view-notebook-theme($theme);
+    @include app-lab-table-content-theme($theme);
+    @include app-mission-inventory-theme($theme);
+    @include app-lab-write-section-image-theme($theme);
+    @include app-lab-write-section-table-theme($theme);
+    @include app-lab-write-section-text-theme($theme);
+    @include app-project-manager-theme($theme);
+    @include app-project-theme($theme);
+    @include app-project-task-theme($theme);
+    @include app-new-project-theme($theme);
+    @include project-history-theme($theme);
+    @include app-project-history-selection-theme($theme);
+    @include app-project-history-view-theme($theme);
+    @include app-project-history-view-item-theme($theme);
+    @include app-project-timeline-theme($theme);
+    @include app-project-selector-theme($theme);
+}
+
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define the $yellow-light-theme-warn-palettedefault theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$default-primary-palette: mat-palette($fuse-navy);
+$default-light-primary-palette: mat-palette($fuse-right-primary);
+$default-accent-palette: mat-palette($default-accent, 600, 400, 700);
+$default-warn-palette: mat-palette($default-warn);
+
+
+// Create the Material theme object
+$theme: default-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+
+// Add ".theme-default" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-default {
+    // Create an Angular Material theme from the $theme map
+    @include angular-material-theme($theme);
+
+    // Apply the theme to the Fuse Core
+    @include fuse-core-theme($theme);
+
+    // Apply the theme to the user components
+    @include components-theme($theme);
+
+    // Generate Fuse color classes for primary, accent and warn colors
+    $palettes: (
+        primary: $default-primary-palette,
+        light-primary: $default-light-primary-palette,
+        accent: $default-accent-palette,
+        warn: $default-warn-palette,
+    );
+
+    .mat-menu-panel {
+        background: mat-color($dark-mode, accent) !important;
+    }
+
+    .mission-dot {
+        background-color: mat-color($default-mode, warn);
+    }
+
+    .custom-modal-header {
+        background: #6d9ec2;
+    }
+
+    .mat-dialog-container {
+        color: mat-color($default-mode, primary) !important;
+    }
+
+    @include fuse-color-classes($palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a yellow light theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$yellow-light-theme-primary-palette: mat-palette($fuse-navy, 600, 400, 700);
+$yellow-light-theme-accent-palette: mat-palette($blind-warn, 600, 400, 700);
+$yellow-light-theme-warn-palette: mat-palette($blind-warn, 600, 400, 700);
+
+// Create the Material theme object
+$yellow-light-theme: blind-theme($yellow-light-theme-primary-palette, $yellow-light-theme-accent-palette, $yellow-light-theme-warn-palette);
+
+// Add ".theme-yellow-light" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-yellow-light {
+
+    // Generate the Angular Material theme
+    @include angular-material-theme($yellow-light-theme);
+
+    // Apply the theme to the Fuse Core
+    @include fuse-core-theme($yellow-light-theme);
+
+    // Apply the theme to the user components
+    @include components-theme($yellow-light-theme);
+
+    // Generate Fuse color classes for primary, accent and warn colors
+    $palettes: (
+        primary: $yellow-light-theme-primary-palette,
+        light-primary: $default-light-primary-palette,
+        accent: $yellow-light-theme-accent-palette,
+        warn: $yellow-light-theme-warn-palette
+    );
+
+    .mat-menu-panel {
+        background: mat-color($dark-mode, accent) !important;
+    }
+
+    .mission-dot {
+        background-color: mat-color($blind-mode, warn);
+    }
+
+    .custom-modal-header {
+        background: #6d9ec2;
+    }
+
+    @include fuse-color-classes($palettes);
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a blue-gray dark theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$blue-gray-dark-theme-primary-palette: mat-palette($fuse-navy, 600, 400, 700);
+$blue-gray-dark-theme-accent-palette: mat-palette($mat-blue-gray);
+$blue-gray-dark-theme-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$blue-gray-dark-theme: dark-theme($blue-gray-dark-theme-primary-palette, $blue-gray-dark-theme-accent-palette, $yellow-light-theme-warn-palette);
+
+// Add ".theme-blue-gray-dark" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-blue-gray-dark {
+    // Generate the Angular Material theme
+    @include angular-material-theme($blue-gray-dark-theme);
+
+    // Apply the theme to the Fuse Core
+    @include fuse-core-theme($blue-gray-dark-theme);
+
+    // Apply the theme to the user components
+    @include components-theme($blue-gray-dark-theme);
+
+    // Generate Fuse color classes for primary, accent and warn colors
+    $palettes: (
+        primary: $blue-gray-dark-theme-primary-palette,
+        light-primary: $default-light-primary-palette,
+        accent: $blue-gray-dark-theme-accent-palette,
+        warn: $yellow-light-theme-warn-palette
+    );
+    @include fuse-color-classes($palettes);
+
+    .mat-menu-panel {
+        background: mat-color($dark-mode, main-bg) !important;
+    }
+
+    .mission-dot {
+        background-color: mat-color($dark-mode, warn);
+    }
+
+    .custom-modal-header {
+        background: mat-color($dark-mode, main-bg);
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-focused .mat-form-field-outline-thick {
+        color: white !important;
+    }
+
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        color: white !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-has-label .mat-form-field-should-float .mat-focused {
+        color: white !important;
+    }
+
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Define a pink dark theme
+// -----------------------------------------------------------------------------------------------------
+
+// Define the primary, accent and warn palettes
+$pink-dark-theme-primary-palette: mat-palette($mat-pink);
+$pink-dark-theme-accent-palette: mat-palette($mat-pink);
+$pink-dark-theme-warn-palette: mat-palette($mat-red);
+
+// Create the Material theme object
+$pink-dark-theme: mat-dark-theme($pink-dark-theme-primary-palette, $pink-dark-theme-accent-palette, $yellow-light-theme-warn-palette);
+
+// Add ".theme-pink-dark" class to the body to activate this theme.
+// Class name must start with "theme-" !!!
+body.theme-pink-dark {
+
+    // Generate the Angular Material theme
+    @include angular-material-theme($pink-dark-theme);
+
+    // Apply the theme to the Fuse Core
+    @include fuse-core-theme($pink-dark-theme);
+
+    // Apply the theme to the user components
+    @include components-theme($pink-dark-theme);
+
+    // Generate Fuse color classes for primary, accent and warn colors
+    $palettes: (
+        primary: $pink-dark-theme-primary-palette,
+        light-primary: $default-light-primary-palette,
+        accent: $pink-dark-theme-accent-palette,
+        warn: $yellow-light-theme-warn-palette
+    );
+
+    @include fuse-color-classes($palettes);
+}
+
+// Creates a container object for a light theme to be given to individual component theme mixins.
+@function blind-theme($theme) {
+    @return (
+        primary: map-get($theme, primanry),
+        accent: map-get($theme, accent),
+        warn: map-get($theme, warn),
+        is-dark: map-get($theme, is-dark),
+        foreground: map-get($theme, foreground),
+        background: map-get($theme, background),
+        is-blind: true
+    );
+}
+
+.mat-menu-item {
+    color: white !important;
+
+    mat-icon {
+        color: white !important;
+    }
+}

@@ -1,0 +1,56 @@
+<form [formGroup]="newForm" name="newForm1">
+    <div fxLayout="column" fxLayoutAlign="space-evenly stretch" class="p-20 max-height"
+         fxLayout.gt-sm="row wrap" fxLayoutAlign.gt-sm="start start">
+        <mat-form-field name="storage_temperature" fxFlex="100"  appearance="outline">
+            <mat-label>Storage temperature:</mat-label>
+            <mat-select name="storage_temperature" [(ngModel)]="selectedTemperature"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSelectTemperature()">
+                <mat-option *ngFor="let storageTemperature of storageTemperatures"
+                            [value]="storageTemperature">{{storageTemperature.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="45"  appearance="outline">
+            <mat-label>Equipment:</mat-label>
+            <mat-select [(ngModel)]="selectedEquipment" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSelectEquipment()">
+                <mat-option *ngFor="let equipment of equipments" [value]="equipment">{{equipment.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field  fxFlex="45" fxFlexOffset="10" appearance="outline">
+            <mat-label>Tower:</mat-label>
+            <mat-select [disabled]="!isTower" [(ngModel)]="selectedTower" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSelectTower()">
+                <mat-option *ngFor="let allocateTower of allocateTowers"
+                            [value]="allocateTower">Tower {{allocateTower['allocate_tower']}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="45"  appearance="outline">
+            <mat-label>Storage type:</mat-label>
+            <mat-select [(ngModel)]="selectedType" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSelectStorageType()">
+                <mat-option *ngFor="let storageType of storageTypes"
+                            [value]="storageType">{{storageType}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="45" fxFlexOffset="10" appearance="outline">
+            <mat-label>Allocate Number:</mat-label>
+            <mat-select (focusout)="onSelectAllocateNumber($event)" formControlName="id">
+                <mat-option *ngFor="let allocateNumber of allocateNumbers"
+                            [value]="allocateNumber['id']">{{allocateNumber['allocate_number']}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="isBox" fxFlex="45" appearance="outline">
+            <mat-label>Position:{{range}}</mat-label>
+            <input (focusout)="validatePosition()"  matInput formControlName="position">
+        </mat-form-field>
+    </div>
+</form>
+<div fxLayout="row" fxLayout="space-evenly center">
+    <button fxFlex="30" mat-raised-button matStepperPrevious>Back</button>
+    <button [disabled]="newForm.invalid || submitted" fxFlex="30" fxFlexOffset="5"  mat-raised-button
+            (click)="setMultiVialLocation()"
+            color="accent">Add 1 vial to database</button>
+    <button fxFlex="30" fxFlexOffset="5" mat-raised-button
+            matStepperNext color="accent">Add > 1 identical vial</button>
+</div>

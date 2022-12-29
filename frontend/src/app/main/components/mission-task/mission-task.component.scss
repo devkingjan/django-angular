@@ -1,0 +1,15 @@
+.create-task {
+    padding: 0 20px;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    cursor: pointer;
+}
+
+.mission-task-title {
+    width: calc(100% - 40px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -1,0 +1,105 @@
+<div class="page-layout carded fullwidth">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    people
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Companies
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button
+                    [routerLink]="'/admin/companies/new'"
+                    class="add-product-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW COMPANY</span>
+            </button>
+            <!-- / ADD BUTTON -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <table mat-table [dataSource]="dataSource" class="products-table mat-elevation-z8">
+                <ng-container matColumnDef="first_name">
+                <th mat-header-cell *matHeaderCellDef> First Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="last_name">
+                <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.last_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="institution">
+                <th mat-header-cell *matHeaderCellDef> Institution </th>
+                <td mat-cell *matCellDef="let element"> {{element.institution}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="db_name">
+                <th mat-header-cell *matHeaderCellDef> DB Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.db_name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-chip-list>
+                        <mat-chip [color]="status[element.status].color" selected>
+                            {{status[element.status].name}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </td>
+                </ng-container>
+
+                <!-- Buttons Column -->
+                <ng-container matColumnDef="buttons">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let company">
+                        <div fxFlex="row" fxLayoutAlign="end center">
+                            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                    (click)="$event.stopPropagation();">
+                                <mat-icon class="secondary-text">more_vert</mat-icon>
+                            </button>
+                            <mat-menu #moreMenu="matMenu">
+                                <button mat-menu-item aria-label="send_invitation" (click)="sendInvitation(company)">
+                                    <mat-icon>email</mat-icon>
+                                    <span>Send Invitation</span>
+                                </button>
+                                <button mat-menu-item aria-label="remove" (click)="delete(company)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Remove</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

@@ -1,0 +1,15 @@
+.bottom-none {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0b2b3a;
+  padding-bottom: 0px!important;
+}
+.sort-btn {
+    img {
+        width: 30px;
+    }
+    &-select {
+        background: #7cd2fc !important;
+    }
+}

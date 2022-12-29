@@ -1,0 +1,36 @@
+.map-content {
+    overflow: auto;
+    max-height: 700px;
+}
+.map-item {
+    width: 200px;
+    height: 80px;
+    border: 1px #bfbebe solid;
+    position: relative;
+    display: flex;
+    &-key {
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        font-size: 9px;
+    }
+    &-sample {
+        padding-top: 16px;
+        .bold {
+            font-weight: bold;
+            font-size: 20px;
+        }
+    }
+}
+.location-drop {
+    position: absolute;
+    z-index: 100000;
+    left: 200px;
+    top: 85px;
+}
+.sample-shelf {
+    max-width: 300px;
+    text-align: center;
+    border: 1px #bfbebe solid;
+    padding: 10px;
+}

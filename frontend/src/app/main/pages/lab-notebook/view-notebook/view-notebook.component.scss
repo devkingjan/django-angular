@@ -1,0 +1,131 @@
+@import "src/@fuse/scss/fuse";
+.inventory-control {
+    text-align: center;
+    padding: 35px 35px 0px 35px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    background: mat-color($igor, 500);
+    font-family: Roboto;
+    font-size: 25px;
+    img {
+        width: 120px;
+    }
+}
+
+.inventory-bg {
+    height: 100%;
+    width: 100%;
+}
+
+.expansion-custom {
+    .mat-expansion-panel-body {
+        padding: 0px!important;
+    }
+}
+
+//
+.mt-box {
+    margin-top: 8px;
+}
+
+.ml-box {
+    padding-left: 8px;
+}
+
+// header icon
+.header-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.card-item {
+    border-radius: 5px;
+    width: 100%;
+    background-color: #A9A9A9;
+    align-items: center;
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
+
+    &:hover, &:active {
+        background-color: #0B2B3A;
+        cursor: pointer;
+    }
+}
+
+.card-item-select {
+    background-color: #0B2B3A;
+}
+
+.logo-img {
+    width: 160px;
+}
+
+.lab-view-sub {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    height: 50px;
+    align-items: center;
+    display: flex;
+
+    .header-title {
+        font-size: 17px;
+        color: #0B2B3A;
+        font-family: Roboto;
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .context {
+        font-size: 16px;
+        color: #929292;
+        font-family: Roboto;
+        font-weight: 0;
+    }
+
+    .context2 {
+        font-size: 16px;
+        color:#0B2B3A;
+        font-family: Roboto;
+    }
+}
+
+.lab-input-sub {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.logo-box {
+    margin: 0 10px;
+    background: #f0f0f0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view-content {
+    width: 100%;
+}
+
+.full-editor {
+    width: 100%;
+}
+
+.non-visible {
+    display: none;
+
+    @include media-breakpoint('sm') {
+        display: block;
+    }
+
+    @include media-breakpoint('xs') {
+        display: block;
+    }
+}

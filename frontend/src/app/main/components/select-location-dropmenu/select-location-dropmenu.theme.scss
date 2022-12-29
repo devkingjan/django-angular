@@ -1,0 +1,24 @@
+@mixin app-select-location-dropdown-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-select-location-dropmenu {
+        .user-button {
+            @if ($is-dark or $is-blind) {
+                color: mat-color($dark-mode, warn) !important;
+            } @else {
+                color: mat-color($default-mode, warn) !important;
+            }
+        }
+
+        .location-menu-head {
+            button {
+                @if ($is-dark or $is-blind) {
+                    color: mat-color($dark-mode, warn) !important;
+                } @else {
+                    color: mat-color($default-mode, warn) !important;
+                }
+            }
+
+        }
+    }
+}

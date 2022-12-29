@@ -1,0 +1,11 @@
+@mixin app-lab-write-section-image-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+
+    app-lab-write-section-image {
+        .section-image-box {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<div class="dail-task">
+    <div class="dail-task-header">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="0 1 auto" class="dail-task-header-title">{{noDueDateTasks.length + selectedDateTasks.length + overDueDateTasks.length}} tasks today</div>
+            <div fxFlex="1 0 auto" class="cross-line"></div>
+            <button class="view-date-btn" mat-button (click)="viewOtherDate()">View other date</button>
+        </div>
+        <div class="day-list" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <app-display-day
+                fxFlex="12.5"
+                class="m-2"
+                *ngFor="let day of weekDays"
+                [displayDay]="day"
+                [selectedDay]="selectedDate"
+                (submitDate)="selectDate($event)"
+            ></app-display-day>
+        </div>
+    </div>
+    <div (click)="addNewTask()" fxLayout="row" fxLayoutAlign="start center" class="create-task">
+        <div fxFlex="1 0 auto">Add New Task</div>
+        <mat-icon fxFlex="0 1 auto">add</mat-icon>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start" class="task-array">
+        <div class="sub-title-custom">{{selectedDate | date : 'MMM d, y'}}</div>
+        <div *ngIf="selectedDateTasks.length" style="width: 100%">
+            <div *ngFor="let task of selectedDateTasks" class="task-array-item">
+                <app-task-item [task]="task" [position]="'daily-task'" (refresh)="refresh()"></app-task-item>
+            </div>
+        </div>
+        <div class="pl-52" *ngIf="!selectedDateTasks.length">
+            You have no tasks
+        </div>
+        <div class="sub-title-custom">No Date Assigned</div>
+        <div *ngIf="noDueDateTasks.length" style="width: 100%">
+            <div *ngFor="let task of noDueDateTasks" class="task-array-item">
+                <app-task-item [task]="task" [position]="'daily-task'" (refresh)="refresh()"></app-task-item>
+            </div>
+        </div>
+        <div class="pl-52" *ngIf="!noDueDateTasks.length">
+            You have no tasks
+        </div>
+
+        <div class="sub-title-custom">Overdue Tasks</div>
+        <div *ngIf="overDueDateTasks.length" style="width: 100%">
+            <div *ngFor="let task of overDueDateTasks" class="task-array-item">
+                <app-task-item [taskType]="'dueDate'" [task]="task" (refresh)="refresh()" [position]="'daily-task'"></app-task-item>
+            </div>
+        </div>
+        <div class="pl-52" *ngIf="!overDueDateTasks.length">
+            You have no overdue tasks
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="member">
+    <div class="member-header" fxLayout="row" fxLayoutAlign="space-evenly end">
+        <div fxFlexOffset="30" fxFlex="70" fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="card-title">
+                {{member.user_info ? member.user_info.first_name : member.first_name}}&nbsp;
+                {{member.user_info ? member.user_info.last_name : member.last_name}}
+            </span>
+            <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+                <div>
+                    <mat-icon class="s-20">keyboard_arrow_down</mat-icon>
+                </div>
+            </button>
+            <mat-menu class="member-menu" #userMenu="matMenu" [overlapTrigger]="false">
+                <button *ngIf="member.status==0 || member.status==1" mat-menu-item (click)="sendInvitation()">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Send Invitation</span>
+                </button>
+                <button disabled *ngIf="member.status==2" mat-menu-item>
+                    <img class="menu-img" src="assets/images/members/noun_Microscope_2004830_2.svg">
+                    <span>View Experiment database</span>
+                </button>
+                <button disabled *ngIf="member.status==2" mat-menu-item>
+                    <img class="menu-img" src="assets/images/members/Group 2793.svg">
+                    <span>View Lab Notebook</span>
+                </button>
+                <button *ngIf="member.status==2" mat-menu-item (click)="viewPersonalStatistic()">
+                    <img class="menu-img" src="assets/images/members/Group 2797.svg">
+                    <span>Person's statistic</span>
+                </button>
+                <button *ngIf="member.status==2" mat-menu-item (click)="editPermission()">
+                    <img class="menu-img" src="assets/images/members/noun_Unlock_1862800.svg">
+                    <span>Edit Permissions</span>
+                </button>
+                <button mat-menu-item (click)="viewEmergencyContact()">
+                    <img class="menu-img" src="assets/images/members/emergency.svg">
+                    <span>View Emergency contact</span>
+                </button>
+                <button *ngIf="member.status==2" mat-menu-item (click)="addNewTask()">
+                    <img style="width: 20px; margin: 16px 10px 0 0;" src="assets/images/members/Group 2798.svg">
+                    <span>Assign Task</span>
+                </button>
+                <button *ngIf="member.status==2" mat-menu-item (click)="viewDataStorage()">
+                    <img style="width: 20px; margin: 16px 10px 0 0;" src="assets/images/members/open-exp-data-folder.svg">
+                    <span>View Data Storage</span>
+                </button>
+            </mat-menu>
+        </div>
+
+    </div>
+    <div fxLayout="row" class="member-content">
+        <div fxLayout="column" fxLayoutAlign="start start" fxFlex="30" style="min-width: 70px">
+            <img class="avatar"
+                 [src]="member.user_info && member.user_info.signed_avatar_url ? member.user_info.signed_avatar_url: (member.signed_avatar_url ? member.signed_avatar_url : 'assets/images/avatars/default.png')">
+            <mat-chip [class]="status[member.status].color" selected>
+                {{status[member.status].name}}
+            </mat-chip>
+        </div>
+        <div fxFlex="70" class="p-12" fxLayout="column">
+            <div>{{member.role}}</div>
+            <div>TeamMember {{member.id}}</div>
+            <div>On team since: {{member.created_at |  date: 'MM dd, yyyy'}}</div>
+        </div>
+    </div>
+</div>

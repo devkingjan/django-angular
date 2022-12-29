@@ -1,0 +1,11 @@
+
+<div class="question-panel">
+    <div class="question">
+        {{question}}
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end end">
+        <button  mat-raised-button fxFlex="30" color="accent" (click)="onClick(true)">Yes</button>
+        <button mat-raised-button fxFlexOffset="10" fxFlex="30" color="accent" (click)="onClick(false)">No</button>
+    </div>
+</div>
+

@@ -1,0 +1,111 @@
+@import "src/@fuse/scss/fuse";
+.inventory-table {
+    overflow: auto;
+    &-header {
+        color: white;
+        font-weight: bold;
+        padding-bottom: 0px!important;
+        &-first{
+            border-right: 1px solid white;
+            padding: 10px;
+            height: 60px;
+            width: 50px;
+            background: #0b2b3a;
+        }
+    }
+    &-uid {
+        height: 60px;
+        padding-top: 12px;
+        padding-left: 10px;
+        background: #0b2b3a;
+        border-right: 1px solid white;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    &-row-first {
+        align-self: stretch;
+        text-align: center;
+        border-bottom: 2px solid #bab7b7;
+    }
+    &-content {
+        min-height: 500px;
+        padding-top: 0px!important;
+    }
+}
+#new-experiment-button {
+    position: fixed;
+    bottom: 80px;
+    right: 12px;
+    padding: 0;
+    z-index: 99;
+
+    @include media-breakpoint('xs') {
+        position: sticky;
+        top: calc(100vh - 120px);
+        bottom: auto;
+    }
+}
+.head-title {
+    background: white;
+    padding: 7px;
+    margin-right: 10px;
+}
+
+.inv-column {
+    height: auto;
+
+    &-item {
+        padding: 5px;
+        text-align: left;
+        align-self: stretch;
+        border: 1px #bab7b7 solid;
+        &-selected {
+            padding: 5px;
+            text-align: left;
+            align-self: stretch;
+            border: 1px #bab7b7 solid;
+        }
+    }
+}
+.canceled {
+    color: #bab7b7;
+}
+
+.sub-title {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0b2b3a;
+}
+
+
+.exp-column {
+    height: auto;
+
+    &-item {
+        padding: 5px;
+        text-align: left;
+        align-self: stretch;
+        border: 1px #bab7b7 solid;
+        &-selected {
+            padding: 5px;
+            text-align: left;
+            border: 1px #bab7b7 solid;
+            align-self: stretch;
+        }
+    }
+}
+.filter-label {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+}
+.canceled {
+    color: #bab7b7;
+}
+.content-overflow {
+    overflow: auto;
+}
+.filter-prefix {
+    transform: translateY(-4px);
+}

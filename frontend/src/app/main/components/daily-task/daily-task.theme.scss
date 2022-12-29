@@ -1,0 +1,47 @@
+@mixin app-daily-task-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-daily-task {
+        .view-date-btn {
+            @if ($is-dark) {
+                color: mat-color($dark-mode, warn) !important;
+                background: mat-color($dark-mode, light-bg);
+            } @else if ($is-blind) {
+                color: mat-color($default-mode, primary) !important;
+                background: #bfbcbc;
+            } @else{
+                color: mat-color($default-mode, primary) !important;
+                background: #bfbcbc;
+            }
+        }
+
+        .create-task {
+            @if ($is-dark) {
+                color: mat-color($dark-mode, warn) !important;
+                background: mat-color($dark-mode, light-bg);
+            } @else if ($is-blind) {
+                color: mat-color($default-mode, primary) !important;
+                background: #bfbcbc;
+            } @else{
+                color: mat-color($default-mode, primary) !important;
+                background: #bfbcbc;
+            }
+        }
+
+        .task-array {
+            @if ($is-dark) {
+                background: mat-color($dark-mode, main-bg) !important;
+            } @else {
+                background: white;
+            }
+        }
+
+        .sub-title-custom {
+            @if ($is-dark) {
+                color: white;
+            } @else {
+                color: #0b2b3a;
+            }
+        }
+    }
+}

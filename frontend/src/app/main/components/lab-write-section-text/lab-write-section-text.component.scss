@@ -1,0 +1,23 @@
+.section-text-box {
+    width: 100%;
+    text-align: center;
+
+    .section-info {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .section-edit-icon {
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .section-delete-icon {
+        cursor: pointer;
+        padding: 10px 30px 10px 0;
+    }
+
+    .editor-mode{
+        width: 70%;
+    }
+}

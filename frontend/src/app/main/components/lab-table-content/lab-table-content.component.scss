@@ -1,0 +1,104 @@
+@import "src/@fuse/scss/fuse";
+.expanded {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.lab-table-task {
+    padding: 0 20px;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    cursor: pointer;
+}
+
+.mission-item-header {
+    text-align: center;
+    padding: 7px 10px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    background: mat-color($igor, 500);
+    font-family: Roboto;
+    font-size: 18px;
+
+    img {
+        width: 120px;
+    }
+
+    .user-button {
+        padding: 0;
+        min-width: unset;
+    }
+}
+
+.lab-table-content {
+    height: 510px;
+    overflow-y: auto;
+}
+
+.mission-dot {
+    margin: 5px 10px 5px 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.mission-item-panel {
+    padding: 0 30px 5px 47px;
+
+    label {
+        font-weight: bold;
+    }
+}
+
+.mission-edit-event {
+    background: #d2d3d8!important;
+}
+
+.mission-event-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.create-event {
+    padding: 0 20px;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    cursor: pointer;
+}
+
+.search-input {
+    position: relative;
+
+    .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 9px;
+        width: 20px;
+    }
+
+    .search-input-box {
+        width: 100%;
+        padding: 8px 0 8px 33px;
+        background-color: #F0F0F0;
+        border: 1px solid #D2D3D8;
+    }
+}
+
+.exp-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        background: #f0f0f0;
+    }
+}
+
+.exp-item-active {
+    background: #f0f0f0;
+}

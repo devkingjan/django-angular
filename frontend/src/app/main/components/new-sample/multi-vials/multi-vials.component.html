@@ -1,0 +1,68 @@
+<form [formGroup]="newForm" fxLayout="column" fxLayoutAlign="start stretch"
+      class="p-20 max-height">
+    <div fxLayout="row">
+        <mat-form-field fxFlex="45"  appearance="outline">
+            <mat-label>Number of vials to add:</mat-label>
+            <mat-select [(ngModel)]="vialNumber" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onUpdateVialNumber()">
+                <mat-option *ngFor="let vial of vials"
+                            [value]="vial">{{vial}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row">
+        <mat-form-field name="storage_temperature" fxFlex="45"  appearance="outline">
+            <mat-label>Storage temperature:</mat-label>
+            <mat-select name="storage_temperature" [(ngModel)]="selectedTemperatureForVial"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSelectTemperatureForVial()">
+                <mat-option *ngFor="let storageTemperature of storageTemperatures"
+                            [value]="storageTemperature">{{storageTemperature.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="45" fxFlexOffset="10" appearance="outline">
+            <mat-label>Equipment:</mat-label>
+            <mat-select [(ngModel)]="selectedEquipmentForVial" [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onSelectEquipmentForVial()">
+                <mat-option *ngFor="let equipment of equipmentsForVial" [value]="equipment">{{equipment.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngFor="let vial of vialLocations; let i = index;">
+        <div fxLayout="row">
+            <div fxFlex="14" class="vial-title">Vial {{i+1}}:</div>
+            <mat-form-field  fxFlex="20" appearance="outline">
+                <mat-label>Tower:</mat-label>
+                <mat-select [disabled]="!isTower" [(ngModel)]="vial.allocate_tower"
+                            [ngModelOptions]="{standalone: true}" (ngModelChange)="onSelectTower(vial)">
+                    <mat-option *ngFor="let allocateTower of allocateTowersForVial"
+                                [value]="allocateTower">Tower {{allocateTower['allocate_tower']}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="20" fxFlexOffset="2"   appearance="outline">
+                <mat-label>Storage type:</mat-label>
+                <mat-select [(ngModel)]="vial.storage_type" [ngModelOptions]="{standalone: true}"
+                            (ngModelChange)="onSelectStorageTypeForVial(vial, i)">
+                    <mat-option *ngFor="let storageType of storageTypes"
+                                [value]="storageType">{{storageType}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="20" fxFlexOffset="2" appearance="outline">
+                <mat-label>Allocate Number:</mat-label>
+                <mat-select formControlName="allocate_number{{i}}">
+                    <mat-option *ngFor="let allocateNumber of vial.allocateNumbers"
+                                [value]="allocateNumber['id']">{{allocateNumber['allocate_number']}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="20" fxFlexOffset="2" appearance="outline">
+                <mat-label >{{vial.positionTitle}}</mat-label>
+                <input *ngIf="vial.storage_type==='box'" (focusout)="validatePosition(vial, i)" matInput formControlName="position{{i}}">
+                <input *ngIf="vial.storage_type!=='box'" matInput formControlName="disabled_position">
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+<div fxLayout="row" fxLayout="space-evenly center">
+    <button fxFlex="45" mat-raised-button matStepperPrevious>Back</button>
+    <button [disabled]="newForm.invalid || submitted" fxFlex="45" fxFlexOffset="10"  (click)="submitForm()" mat-raised-button color="accent">Submit</button>
+</div>

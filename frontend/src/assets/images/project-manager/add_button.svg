@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="add_button" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#929292;stroke-width:1.5px;stroke-linecap:round}
+        </style>
+    </defs>
+    <g id="Ellipse_13" fill="none" stroke="#929292" stroke-width="1.5px" data-name="Ellipse 13">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.25"/>
+    </g>
+    <g id="Group_2755" data-name="Group 2755" transform="translate(9046.246 2028.246)">
+        <path id="Line_94" d="M0 0L8 0" class="cls-2" data-name="Line 94" transform="translate(-9040.246 -2018.246)"/>
+        <path id="Line_95" d="M0 0L0 8" class="cls-2" data-name="Line 95" transform="translate(-9036.246 -2022.246)"/>
+    </g>
+</svg>

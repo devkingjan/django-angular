@@ -1,0 +1,38 @@
+<h2 class="change-pin-header" mat-dialog-title>Change PIN</h2>
+<mat-dialog-content class="mat-typography" fxLayout.lt-md="80%">
+    <form style="width: 400px" name="loginForm" [formGroup]="changeForm" fxLayout="column" (ngSubmit)="submit()" class="p-20" novalidate>
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Old PIN</mat-label>
+            <input matInput type="password" formControlName="current_pin">
+            <mat-error>
+                Old PIN is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>PIN</mat-label>
+            <input matInput type="password" formControlName="new_pin">
+            <mat-error>
+                Invalid PIN
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="100">
+            <mat-label>Confirm PIN</mat-label>
+            <input matInput type="password" formControlName="confirmPin" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="changeForm.hasError('notSame')">
+                PINS do not match
+            </mat-error>
+        </mat-form-field>
+        <div fxLayout="row">
+            <button style="height: 40px" fxFlexOffset="10" fxFlex="30" mat-raised-button color="primary" class="submit-button m-10" aria-label="LOGIN"
+                    [disabled]="changeForm.invalid">
+                Save
+            </button>
+            <button style="height: 40px" fxFlexOffset="20" fxFlex="30"  mat-raised-button color="primary"
+                    class="submit-button m-10" aria-label="LOGIN" (click)="cancel()"
+                    [disabled]="changeForm.invalid">
+                Cancel
+            </button>
+        </div>
+
+    </form>
+</mat-dialog-content>

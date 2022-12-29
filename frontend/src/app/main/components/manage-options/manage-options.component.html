@@ -1,0 +1,19 @@
+<div class="full-width" fxFlex.gt-sm="500px" class="new-experiment">
+    <h2 class="custom-modal-header">Manage Dropdown Options</h2>
+    <div  class="p-40">
+        <div class="option-list">
+            <div *ngFor="let option of options"  fxLayout="row" fxLayoutAlign="start center"  class="column-option">
+                <mat-icon fxFlex="0 1 auto">short_text</mat-icon>
+                <input [disabled]="!option?.new" fxFlex="1 0 auto" [(ngModel)]="option.value">
+                <mat-icon style="cursor: pointer" fxFlex="0 1 auto" (click)="removeOption(option)">close</mat-icon>
+            </div>
+        </div>
+        <div fxLayout="row" class="mt-40">
+            <div fxFlex="1 0 auto">
+                <a style="cursor: pointer" (click)="addNew()">Add Option</a>
+            </div>
+            <button fxFlex="0 1 auto" mat-raised-button (click)="close()">Cancel</button>
+            <button class="ml-8" fxFlex="0 1 auto" mat-raised-button color="accent" (click)="submit()">Save</button>
+        </div>
+    </div>
+</div>

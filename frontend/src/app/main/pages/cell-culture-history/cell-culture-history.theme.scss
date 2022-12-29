@@ -1,0 +1,34 @@
+@mixin cell-culture-history-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    app-cell-culture-history {
+        .custom-header {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, light-bg);
+                color: rgba(255, 255, 255, 0.54);
+                .logo-text {
+                    font-size: 25px;
+                    font-weight: bold!important;
+                    color: rgba(255, 255, 255, 0.54);
+                }
+            } @else {
+                //background-color: mat-color($default-mode, light-bg);
+                color: mat-color($default-mode, primary);
+                .logo-text {
+                    font-size: 25px;
+                    font-weight: bold!important;
+                    color: #0b2b3a;
+                }
+            }
+        }
+        .content-bg {
+            @if ($is-dark) {
+                background: transparent;
+                background: mat-color($dark-mode, content-bg);
+            } @else {
+                background: transparent;
+                //background: mat-color($default-mode, content-bg);
+            }
+        }
+    }
+}

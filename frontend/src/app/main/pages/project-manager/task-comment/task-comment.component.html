@@ -1,0 +1,42 @@
+<div fxFlex="400px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="custom-modal-header">{{comment ? 'Edit' : 'Add'}} Comment</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content class="p-16 pb-0 m-0" fusePerfectScrollbar>
+        <form name="eventForm" [formGroup]="newForm" class="event-form w-100-p" fxLayout="column" fxFlex>
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Comment:</mat-label>
+                <textarea matInput
+                          formControlName="comment"
+                          rows="4"
+                >
+                </textarea>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button
+            mat-raised-button
+            color="accent"
+            (click)="addComment()"
+            [disabled]="newForm.invalid || submitted"
+            aria-label="ADD">
+            {{comment ? 'UPDATE' : 'ADD'}}
+        </button>
+        <button
+            mat-raised-button
+            class="mr-8"
+            color="accent"
+            (click)="dialogRef.close()"
+            aria-label="Delete"
+            matTooltip="Delete">
+            Cancel
+        </button>
+
+    </div>
+</div>

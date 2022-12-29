@@ -1,0 +1,135 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-16 pb-0 m-0" fusePerfectScrollbar>
+
+        <form name="eventForm" [formGroup]="eventForm" class="event-form w-100-p" fxLayout="column" fxFlex>
+
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Title:</mat-label>
+                <input matInput
+                       name="title"
+                       formControlName="title"
+                       required>
+            </mat-form-field>
+
+            <div class="pb-32" fxFlex="1 0 auto" fxLayout="row">
+                <mat-slide-toggle name="allDay" formControlName="allDay" class="mr-24" aria-label="All day">
+                    All Day
+                </mat-slide-toggle>
+            </div>
+
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+                    <mat-label>Start date:</mat-label>
+                    <input matInput [matDatepicker]="startDatePicker" name="start" formControlName="start">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="pl-sm-8 no-errors-spacer" fxFlex="50">
+                    <mat-label>Start time:</mat-label>
+                    <input [disabled]="!event.is_owner" [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}" matInput type="time">
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+                    <mat-label>End date:</mat-label>
+                    <input matInput [matDatepicker]="endDatePicker" name="end" formControlName="end">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="pl-sm-8 no-errors-spacer" fxFlex="50">
+                    <mat-label>End time:</mat-label>
+                    <input [disabled]="!event.is_owner"  [(ngModel)]="endTime" [ngModelOptions]="{standalone: true}" matInput type="time">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="example-chip-list">
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                    <mat-chip
+                        *ngFor="let member of selectedMembers"
+                        [selectable]="selectable"
+                        [removable]="removable"
+                        [disabled]="!event.is_owner"
+                        (removed)="remove(member)">
+                        {{member.first_name}} {{member.last_name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input
+                        placeholder="Add Attendees"
+                        #memberInput
+                        [disabled]="!event.is_owner"
+                        [formControl]="memberCtrl"
+                        [matAutocomplete]="auto"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+                </mat-chip-list>
+                <mat-autocomplete #auto (optionSelected)="selected($event)">
+                    <mat-option [disabled]="!event.is_owner"  *ngFor="let member of members" [value]="member">
+                        {{member.first_name}} {{member.last_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" formGroupName="meta" class="w-100-p">
+                <mat-label>Add Location:</mat-label>
+                <input matInput
+                       name="location"
+                       formControlName="location">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" formGroupName="meta" class="w-100-p">
+                <mat-label>Notes:</mat-label>
+                <textarea matInput
+                          formControlName="notes"
+                          mat-maxlength="250"
+                          max-rows="4">
+                </textarea>
+            </mat-form-field>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <button *ngIf="action !== 'edit' && event.is_owner"
+                mat-raised-button
+                color="accent"
+                (click)="addEvent()"
+                [disabled]="eventForm.invalid"
+                aria-label="ADD">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit' && event.is_owner"
+                mat-raised-button
+                color="accent"
+                (click)="saveEvent()"
+                [disabled]="eventForm.invalid"
+                aria-label="SAVE">
+            SAVE
+        </button>
+
+        <button *ngIf="action ==='edit'"
+                mat-raised-button
+                class="mr-8"
+                color="accent"
+                (click)="matDialogRef.close()"
+                aria-label="Delete"
+                matTooltip="Delete">
+            Cancel
+        </button>
+
+    </div>
+</div>

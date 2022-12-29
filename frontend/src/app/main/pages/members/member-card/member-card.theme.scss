@@ -1,0 +1,59 @@
+@mixin member-card-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $is-blind: map-get($theme, is-blind);
+    $is-default: map-get($theme, is-default);
+    app-member-card {
+        .member {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, main-bg);
+                color: rgba(255, 255, 255, 0.54);
+                &-header{
+                    color: white;
+                    border-bottom: 1px mat-color($dark-mode, warn) solid;
+                    button {
+                        color: mat-color($dark-mode, warn)!important;
+                    }
+                }
+            } @else if ($is-blind) {
+                background-color: mat-color($default-mode, main-bg);
+                color: mat-color($default-mode, primary);
+                &-header{
+                    border-bottom: 1px mat-color($dark-mode, warn) solid;
+                    button {
+                        color:  mat-color($dark-mode, warn)!important;
+                    }
+                }
+            } @else{
+                background-color: mat-color($default-mode, main-bg);
+                color: mat-color($default-mode, primary);
+                &-header{
+                    border-bottom: 1px mat-color($default-mode, warn) solid;
+                    button {
+                        color: mat-color($default-mode, warn)!important;
+                    }
+                }
+            }
+        }
+        .pending {
+            @if ($is-dark) {
+                background-color: #75a6c9!important;
+            } @else {
+                background-color: mat-color($igor-primary, 500)!important;
+            }
+        }
+        .invited {
+            @if ($is-dark) {
+                background-color: mat-color($dark-mode, warn)!important;
+            } @else {
+                background-color: mat-color($igor-warn, 500)!important;
+            }
+        }
+        .accepted {
+            @if ($is-dark) {
+                background-color: #929292!important;
+            } @else {
+                background-color: mat-color($igor-primary, 500)!important;
+            }
+        }
+    }
+}

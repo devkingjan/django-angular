@@ -1,0 +1,42 @@
+.calculator {
+    padding-top: 30px;
+
+    &-item {
+        height: fit-content;
+
+        label {
+            font-size: 14px;
+            font-family: Roboto;
+        }
+
+        input {
+            height: 40px;
+            padding-left: 10px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            background: transparent;
+        }
+
+        mat-select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            background: transparent;
+
+        }
+    }
+
+    &-result-label {
+        font-size: 14px;
+        font-family: Roboto;
+    }
+    &-result-panel {
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding-top: 10px;
+        height: 40px;
+        border-radius: 5px;
+        color: white;
+    }
+}

@@ -1,0 +1,21 @@
+@import "src/@fuse/scss/fuse";
+.max-height {
+    padding: 20px 0px!important;
+    max-height: 60vh;
+    min-height: 60vh;
+    overflow-y: auto;
+}
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+.mat-step-header .mat-step-icon-state-edit  {
+    background: #75a6c9!important;
+}
+
+::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}

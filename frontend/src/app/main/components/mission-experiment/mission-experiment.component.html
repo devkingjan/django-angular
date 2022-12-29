@@ -1,0 +1,70 @@
+<div class="mission-item-header cursor-pointer" fxLayout="row" (click)="clickExpand()"
+     fxLayoutAlign="space-between center">
+    <div>Recent Experiments</div>
+    <button *ngIf="expanded" (click)="accordion.closeAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_down</mat-icon>
+        </div>
+    </button>
+    <button *ngIf="!expanded" (click)="accordion.openAll()" mat-button class="user-button">
+        <div>
+            <mat-icon color="warn" class="s-40">keyboard_arrow_up</mat-icon>
+        </div>
+    </button>
+</div>
+<mat-accordion multi>
+    <mat-expansion-panel fxLayout="column" *ngIf="experiments.length" class="mission-exp-panel">
+        <div class="mission-header" fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="5"></div>
+            <div fxFlex="30">Experiment ID</div>
+            <div fxFlex="30">Performed on</div>
+            <div fxFlex="25">Experiment type</div>
+            <div fxFlex="10"></div>
+        </div>
+        <div class="experiment-row" fxLayout="row" fxLayoutAlign="start center" *ngFor="let experiment of experiments">
+            <div fxFlex="5">
+                <div class="mission-dot"></div>
+            </div>
+            <div fxFlex="30" class="mission-database-title">
+                {{experiment.uid}} {{experiment?.default_data?.Title}}
+            </div>
+            <div fxFlex="30">
+                <span *ngIf="experiment?.default_data">
+                    {{experiment?.default_data?.Date | date : 'MMM dd, yyy'}}
+                </span>
+            </div>
+            <div fxFlex="25">
+                <span *ngIf="experiment.default_data">
+                    {{experiment.default_data['Experiment Type']}}
+                </span>
+            </div>
+            <img src="assets/images/mission/Pop up button.svg" (click)="$event.stopPropagation()"
+                 [matMenuTriggerFor]="menu" fxFlex="0 1 auto"/>
+            <mat-menu #menu="matMenu">
+                <button (click)="openWriteUpArea(experiment)" mat-menu-item>
+                    <img style="padding: 8px" src="assets/images/mission/group-1414.svg"/>
+                    <span>Open In Write Up Area</span>
+                </button>
+                <button (click)="openExpDataFolder(experiment)" mat-menu-item>
+                    <img style="padding: 8px" src="assets/images/mission/group-1413.svg"/>
+                    <span>Open Exp. Data Folder</span>
+                </button>
+                <button (click)="viewExperiments(experiment)" mat-menu-item>
+                    <img style="padding: 8px" src="assets/images/mission/group-1415.svg"/>
+                    <span>View/Edit Details in Experiment Database</span>
+                </button>
+            </mat-menu>
+        </div>
+        <div (click)="addNewExperiment()" fxLayout="row" fxLayoutAlign="start center" class="create-new">
+            <div fxFlex="1 0 auto">Add New Experiment</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="!experiments.length" class="mission-panel">
+        <div class="p-40">You have no recent experiments.</div>
+        <div (click)="addNewExperiment()" fxLayout="row" fxLayoutAlign="start center" class="create-new">
+            <div fxFlex="1 0 auto">Add New Experiment</div>
+            <mat-icon fxFlex="0 1 auto">add</mat-icon>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

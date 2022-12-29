@@ -1,0 +1,97 @@
+<div fxFlex="400px">
+    <div fxLayout="row" class="custom-modal-header" fxLayoutAlign="space-between center">
+        <h2 class="custom-modal-header">{{project ? 'Edit' : 'Create New'}} Task</h2>
+        <button class="custom-header-close" mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content class="p-16 pb-0 m-0" fusePerfectScrollbar>
+        <form name="eventForm" [formGroup]="newForm" class="event-form w-100-p" fxLayout="column" fxFlex>
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Title:</mat-label>
+                <input matInput
+                       name="title"
+                       formControlName="title"
+                       required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Description:</mat-label>
+                <textarea matInput
+                          formControlName="description"
+                          rows="4"
+                >
+                </textarea>
+            </mat-form-field>
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="100">
+                    <mat-label>Start date:</mat-label>
+                    <input matInput [matDatepicker]="startDatePicker" name="start_time" formControlName="start_time">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="100">
+                    <mat-label>End date:</mat-label>
+                    <input matInput [matDatepicker]="endDatePicker" name="end_time" formControlName="end_time">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="example-chip-list">
+                <mat-chip-list #chipList aria-label="Add Members">
+                    <mat-chip
+                        *ngFor="let member of selectedMembers"
+                        [selectable]="true"
+                        [removable]="true"
+                        (removed)="remove(member)">
+                        {{member.first_name}} {{member.last_name}}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <input
+                        placeholder="Add Members"
+                        #memberInput
+                        [formControl]="memberCtrl"
+                        [matAutocomplete]="auto"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+                </mat-chip-list>
+                <mat-autocomplete #auto (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let member of members" [value]="member">
+                        {{member.first_name}} {{member.last_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="status">
+                    <mat-option value="done">Done</mat-option>
+                    <mat-option value="in_progress">In Progress</mat-option>
+                    <mat-option value="in_planing">In Planning</mat-option>
+                    <mat-option value="on_hold">On Hold</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button
+            mat-raised-button
+            color="accent"
+            (click)="addTask()"
+            [disabled]="newForm.invalid || !this.selectedMembers.length || submitted"
+            aria-label="ADD">
+            {{task ? 'UPDATE' : 'ADD'}}
+        </button>
+        <button
+            mat-raised-button
+            class="mr-8"
+            color="accent"
+            (click)="dialogRef.close()"
+            aria-label="Delete"
+            matTooltip="Delete">
+            Cancel
+        </button>
+
+    </div>
+</div>
